@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itobase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clegoube <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/04 10:20:06 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/04 10:20:11 by clegoube         ###   ########.fr       */
+/*   Created: 2017/01/04 10:18:31 by clegoube          #+#    #+#             */
+/*   Updated: 2017/01/04 14:08:00 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-int		ft_check_putnbr_base(char *base)
+//
+// int		ft_itobase(int nb, char *base)
+// {
+// 	int	nbr;
+// 	int size_base;
+// 	int index;
+//
+// 	nb = 0;
+// 	while (base[index])
+// 		index++;
+// 	size_base = index;
+// 	while (nb % size_base)
+// 	{
+// 			nb = nb
+// 	}
+//
+// 	return (nbr)
+// }
+//
+int		ft_check_nbr_base(char *base)
 {
 	int i;
 	int j;
@@ -38,16 +56,23 @@ int		ft_check_putnbr_base(char *base)
 	return (1);
 }
 
-char	*ft_itoa_base(int nbr, char *base, int base_len, char *tab)
+char	*ft_itobase(int nbr, char *base)
 {
 	int		display;
 	int		k;
 	int		i;
 	char	*temp;
+	char	*tab;
+	int		base_len;
 
+	i = 0;
+	tab = (char*)malloc(256 * sizeof(char));
+	while (base[i])
+		i++;
+	base_len = i;
 	while (base[base_len] || (k = 0))
 		base_len++;
-	if (*base && base_len != 1 && ft_check_putnbr_base(base))
+	if (*base && base_len != 1 && ft_check_nbr_base(base))
 	{
 		if (nbr < 0)
 			if ((nbr = -nbr))
@@ -55,6 +80,7 @@ char	*ft_itoa_base(int nbr, char *base, int base_len, char *tab)
 		display = 0;
 		i = 0;
 		temp = (char*)malloc(256 * sizeof(char));
+
 		while (nbr != 0)
 		{
 			temp[i++] = display * base_len + nbr % base_len;

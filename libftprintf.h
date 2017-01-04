@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 11:13:24 by clegoube          #+#    #+#             */
-/*   Updated: 2016/12/02 19:58:08 by clegoube         ###   ########.fr       */
+/*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
+/*   Updated: 2017/01/04 17:19:24 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+size_t			ft_strlen(const char *s);
 
 
-int        ft_printf(char *format, ...);
+int				ft_printf(char *format, ...);
 // char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
 char			*ft_itoa_base(int nbr, char *base, int base_len, char *tab);
 int				ft_atoi_base(char *str, char *base);
 void			ft_putwstr(wchar_t *s);
+char			*ft_itobase(int nbr, char *base);
 
 #endif

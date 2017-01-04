@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/11/15 16:15:02 by clegoube          #+#    #+#              #
-#    Updated: 2016/12/02 19:58:19 by clegoube         ###   ########.fr        #
+#    Created: 2017/01/04 10:22:13 by clegoube          #+#    #+#              #
+#    Updated: 2017/01/04 17:19:30 by clegoube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	printf
-SRC =	main.c ft_printf.c libft.a ft_itoa_base.c ft_atoi_base.c
-HEADER = printf.h
+SRC =	main.c ft_printf.c ft_itoa_base.c ft_atoi_base.c ft_itobase.c ft_putwstr.c
+HEADER = libftprintf.h
 
 
 SRCO	= $(SRC:%.c=%.o)

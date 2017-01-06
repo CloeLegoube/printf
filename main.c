@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/04 17:27:41 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/06 12:19:24 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(void)
 	unsigned int u;
 	unsigned int U;
 	int c;
-	int C;
+	wchar_t C;
 	void *p;
 	const char *str;
 	wchar_t *wstr;
@@ -42,24 +42,35 @@ int		main(void)
 	u = -65534;
 	U = 65534;
 	c = 33;
-	C = 92;
+	C = L'❤';
 	str = "Bonjour Éloïse";
 	p = "Hello Éloïse";
-	wstr = L"Slt Éloïse !";
+	wstr = L"Slt Éloïse !☂ ❤ ☯";
 	tab = (char*)malloc(256 * sizeof(char));
 
-	ctest = 0xe1;
-	write(1, &ctest, 1);
-	ctest = 0x88;
-	write(1, &ctest, 1);
-	ctest = 0xb4;
-	write(1, &ctest, 1);
-	// ctest = 0x0a;
-	// write(1, &ctest, 1);
+	setlocale(LC_ALL, "");
 
-	printf("\nITOA: %s\n", ft_itoa_base(x, "0123456789", 0, tab));
-	printf("TAB: %s\n", tab);
-	printf("ATOI: %d\n\n", ft_atoi_base(tab, "0123456789abcdef"));
+	//Cheval :
+	ctest = 0xe2;
+	write(1, &ctest, 1);
+	ctest = 0x99;
+	write(1, &ctest, 1);
+	ctest = 0x9E;
+	write(1, &ctest, 1);
+	// Saut de ligne
+	ctest = 0x0a;
+	write(1, &ctest, 1);
+	//Parapluie :
+	ctest = 0xe2;
+	write(1, &ctest, 1);
+	ctest = 0x98;
+	write(1, &ctest, 1);
+	ctest = 0x82;
+	write(1, &ctest, 1);
+
+	// printf("\nITOA: %s\n", ft_itoa_base(x, "0123456789", 0, tab));
+	// printf("TAB: %s\n", tab);
+	// printf("ATOI: %d\n\n", ft_atoi_base(tab, "0123456789abcdef"));
 
 	printf("***Test avec i, d et s - d positif ou negatif\n");
 	ft_printf("FT_printf :%i) d: %d - str: %s\n", i, d, str);
@@ -83,7 +94,8 @@ int		main(void)
 
 	printf("***Test avec c et C - int en unsigned char\n");
 	ft_printf("FT_printf :c: %c - C:%C\n", c, C);
-	printf("Prinft    :c: %c - C:%C\n\n", c, C);
+	printf("Prinft    :c: %c - C:%C\n", c, C);
+	ft_binary(C);
 
 	printf("***Test avec D \n");
 	ft_printf("FT_printf :D: %D\n", D);
@@ -91,7 +103,8 @@ int		main(void)
 
 	printf("***Test avec S\n");
 	ft_printf("FT_printf :S: %S\n", wstr);
-	printf("Prinft    :S: %ls\n\n", wstr);
+	printf("Prinft    :S: %ls\n", wstr);
+	printf("Prinft    :S: %S\n\n", wstr);
 
 	printf("***Test avec u et U - chiffre decimal non signe entree et sortie postif\n");
 	printf("ft_itobase de u:%d == %s\n", u, ft_itobase(u, "0123456789"));

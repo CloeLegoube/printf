@@ -6,12 +6,12 @@
 #    By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/04 10:22:13 by clegoube          #+#    #+#              #
-#    Updated: 2017/01/04 17:19:30 by clegoube         ###   ########.fr        #
+#    Updated: 2017/01/06 12:22:30 by clegoube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	printf
-SRC =	main.c ft_printf.c ft_itoa_base.c ft_atoi_base.c ft_itobase.c ft_putwstr.c
+SRC =	main.c ft_printf.c ft_itobase.c ft_putwstr.c ft_convert_base.c ft_binary.c ft_strdup.c
 HEADER = libftprintf.h
 
 

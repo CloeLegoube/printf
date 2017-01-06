@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/04 17:25:29 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/06 10:11:54 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,17 @@ va_list         *kind_of_conversion(va_list arg, char conversion)
 		ft_putnbr(va_arg(arg, long));
 	else if (conversion == 'S')
 	  ft_putwstr(va_arg(arg, wchar_t *));
-	else if (conversion == 'u' || (conversion == 'U'))
-		ft_putstr(ft_itobase(va_arg(arg, int), "0123456789"));
+	else if (conversion == 'u')
+	{
+		// printf("%d", va_arg(arg, long));
+		if (va_arg(arg, long) < 0)
+			ft_putnbr(4294967295 - va_arg(arg, unsigned long));
+		else
+			ft_putstr(ft_itobase(va_arg(arg, unsigned long), "0123456789"));
+
+	}
+	else if (conversion == 'U')
+		ft_putnbr(va_arg(arg, long));
 	else if (conversion == 'c' || (conversion == 'C'))
 		 ft_putchar(va_arg(arg, int));
 	else if (conversion == 'o' || (conversion == 'O'))

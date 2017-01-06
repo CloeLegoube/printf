@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/04 17:19:24 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/06 12:22:34 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include <ctype.h>
 # include <strings.h>
 
+#include <locale.h>
+
 
 int				ft_atoi(const char *str);
 int				ft_isalpha(int c);
@@ -46,10 +48,12 @@ size_t			ft_strlen(const char *s);
 
 
 int				ft_printf(char *format, ...);
-// char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
-char			*ft_itoa_base(int nbr, char *base, int base_len, char *tab);
-int				ft_atoi_base(char *str, char *base);
+char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
+// char			*ft_itoa_base(int nbr, char *base, int base_len, char *tab);
+// int				ft_atoi_base(char *str, char *base);
 void			ft_putwstr(wchar_t *s);
 char			*ft_itobase(int nbr, char *base);
+void			ft_binary(wchar_t C);
+char			*ft_strdup(const char *s1);
 
 #endif

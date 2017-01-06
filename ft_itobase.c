@@ -6,30 +6,12 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:18:31 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/04 14:08:00 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/06 09:59:23 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-//
-// int		ft_itobase(int nb, char *base)
-// {
-// 	int	nbr;
-// 	int size_base;
-// 	int index;
-//
-// 	nb = 0;
-// 	while (base[index])
-// 		index++;
-// 	size_base = index;
-// 	while (nb % size_base)
-// 	{
-// 			nb = nb
-// 	}
-//
-// 	return (nbr)
-// }
-//
+
 int		ft_check_nbr_base(char *base)
 {
 	int i;

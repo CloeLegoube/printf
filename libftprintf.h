@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/06 12:22:34 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/07 19:15:17 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 # include <ctype.h>
 # include <strings.h>
 
-#include <locale.h>
+# include <limits.h>
+# include <locale.h>
 
 
 int				ft_atoi(const char *str);
@@ -40,6 +41,7 @@ void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
 void			ft_putnbr(int n);
+void			ft_putnbr_positif(unsigned int nb);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
@@ -53,7 +55,7 @@ char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
 // int				ft_atoi_base(char *str, char *base);
 void			ft_putwstr(wchar_t *s);
 char			*ft_itobase(int nbr, char *base);
-void			ft_binary(wchar_t C);
+void			ft_putwchar(wchar_t C);
 char			*ft_strdup(const char *s1);
 
 #endif

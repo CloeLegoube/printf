@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/07 19:15:17 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/12 18:26:03 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@
 # include <limits.h>
 # include <locale.h>
 
+typedef	struct	s_print
+{
+	char 			conversion;
+	int				htag;
+	int				plus;
+	int				less;
+	int				percentage;
+	int				zero;
+	int				space;
+	char			*precision;
+	char			*size;
+	char			*flags;
+}				t_print;
 
 int				ft_atoi(const char *str);
 int				ft_isalpha(int c);
@@ -57,5 +70,15 @@ void			ft_putwstr(wchar_t *s);
 char			*ft_itobase(int nbr, char *base);
 void			ft_putwchar(wchar_t C);
 char			*ft_strdup(const char *s1);
+char			*ft_strsub(char const *s, unsigned int start, size_t len);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strchrstr(const char *s, char *c);
+char			*ft_strchr(const char *s, int c);
+
+int				ft_manage_conversion(char *conversion, int i);
+int				ft_stock_attributes(t_print *new, char *conversion, int i);
+int				ft_stock_size(t_print *new, char *conversion, int i);
+int				ft_stock_precision(t_print *new, char *conversion, int i);
+int				ft_stock_flags(t_print *new, char *conversion, int i);
 
 #endif

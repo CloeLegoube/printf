@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/10 18:22:06 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/12 18:36:36 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ int		main(void)
 	ft_printf("FT_printf :D: %D\n", D);
 	printf("Prinft    :D: %ld \n\n", D);
 
+	// printf("recherche  : %s \n\n", ft_strchrstr("FT_printf :u: %u - U:%U\n", "sSpdDioOuUxXcC"));
+
 	printf("***Test avec S\n");
 	ft_printf("FT_printf :S: %Slalalalalal\n", wstr);
 	printf("Prinft    :S: %ls\n", wstr);
@@ -145,9 +147,13 @@ int		main(void)
 
 	printf("***Test avec # i et #-d \n");
 	ft_printf("FT_printf -i :% i - d2:%-d\n", i, d2);
-	printf("Prinft    -i :% -i - d2:%-d\n", i, d2);
+	printf("Prinft    -i :% -i - d2:%-d\n\n", i, d2);
 	// printf("Prinft    -i :%-i - d2:%-f\n\n", i, d2);
 
+
+	ft_printf("FT_printf precision1 i :%#-00361080.10456752hhi \n\n", i);
+	ft_printf("FT_printf precision2 i :%- 0+14524.45lli \n\n", i);
+	// printf("Printf precision i :%+010.2i \n", i);
 	// printf("Int MAX : %d\n", INT_MAX);
 	// printf("Int MIN : %d\n", INT_MIN);
 	// printf("LONG MAX : %ld\n", LONG_MAX);

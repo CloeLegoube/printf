@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/12 18:37:20 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/10 18:20:45 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,54 +75,30 @@ va_list         *flags(va_list arg, char *conversion)
 	return (0);
 }
 
-int		ft_manage_conversion(char *conversion, int i)
-{
-	t_print	*new;
-
-	new = (t_print*)malloc(sizeof(t_print));
-	i++;
-	while (!ft_strchr("sSpdDioOuUxXcC", conversion[i]))
-	{
-		i = ft_stock_attributes(new,conversion, i);
-		i = ft_stock_size(new,conversion, i);
-		i = ft_stock_precision(new, conversion, i);
-		i = ft_stock_flags(new, conversion, i);
-		if (conversion[i] == '\0')
-			return (-1);
-		i++;
-	}
-	if(ft_strchr("sSpdDioOuUxXcC", conversion[i]))
-		new->conversion = conversion[i];
-	// printf("new->htag  : %d \n", new->htag);
-	// printf("new->plus  : %d \n", new->plus);
-	// printf("new->less  : %d \n", new->less);
-	// printf("new->space  : %d \n", new->space);
-	// printf("new->zero  : %d \n", new->zero);
-	// printf("new->precision  : %s \n", new->precision);
-	// printf("new->conversion  : %c \n", new->conversion);
-	// printf("new->size  : %s \n", new->size);
-	// printf("new->flags  : %s \n", new->flags);
-	return (i);
-}
-
 int		ft_printf(char *conversion, ...)
 {
 	va_list  arg;
-	int i;
 
 	va_start(arg, conversion);
-	i = 0;
-	while (conversion[i])
+	while (*conversion)
 	{
-		if (conversion[i] == '%')
+		if (*conversion == '%')
 		{
-			if (ft_manage_conversion(conversion, i) != -1)
-				i = ft_manage_conversion(conversion, i);
-			else
+			conversion++;
+			if (*conversion == '+' || *conversion == '-' || *conversion == ' ' || *conversion == '#')
+			{
+				flags(arg, &*conversion);
+				conversion++;
+			}
+			// if (*conversion >= '0' && *conversion <= '9')
+			// 	conversion++;
+			kind_of_conversion(arg, *conversion);
+			conversion++;
+			if (*conversion == '\0')
 				return (0);
 		}
-		ft_putchar(conversion[i]);
-		i++;
+	ft_putchar(*conversion);
+	conversion++;
 	}
 	va_end(arg);
 	return (0);

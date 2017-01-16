@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/12 18:26:03 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:58:49 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 char			*ft_itoa(int n);
+char			*ft_itoa_positif(unsigned int n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
@@ -60,6 +61,7 @@ void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 size_t			ft_strlen(const char *s);
+int				ft_strcmp(const char *s1, const char *s2);
 
 
 int				ft_printf(char *format, ...);
@@ -75,10 +77,15 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strchrstr(const char *s, char *c);
 char			*ft_strchr(const char *s, int c);
 
-int				ft_manage_conversion(char *conversion, int i);
+int				ft_manage_conversion(va_list arg, char *conversion, int i);
 int				ft_stock_attributes(t_print *new, char *conversion, int i);
 int				ft_stock_size(t_print *new, char *conversion, int i);
 int				ft_stock_precision(t_print *new, char *conversion, int i);
 int				ft_stock_flags(t_print *new, char *conversion, int i);
+
+void			ft_manage_struc(va_list arg, t_print *new);
+char			*kind_of_conversion(va_list arg, t_print *new);
+
+intmax_t		ft_modify_length_di(va_list arg, t_print *new);
 
 #endif

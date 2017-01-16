@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/16 16:47:25 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/16 17:49:57 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,33 +71,39 @@ char         *kind_of_conversion(va_list arg, t_print *new)
 	string = NULL;
 	tmp = NULL;
 	if ((new->conversion == 'd') || (new->conversion == 'i'))
-		string = ft_itoa(va_arg(arg, int));
-	else if (new->conversion == 's')
-		string = ft_strdup(va_arg(arg, char*));
-	else if (new->conversion == 'D')
-		string = ft_itoa((long int)(va_arg(arg, int)));
+		string = ft_itoa(ft_modify_length_di(arg, new));
+/***************************/
 	else if (new->conversion == 'u')
-		string = ft_itoa_positif((long int)(va_arg(arg,unsigned int)));
-	else if (new->conversion == 'U')
-		string = ft_itoa_positif((long int)(va_arg(arg,unsigned int)));
+		string = ft_itoa_positif(ft_modify_length_uoxX(arg, new));
+	else if (new->conversion == 'o')
+		string = ft_itobase(ft_modify_length_uoxX(arg, new), "01234567");
+	else if (new->conversion == 'x')
+		string = ft_itobase(ft_modify_length_uoxX(arg, new), "0123456789abcdef");
+	else if (new->conversion == 'X')
+		string = ft_itobase(ft_modify_length_uoxX(arg, new), "0123456789ABCDEF");
+/***************************/
 	else if (new->conversion == 'c')
 	{
 		string = (char *)malloc(2 * sizeof(*string));
 		string[0] = va_arg(arg, int);
 		string[1] = '\0';
 	}
-	else if (new->conversion == 'o' || (new->conversion == 'O'))
-		string = ft_itobase(va_arg(arg, int), "01234567");
-	else if (new->conversion == 'x')
-		string = ft_itobase(va_arg(arg, int), "0123456789abcdef");
-	else if (new->conversion == 'X')
-		string = ft_itobase(va_arg(arg, int), "0123456789ABCDEF");
+	else if (new->conversion == 's')
+		string = ft_strdup(va_arg(arg, char*));
 	else if (new->conversion == 'p')
 	{
 		tmp = ft_strdup("0x10");
 		string = ft_strjoin(tmp, ft_itobase(va_arg(arg, int), "0123456789abcdef"));
 		free(tmp);
 	}
+/***************************/
+	else if (new->conversion == 'U')
+		string = ft_itoa_positif((long int)(va_arg(arg,unsigned int)));
+	else if (new->conversion == 'O')
+		string = ft_itobase(va_arg(arg, int), "01234567");
+	else if (new->conversion == 'D')
+		string = ft_itoa((long int)(va_arg(arg, int)));
+/***************************/
 	return (string);
 }
 

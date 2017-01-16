@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:18:31 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/06 09:59:23 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/16 17:47:34 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_check_nbr_base(char *base)
 	return (1);
 }
 
-char	*ft_itobase(int nbr, char *base)
+char	*ft_itobase(uintmax_t nbr, char *base)
 {
 	int		display;
 	int		k;
@@ -56,9 +56,9 @@ char	*ft_itobase(int nbr, char *base)
 		base_len++;
 	if (*base && base_len != 1 && ft_check_nbr_base(base))
 	{
-		if (nbr < 0)
-			if ((nbr = -nbr))
-				tab[k++] = '-';
+		// if (nbr < 0)
+		// 	if ((nbr = -nbr))
+		// 		tab[k++] = '-';
 		display = 0;
 		i = 0;
 		temp = (char*)malloc(256 * sizeof(char));

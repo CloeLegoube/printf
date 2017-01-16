@@ -6,13 +6,13 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 12:53:46 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/16 12:22:59 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/16 17:43:43 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static size_t	ft_length_number(int nb)
+static size_t	ft_length_number(uintmax_t nb)
 {
 	int			i;
 
@@ -27,7 +27,7 @@ static size_t	ft_length_number(int nb)
 	return (i);
 }
 
-char			*ft_itoa_positif(unsigned int n)
+char			*ft_itoa_positif(uintmax_t n)
 {
 	char			*string;
 	unsigned int	nb;

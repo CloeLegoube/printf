@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/16 14:58:49 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/16 17:48:09 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 char			*ft_itoa(int n);
-char			*ft_itoa_positif(unsigned int n);
+char			*ft_itoa_positif(uintmax_t n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
@@ -69,7 +69,7 @@ char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
 // char			*ft_itoa_base(int nbr, char *base, int base_len, char *tab);
 // int				ft_atoi_base(char *str, char *base);
 void			ft_putwstr(wchar_t *s);
-char			*ft_itobase(int nbr, char *base);
+char			*ft_itobase(uintmax_t nbr, char *base);
 void			ft_putwchar(wchar_t C);
 char			*ft_strdup(const char *s1);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
@@ -87,5 +87,6 @@ void			ft_manage_struc(va_list arg, t_print *new);
 char			*kind_of_conversion(va_list arg, t_print *new);
 
 intmax_t		ft_modify_length_di(va_list arg, t_print *new);
+uintmax_t		ft_modify_length_uoxX(va_list arg, t_print *new);
 
 #endif

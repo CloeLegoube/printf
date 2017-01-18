@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/16 17:48:09 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/18 17:50:39 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 size_t			ft_strlen(const char *s);
 int				ft_strcmp(const char *s1, const char *s2);
+char			*ft_strnew(size_t size);
 
 
 int				ft_printf(char *format, ...);
@@ -88,5 +89,8 @@ char			*kind_of_conversion(va_list arg, t_print *new);
 
 intmax_t		ft_modify_length_di(va_list arg, t_print *new);
 uintmax_t		ft_modify_length_uoxX(va_list arg, t_print *new);
+
+char			*conversion_duioxX(va_list arg, t_print *new);
+char			*kind_of_precision(char *string, t_print *new);
 
 #endif

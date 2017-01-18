@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/16 17:49:57 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/18 18:53:13 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,45 @@ wchar_t         *wkind_of_conversion(va_list arg, t_print *new)
 	return (wstring);
 }
 
-char         *kind_of_conversion(va_list arg, t_print *new)
+char         *kind_of_precision(char *string, t_print *new)
+{
+	int a;
+	// int b;
+	// int i;
+	// int j;
+	char *result;
+
+	a = ft_strlen(string);
+	new = NULL;
+	// b = ft_atoi(new->precision);
+	printf("precision : %d", a);
+	// if (a >= b)
+	// 	return (string);
+	result = ft_strnew(a);
+	// result[0] = 'a';
+	// result[1] = 'p';
+	// printf("%s", result);
+	// i = 0;
+	// j = 0;
+	// while (result[i] && i > b - a])
+	// {
+	// 	result[i] = string[j];
+	// 	i++;
+	// 	j++;
+	// }
+	return (result);
+}
+
+char         *conversion_duioxX(va_list arg, t_print *new)
 {
 	char *string;
-	char *tmp;
+	char *string_precision;
 
 	string = NULL;
-	tmp = NULL;
+	string_precision = NULL;
+
 	if ((new->conversion == 'd') || (new->conversion == 'i'))
 		string = ft_itoa(ft_modify_length_di(arg, new));
-/***************************/
 	else if (new->conversion == 'u')
 		string = ft_itoa_positif(ft_modify_length_uoxX(arg, new));
 	else if (new->conversion == 'o')
@@ -81,7 +110,22 @@ char         *kind_of_conversion(va_list arg, t_print *new)
 		string = ft_itobase(ft_modify_length_uoxX(arg, new), "0123456789abcdef");
 	else if (new->conversion == 'X')
 		string = ft_itobase(ft_modify_length_uoxX(arg, new), "0123456789ABCDEF");
-/***************************/
+	if (new->precision)
+		string_precision = ft_strdup(kind_of_precision(string, new));
+	else
+		string_precision = ft_strdup(string);
+	return (string_precision);
+}
+
+char         *kind_of_conversion(va_list arg, t_print *new)
+{
+	char *string;
+	char *tmp;
+
+	string = NULL;
+	tmp = NULL;
+	if(ft_strchr("duioxX", new->conversion))
+		string = conversion_duioxX(arg, new);
 	else if (new->conversion == 'c')
 	{
 		string = (char *)malloc(2 * sizeof(*string));
@@ -121,6 +165,7 @@ void	ft_manage_struc(va_list arg, t_print *new)
 		wstring = wkind_of_conversion(arg, new);
 	else
 		string = kind_of_conversion(arg, new);
+
 	if (string)
 		ft_putstr(string);
 	else

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/12 18:03:15 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/18 17:04:30 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		ft_stock_precision(t_print *new, char *conversion, int i)
 		while(conversion[i] >= '0' && conversion[i] <= '9')
 			i++;
 		new->precision = ft_strsub(conversion, tmp, i - tmp);
-		printf("PRECISION :%s\n", new->precision);
+		// printf("PRECISION :%s\n", new->precision);
 	}
 	return (i);
 }

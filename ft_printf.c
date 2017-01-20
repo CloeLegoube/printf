@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/20 12:04:54 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/20 19:40:43 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,24 @@ int		ft_manage_conversion(va_list arg, char *conversion, int i)
 	if (!ft_strchr("sSpdDioOuUxXcC", conversion[i]))
 	{
 		i = ft_stock_attributes(new,conversion, i);
+		// printf("conversion1 :%c\n", conversion[i]);
 		i = ft_stock_size(new,conversion, i);
+		// printf("conversion2 :%c\n", conversion[i]);
 		if (!new->precision)
 			i = ft_stock_precision(new, conversion, i);
+		// printf("conversion3 :%c\n", conversion[i]);
 		i = ft_stock_flags(new, conversion, i);
 		// i++;
 	}
+	// printf("conversion :%c\n", conversion[i]);
 	if(ft_strchr("sSpdDioOuUxXcC", conversion[i]))
 		new->conversion = conversion[i];
 	i++;
-	// printf("conversion :%c\n", new->conversion);
+	// printf("\nconversion :%c\n", new->conversion);
+	// printf("plus :%d\n", new->plus);
+	// printf("less :%d\n", new->less);
+	// printf("precision :%s\n", new->precision);
+	// printf("size :%s\n\n", new->size);
 	ft_manage_struc(arg, new);
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/20 15:21:57 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/20 19:40:14 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,29 @@ wchar_t         *wkind_of_conversion(va_list arg, t_print *new)
 	return (wstring);
 }
 
+void	size_of_string(char *string, t_print *new)
+{
+	int a;
+	int b;
+	int i;
+	int j;
+	char *result;
+	a = ft_strlen(string);
+	b = ft_atoi(new->size);
+	if (b > a)
+	{
+		result = ft_strnew(b);
+		i = 0;
+		j = 0;
+		while (i < b - a)
+			result[i++] = ' ';
+		while (i < b)
+			result[i++] = string[j++];
+		free(string);
+		string = ft_strdup(result);
+	}
+}
+
 char         *kind_of_precision(char *string, t_print *new)
 {
 	int a;
@@ -98,7 +121,6 @@ char         *conversion_duioxX(va_list arg, t_print *new)
 
 	string = NULL;
 	string_precision = NULL;
-
 	if ((new->conversion == 'd') || (new->conversion == 'i'))
 		string = ft_itoa(ft_modify_length_di(arg, new));
 	else if (new->conversion == 'u')
@@ -150,6 +172,7 @@ char         *kind_of_conversion(va_list arg, t_print *new)
 	return (string);
 }
 
+
 void	ft_manage_struc(va_list arg, t_print *new)
 {
 	// int i;
@@ -161,7 +184,11 @@ void	ft_manage_struc(va_list arg, t_print *new)
 	if ((new->conversion == 'C') || (new->conversion == 'S'))
 		wstring = wkind_of_conversion(arg, new);
 	else
+	{
 		string = kind_of_conversion(arg, new);
+		if (new->size)
+			size_of_string(string, new);
+	}
 
 	if (string)
 		ft_putstr(string);

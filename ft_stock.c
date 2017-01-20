@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/18 17:04:30 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/20 14:26:54 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int		ft_stock_attributes(t_print *new, char *conversion, int i)
 		new->space = 1;
 	if (conversion[i] == '%')
 		new->percentage = 1;
+	i = ft_stock_precision(new, conversion, i);
+	// if (conversion[i] == '.')
+	// {
+	// 	ft_putstr("Hello");
+	// }
+	// 	//
+	i++;
 	return (i);
 }
 
@@ -53,10 +60,17 @@ int		ft_stock_precision(t_print *new, char *conversion, int i)
 	{
 		i++;
 		tmp = i;
-		while(conversion[i] >= '0' && conversion[i] <= '9')
-			i++;
-		new->precision = ft_strsub(conversion, tmp, i - tmp);
+		if (conversion[i]  < '0' || conversion[i] > '9')
+			new->precision = ft_strdup("empty");
+		else
+		{
+			while(conversion[i] >= '0' && conversion[i] <= '9')
+				i++;
+			new->precision = ft_strsub(conversion, tmp, i - tmp);
+		}
 		// printf("PRECISION :%s\n", new->precision);
+		// printf("conversion[i] :%c\n", conversion[i]);
+		i--;
 	}
 	return (i);
 }

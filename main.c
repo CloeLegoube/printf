@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/18 17:21:49 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/20 15:22:45 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		main(void)
 	unsigned char ctest;
 
 	i = 3;
-	d = 4556789;
+	d = 45412;
 	d2 = -2356;
 	D = -5456677;
 	o = 8;
@@ -88,9 +88,9 @@ int		main(void)
 	// printf("ATOI: %d\n\n", ft_atoi_base(tab, "0123456789abcdef"));
 
 	printf("\n***Test avec i, d et s - d positif ou negatif\n");
-	ft_printf("FT_printf :%i) d: %.9d \n", i, d);
+	ft_printf("Prinft    :%.3i) d: %.9d - str: %s\n", i, d, str);
 	// ft_printf("FT_printf :%i)",  i );
-	// printf("Prinft    :%i) d: %.9d - str: %s\n\n", i, d, str);
+	printf("Prinft    :%.3i) d: %.9d - str: %s\n\n", i, d, str);
 
 	printf("***Test avec p - pointeur void * en hexadecimal\n");
 	ft_printf("FT_printf :p: %p\n", p);

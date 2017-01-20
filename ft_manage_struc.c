@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/18 18:53:13 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/20 15:21:57 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,29 +66,28 @@ wchar_t         *wkind_of_conversion(va_list arg, t_print *new)
 char         *kind_of_precision(char *string, t_print *new)
 {
 	int a;
-	// int b;
-	// int i;
-	// int j;
+	int b;
+	int i;
+	int j;
 	char *result;
-
+	if (!ft_strcmp(new->precision, "empty"))
+	{
+		if (!ft_strcmp(string, "0"))
+			return (ft_strdup(""));
+		else
+			return (string);
+	}
 	a = ft_strlen(string);
-	new = NULL;
-	// b = ft_atoi(new->precision);
-	printf("precision : %d", a);
-	// if (a >= b)
-	// 	return (string);
-	result = ft_strnew(a);
-	// result[0] = 'a';
-	// result[1] = 'p';
-	// printf("%s", result);
-	// i = 0;
-	// j = 0;
-	// while (result[i] && i > b - a])
-	// {
-	// 	result[i] = string[j];
-	// 	i++;
-	// 	j++;
-	// }
+	b = ft_atoi(new->precision);
+	if (b <= a)
+		return (string);
+	result = ft_strnew(b);
+	i = 0;
+	j = 0;
+	while (i < b - a)
+		result[i++] = '0';
+	while (i < b)
+		result[i++] = string[j++];
 	return (result);
 }
 
@@ -156,9 +155,7 @@ void	ft_manage_struc(va_list arg, t_print *new)
 	// int i;
 	char *string;
 	wchar_t *wstring;
-	// wchar_t wchar;
-	//
-	// i = va_arg(arg, int);
+
 	wstring = NULL;
 	string = NULL;
 	if ((new->conversion == 'C') || (new->conversion == 'S'))

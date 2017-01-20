@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/16 11:51:37 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/20 12:04:54 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,19 @@ int		ft_manage_conversion(va_list arg, char *conversion, int i)
 	t_print	*new;
 
 	new = (t_print*)malloc(sizeof(t_print));
-	while (!ft_strchr("sSpdDioOuUxXcC", conversion[i]))
+	if (!ft_strchr("sSpdDioOuUxXcC", conversion[i]))
 	{
 		i = ft_stock_attributes(new,conversion, i);
 		i = ft_stock_size(new,conversion, i);
-		i = ft_stock_precision(new, conversion, i);
+		if (!new->precision)
+			i = ft_stock_precision(new, conversion, i);
 		i = ft_stock_flags(new, conversion, i);
-		i++;
+		// i++;
 	}
 	if(ft_strchr("sSpdDioOuUxXcC", conversion[i]))
 		new->conversion = conversion[i];
 	i++;
+	// printf("conversion :%c\n", new->conversion);
 	ft_manage_struc(arg, new);
 	return (i);
 }

@@ -6,9 +6,11 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 14:48:12 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/16 17:45:49 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/23 11:41:54 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftprintf.h"
 
 intmax_t	ft_modify_length_di(va_list arg, t_print *new)
 {

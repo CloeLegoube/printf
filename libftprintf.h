@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/20 15:02:46 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/23 11:52:17 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,14 @@ char			*kind_of_conversion(va_list arg, t_print *new);
 intmax_t		ft_modify_length_di(va_list arg, t_print *new);
 uintmax_t		ft_modify_length_uoxX(va_list arg, t_print *new);
 
+
+char			*kind_of_precision(char *string, t_print *new);
+
+char			*kind_of_conversion(va_list arg, t_print *new);
+wchar_t			*wkind_of_conversion(va_list arg, t_print *new);
 char			*conversion_duioxX(va_list arg, t_print *new);
+
+char			*htag_conversion_oxX(va_list arg, t_print *new);
 char			*kind_of_precision(char *string, t_print *new);
 
 #endif

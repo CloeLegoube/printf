@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/20 19:40:43 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/23 14:24:00 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,27 @@
 // 	return (0);
 // }
 
+void	ft_initialize_struct(t_print *new)
+{
+	new->conversion = '\0';
+	new->htag = 0;
+	new->plus = 0;
+	new->less = 0;
+	new->percentage = 0;
+	new->zero = 0;
+	new->space = 0;
+	new->precision = NULL;
+	new->size = NULL;
+	new->flags = NULL;
+}
+
 int		ft_manage_conversion(va_list arg, char *conversion, int i)
 {
 	t_print	*new;
 
 	new = (t_print*)malloc(sizeof(t_print));
-	if (!ft_strchr("sSpdDioOuUxXcC", conversion[i]))
+	ft_initialize_struct(new);
+	while (!ft_strchr("sSpdDioOuUxXcC", conversion[i]))
 	{
 		i = ft_stock_attributes(new,conversion, i);
 		// printf("conversion1 :%c\n", conversion[i]);
@@ -92,7 +107,7 @@ int		ft_manage_conversion(va_list arg, char *conversion, int i)
 		i = ft_stock_flags(new, conversion, i);
 		// i++;
 	}
-	// printf("conversion :%c\n", conversion[i]);
+	// printf("conversion :%c\n", conversion [i]);
 	if(ft_strchr("sSpdDioOuUxXcC", conversion[i]))
 		new->conversion = conversion[i];
 	i++;
@@ -100,8 +115,11 @@ int		ft_manage_conversion(va_list arg, char *conversion, int i)
 	// printf("plus :%d\n", new->plus);
 	// printf("less :%d\n", new->less);
 	// printf("precision :%s\n", new->precision);
+	// printf("htag :%d\n", new->htag);
 	// printf("size :%s\n\n", new->size);
+	// arg = NULL;
 	ft_manage_struc(arg, new);
+	// new->less = 0;
 	return (i);
 }
 

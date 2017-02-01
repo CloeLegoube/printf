@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/23 15:02:52 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/02/01 18:33:22 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,29 +110,37 @@ void	ft_manage_struc(va_list arg, t_print *new)
 
 	wstring = NULL;
 	string = NULL;
-	if ((new->conversion == 'C') || (new->conversion == 'S'))
+	if (!new->conversion && new->percentage)
+			string = ft_strdup("%");
+	else if ((new->conversion == 'C') || (new->conversion == 'S'))
 		wstring = wkind_of_conversion(arg, new);
 	else
-	{
 		string = kind_of_conversion(arg, new);
-		if (new->size)
-		{
-			if (new->less)
-				tmp = ft_strdup(size_of_string_less(string, new));
-			else
-				tmp = ft_strdup(size_of_string(string, new));
-			free(string);
-			string =  ft_strdup(tmp);
-			free(tmp);
-		}
+	if (new->plus)
+	{
+		tmp = ft_strdup(add_sign(string, new));
+		free(string);
+		string =  ft_strdup(tmp);
+		free(tmp);
+	}
+	if (new->size)
+	{
+		if (new->less)
+			tmp = ft_strdup(size_of_string_less(string, new));
+		else
+			tmp = ft_strdup(size_of_string(string, new));
+		free(string);
+		string =  ft_strdup(tmp);
+		free(tmp);
 	}
 
 	if (string)
-		ft_putstr(string);
+		new->string = ft_strdup(string);
 	else
-		ft_putwstr(wstring);
+		new->string = ft_strdup((char *)wstring);
 
-
+		// if (new->string)
+		// 	ft_putstr(new->string);
 	// if ((new->conversion == 'd') || (new->conversion == 'i'))
 	// 	ft_putnbr(i);
 	// printf("\nva_arg  : %i\n", i);

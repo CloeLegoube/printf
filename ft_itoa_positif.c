@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 12:53:46 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/16 17:43:43 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/30 19:07:30 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	ft_length_number(uintmax_t nb)
 char			*ft_itoa_positif(uintmax_t n)
 {
 	char			*string;
-	unsigned int	nb;
+	uintmax_t		nb;
 	size_t			i;
 
 	i = ft_length_number(n);

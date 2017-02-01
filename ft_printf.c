@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/23 14:24:00 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/02/01 18:35:26 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,40 @@ void	ft_initialize_struct(t_print *new)
 	new->less = 0;
 	new->percentage = 0;
 	new->zero = 0;
+	new->value_zero = 0;
 	new->space = 0;
 	new->precision = NULL;
 	new->size = NULL;
-	new->flags = NULL;
+	new->flags = "no-flags";
+	new->string = NULL;
+	new->wstring = NULL;
+	new->start = 0;
+	new->end = 0;
 }
 
-int		ft_manage_conversion(va_list arg, char *conversion, int i)
+void	ft_move_conversion(t_print *new)
 {
-	t_print	*new;
+	if (new->conversion == 'D')
+	{
+		new->conversion = 'd';
+		new->flags = "l";
+	}
+	if (new->conversion == 'O')
+	{
+		new->conversion = 'o';
+		new->flags = "l";
+	}
+	if (new->conversion == 'U')
+	{
+		new->conversion = 'u';
+		new->flags = "l";
+	}
+}
 
-	new = (t_print*)malloc(sizeof(t_print));
-	ft_initialize_struct(new);
+
+int		ft_manage_conversion(va_list arg, char *conversion, int i, t_print	*new)
+{
+
 	while (!ft_strchr("sSpdDioOuUxXcC", conversion[i]))
 	{
 		i = ft_stock_attributes(new,conversion, i);
@@ -118,30 +140,53 @@ int		ft_manage_conversion(va_list arg, char *conversion, int i)
 	// printf("htag :%d\n", new->htag);
 	// printf("size :%s\n\n", new->size);
 	// arg = NULL;
+	// printf("\nconversion :%c\n", new->conversion);
+	// printf("\nflags :%s\n", new->flags);
+	ft_move_conversion(new);
 	ft_manage_struc(arg, new);
+	// if (new->wstring)
+	// 	ft_putwstr(new->wstring);
 	// new->less = 0;
 	return (i);
+}
+
+int		ft_get_the_string(char *conversion, t_print *new)
+{
+	char *string;
+	char *tmp;
+
+	string = NULL;
+	string = ft_strjoin(ft_strsub(conversion, 0, new->start), new->string);
+	tmp = ft_strdup(string);
+	free(string);
+	string = ft_strjoin(tmp, ft_strsub(conversion, new->end, ft_strlen(conversion)));
+	ft_putstr(string);
+	return (ft_strlen(string));
 }
 
 int		ft_printf(char *conversion, ...)
 {
 	va_list  arg;
 	int i;
+	t_print	*new;
 
+	new = (t_print*)malloc(sizeof(t_print));
+	ft_initialize_struct(new);
 	va_start(arg, conversion);
 	i = 0;
 	while (conversion[i])
 	{
 		if (conversion[i] == '%')
 		{
+			new->start = i;
 			i++;
 			if (conversion[i] == '\0')
 				return (0);
-			i = ft_manage_conversion(arg, conversion, i);
+			i = ft_manage_conversion(arg, conversion, i, new);
+			new->end = i;
 		}
-		ft_putchar(conversion[i]);
 		i++;
 	}
 	va_end(arg);
-	return (0);
+	return (ft_get_the_string(conversion, new));
 }

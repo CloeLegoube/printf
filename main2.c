@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/02/01 18:19:37 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/02/06 11:45:19 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,19 @@ int		main(int argc, char **argv)
 	// printf("ld ou D :%ld\n\n", 123456789123);
 	// ft_printf("p : %p\n", &c);
 	// printf("p : %p\n\n", &c);
-	ft_printf("cela : %5.2s hello\n", "cela");
-	printf("cela : %5.2s\n\n", "cela");
+	// ft_printf("1234\n");
+	// ft_printf("%%\n");
+	ft_printf("%5%\n");
+	ft_printf("%-8%\n");
+	// ft_printf("%2.4%\n");
+	// ft_printf("%%\n");
+	// ft_printf("cela : %5.2s hello\n", "cela");
+	// ft_printf("c zero : %c \n", 0);
+	// printf("cela : %5.2s\n\n", "cela");
 	ft_printf("%x\n", 123456789);
-	printf("%x\n\n", 123456789);
-	ft_printf("%X\n", 123456789);
-	printf("%X\n\n", 123456789);
+	// printf("%x\n\n", 123456789);
+	// ft_printf("%X\n", 123456789);
+	// printf("%X\n\n", 123456789);
 	// ft_printf(".x : %.x\n", 0);
 	// printf(".x : %.x\n\n", 0);
 	// ft_printf("#x : %#x\n", 0);

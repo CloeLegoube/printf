@@ -108,13 +108,13 @@ int		ft_atoi_base(char *str, char *base)
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int		nb;
-	int		i;
+	// int		i;
 	char	*tab;
 	int		base_len;
 
 	base_len = 0;
 	tab = (char*)malloc(256 * sizeof(char));
-	i = 0;
+	// i = 0;
 	nb = ft_atoi_base(nbr, base_from);
 	return (ft_itoa_base(nb, base_to, base_len, tab));
 }

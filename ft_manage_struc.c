@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/02/06 11:49:36 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/02/01 18:33:22 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ void	ft_manage_struc(va_list arg, t_print *new)
 
 	wstring = NULL;
 	string = NULL;
-	// if (!new->conversion && new->percentage)
-	// 		string = ft_strdup("%");
-	if ((new->conversion == 'C') || (new->conversion == 'S'))
+	if (new->percentage)
+			string = ft_strdup("%");
+	else if ((new->conversion == 'C') || (new->conversion == 'S'))
 		wstring = wkind_of_conversion(arg, new);
 	else
 		string = kind_of_conversion(arg, new);

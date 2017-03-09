@@ -29,6 +29,7 @@
 
 # include <limits.h>
 # include <locale.h>
+# include <stdint.h>
 
 typedef	struct	s_print
 {
@@ -44,11 +45,16 @@ typedef	struct	s_print
 	char			*size;
 	char			*flags;
 	char			*string;
+	char			*result;
+	int				strlen;
 	wchar_t			*wstring;
 	int				start;
 	int				end;
+	struct		s_print *next;
 }				t_print;
 
+char			*g_result;
+int				g_strlen;
 int				ft_atoi(const char *str);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);

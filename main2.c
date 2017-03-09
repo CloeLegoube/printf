@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/02/06 11:45:19 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/02/01 18:19:37 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,71 @@
 int		main(int argc, char **argv)
 {
 	char c;
-	int i;
-	int *y;
+	// int i;
+	// int *y;
 	char *b;
-	unsigned int r;
-	unsigned int *k;
+	// unsigned int *k;
+	// unsigned int r;
 
 	setlocale(LC_ALL, "");
-	r = 150;
+	// r = 150;
 	c = 'A';
-	i = 20;
-	y = &i;
-	b = &c;
-	k = &r;
+	// i = 20;
+	// y = &i;
+	b = NULL;
+	// k = &r;
 	(void)argc;
 	(void)argv;
+
+// exceptions constatées
+// ft_printf("%s\n\n", b);
+// ft_printf("%s\n\n", b);
+printf("%s\n\n", b);
+ft_printf("%10d\n", -123456);
+printf("%10d\n\n", -123456);
+// ft_printf("%010d\n", -123456);
+printf("%010d\n\n", -123456);
+ft_printf("%4.2d\n", 12);
+printf("%4.2d\n\n", 12);
+ft_printf("% 04d\n", 12);
+printf("% 04d\n\n", 12);
+ft_printf("% d\n", 12);
+printf("% d\n\n", 12);
+ft_printf( "%.0d\n", 0 );
+printf( "%.0d\n\n", 0 );
+ft_printf( "%.5d\n", 12 );
+printf( "%.5d\n\n", 12 );
+ft_putnbr_positif(ft_printf( "Valeur FT%-.5d\n", 12 ));
+ft_putnbr_positif(printf( "Valeur PF%-.5d\n\n", 12 ));
+ft_printf( "%.5i\n", 12345678 );
+printf( "%.5i\n\n", 12345678 );
+ft_printf( "FT Par default %.s --\n", "Salut comment ca va?" );
+printf( "PF Par default %.s --\n\n", "Salut comment ca va?" );
+
+ft_printf( "FT Par default %s -> %s - %s + %d--\n", "Hello", "comment ca va?", "bien ou pas ?", 123456);
+printf( "PF Par default %s -> %s - %s + %d--\n\n", "Hello", "comment ca va?", "bien ou pas ?", 123456);
+
+ft_putnbr_positif(ft_printf( "FT Par default %s -> %s - %s + %d--\n\n", "Hello", "comment ca va?", "bien ou pas ?", 123456));
+ft_putnbr_positif(printf( "PF Par default %s -> %s - %s + %d--\n\n", "Hello", "comment ca va?", "bien ou pas ?", 123456));
+
+
+// printf("%04.i\n\n", 0);
+// printf("%04.u\n\n", 0);
+// printf("%04.o\n\n", 0);
+// printf("%04.x\n\n", 0);
+// printf("%04.X\n\n", 0);
+printf("%+i\n\n", 123);
+
+
 	// ft_printf("%s\n", "This is a String");
 	// printf("%s\n\n", "This is a String");
 	// ft_printf("%S\n", L"صباح الخير");
 	// printf("%S\n\n", L"صباح الخير");
-	// ft_printf("%c\n", 'c');
-	// printf("%c\n\n", 'c');
+	ft_printf("%c\n", c);
+	printf("%c\n\n", c);
+
+	ft_printf("%%\n");
+	printf("%%\n\n");
 	// ft_printf("%C\n", 256);
 	// printf("%C\n\n", 256);
 	// ft_printf("%d\n", 42);
@@ -45,19 +89,12 @@ int		main(int argc, char **argv)
 	// printf("ld ou D :%ld\n\n", 123456789123);
 	// ft_printf("p : %p\n", &c);
 	// printf("p : %p\n\n", &c);
-	// ft_printf("1234\n");
-	// ft_printf("%%\n");
-	ft_printf("%5%\n");
-	ft_printf("%-8%\n");
-	// ft_printf("%2.4%\n");
-	// ft_printf("%%\n");
-	// ft_printf("cela : %5.2s hello\n", "cela");
-	// ft_printf("c zero : %c \n", 0);
-	// printf("cela : %5.2s\n\n", "cela");
+	ft_printf("cela : %5.2s hello\n", "cela");
+	printf("cela : %5.2s hello\n", "cela");
 	ft_printf("%x\n", 123456789);
-	// printf("%x\n\n", 123456789);
-	// ft_printf("%X\n", 123456789);
-	// printf("%X\n\n", 123456789);
+	printf("%x\n\n", 123456789);
+	ft_printf("%X\n", 123456789);
+	printf("%X\n\n", 123456789);
 	// ft_printf(".x : %.x\n", 0);
 	// printf(".x : %.x\n\n", 0);
 	// ft_printf("#x : %#x\n", 0);

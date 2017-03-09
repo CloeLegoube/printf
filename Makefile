@@ -6,7 +6,7 @@
 #    By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/04 10:22:13 by clegoube          #+#    #+#              #
-#    Updated: 2017/02/06 11:13:05 by clegoube         ###   ########.fr        #
+#    Updated: 2017/02/01 17:19:40 by clegoube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ re: fclean all
 .PHONY: all clean re fclean
 
 exec: re
-	@gcc -o printf main2.c libftprintf.a && ./printf | cat -e
+	@gcc -o printf main2.c libftprintf.a && ./printf
 
 run: exec fclean
 

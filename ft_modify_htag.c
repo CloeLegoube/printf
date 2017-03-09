@@ -44,10 +44,10 @@ char	*htag_get_string(va_list arg, t_print *new, char *base, char *start)
 char	*htag_conversion_oxX(va_list arg, t_print *new)
 {
 	char *string;
-	char *tmp;
+	// char *tmp;
 
 	string = NULL;
-	tmp = NULL;
+	// tmp = NULL;
 	if (new->conversion == 'o')
 		string  = htag_get_string(arg, new, "01234567", "0");
 	else if (new->conversion == 'x')

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/02/06 11:42:50 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/01/30 17:50:53 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		ft_stock_attributes(t_print *new, char *conversion, int i)
 		new->zero = 1;
 	if (conversion[i] == ' ')
 		new->space = 1;
-	// if (conversion[i] == '%')
-	// 	new->percentage = 1;
+	if (conversion[i] == '%')
+		new->percentage = 1;
 	if (conversion[i] == '.')
 		i = ft_stock_precision(new, conversion, i);
 	i++;

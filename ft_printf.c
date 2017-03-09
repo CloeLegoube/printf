@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/09 17:59:14 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/09 18:02:08 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,10 +219,10 @@ int		ft_printf(char *conversion, ...)
 }
 
 
-// void				(*g_f[101])(t_args*, va_list);
+// void				(*g_f[101])(t_print*, va_list);
 // void				ft_array_fun(void);
-// void				s_convertion(t_args *new, va_list ap);
-// void				bs_convertion(t_args *new, va_list ap);
-// void				p_convertion(t_args *new, va_list ap);
+// void				s_convertion(t_print *new, va_list arg);
+// void				bs_convertion(t_print *new, va_list arg);
+// void				p_convertion(t_print *new, va_list arg);
 //
 // g_f[new->type](new, ap); // type == S_S => g_f[S_S](new, ap) => s_convertions(new, ap)

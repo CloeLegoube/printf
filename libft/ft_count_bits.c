@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_bits.c                                    :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,24 +12,22 @@
 
 #include "../libftprintf.h"
 
-int ft_count_bits(wchar_t *S, int size)
+wchar_t		*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
 {
-  int i;
-  int wbit;
+	wchar_t		*troncon;
+	size_t		i;
 
-  i = 0;
-  wbit = 0;
-  while (i < size)
-  {
-    if (S[i] <= 127)
-      wbit += 1;
-    else if (S[i] <= 2047)
-      wbit += 2;
-    else if (S[i] <= 65535)
-      wbit += 3;
-    else if (S[i] <= 2097151)
-      wbit += 4;
-    i++;
-  }
-  return (wbit);
+	i = 0;
+	if (!s)
+		return (NULL);
+	troncon = (wchar_t *)malloc((len + 1) * sizeof(*troncon));
+	if (troncon == NULL)
+		return (NULL);
+	while (*(wchar_t *)(s + i) && i < len)
+	{
+		troncon[i] = *(wchar_t *)(s + start + i);
+		i++;
+	}
+	troncon[i] = '\0';
+	return (troncon);
 }

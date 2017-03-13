@@ -1,28 +1,6 @@
 
 #include "../libftprintf.h"
 
-int ft_count_bits(wchar_t *S, int size)
-{
-  int i;
-  int wbit;
-
-  i = 0;
-  wbit = 0;
-  while (i < size)
-  {
-    if (S[i] <= 127)
-      wbit += 1;
-    else if (S[i] <= 2047)
-      wbit += 2;
-    else if (S[i] <= 65535)
-      wbit += 3;
-    else if (S[i] <= 2097151)
-      wbit += 4;
-    i++;
-  }
-  return (wbit);
-}
-
 void ft_add_bits(wchar_t C, t_print *new)
 {
   if (C <= 127)
@@ -33,18 +11,6 @@ void ft_add_bits(wchar_t C, t_print *new)
 		new->wbit += 3;
 	else if (C <= 2097151)
 		new->wbit += 4;
-}
-
-void ft_sub_bits(wchar_t C, t_print *new)
-{
-  if (C <= 127)
-      new->wbit -= 1;
-  else if (C <= 2047)
-		new->wbit -= 2;
-	else if (C <= 65535)
-		new->wbit -= 3;
-	else if (C <= 2097151)
-		new->wbit -= 4;
 }
 
 void				S_conversion(t_print *new, va_list arg)

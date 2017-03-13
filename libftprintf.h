@@ -140,10 +140,6 @@ intmax_t		ft_modify_length_di(va_list arg, t_print *new);
 uintmax_t		ft_modify_length_uoxX(va_list arg, t_print *new);
 char				ft_modify_length_c(va_list arg, t_print *new);
 
-char			*kind_of_conversion(va_list arg, t_print *new);
-wchar_t			*wkind_of_conversion(va_list arg, t_print *new);
-char			*conversion_duioxX(va_list arg, t_print *new);
-
 char			*htag_conversion_oxX(va_list arg, t_print *new);
 char			*kind_of_precision(char *string, t_print *new);
 wchar_t		*wkind_of_precision(wchar_t *string, t_print *new);
@@ -155,7 +151,6 @@ wchar_t		*ft_modify_wwidth(wchar_t *string, t_print *new);
 
 
 void				(*g_f[101])(t_print*, va_list);
-void				ft_initialize_functions_tab(void);
 void				c_conversion(t_print*, va_list);
 void				C_conversion(t_print*, va_list);
 void				d_conversion(t_print*, va_list);
@@ -177,6 +172,5 @@ void				ft_initialize_struct(t_print *new);
 void				ft_count_bit(wchar_t C, t_print *new);
 int					ft_count_bits(wchar_t *S, int size);
 void				ft_add_bits(wchar_t C, t_print *new);
-void				ft_sub_bits(wchar_t C, t_print *new);
 
 #endif

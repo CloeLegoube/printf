@@ -22,7 +22,8 @@ LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
 		 		libft/ft_itoa_positif.c libft/ft_putstr.c libft/ft_putchar.c \
 		 		libft/ft_strnew.c libft/ft_strlen.c libft/ft_wstrdup.c \
 				libft/ft_strrchr.c libft/ft_indexchr.c libft/ft_wstrlen.c \
-				libft/ft_wstrnew.c libft/ft_wstrcmp.c libft/ft_wstrsub.c
+				libft/ft_wstrnew.c libft/ft_wstrcmp.c libft/ft_wstrsub.c \
+				libft/ft_count_bits.c
 
 CONVERSION 	= 	conversion/s_conversion.c conversion/S_conversion.c \
 								conversion/p_conversion.c conversion/d_conversion.c \
@@ -34,8 +35,8 @@ CONVERSION 	= 	conversion/s_conversion.c conversion/S_conversion.c \
 
 MODIFICATION =	modify/ft_modify_length.c modify/ft_modify_htag.c \
 								modify/ft_modify_precision.c modify/ft_modify_sign+.c \
-								modify/ft_modify_conversion.c modify/ft_modify_width.c \
-								modify/ft_modify_space.c modify/ft_modify_wwidth.c
+								modify/ft_modify_width.c modify/ft_modify_space.c \
+								modify/ft_modify_wwidth.c
 
 OBJ =	$(SRCLIB:.c=.o)
 OBJLIBFT= $(LIBFT:libft/%.c=%.o)

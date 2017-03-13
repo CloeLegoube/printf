@@ -70,9 +70,6 @@ int		ft_manage_conversion(va_list arg, char *conversion, int i, t_print	*new)
 	// printf("size :%s\n", new->size);
 	// printf("flags :%s\n\n", new->flags);
 	ft_manage_struc(arg, new);
-	// if (new->wstring)
-	// 	ft_putwstr(new->wstring);
-	// new->less = 0;
 	return (i);
 }
 
@@ -97,9 +94,6 @@ char	*size_of_string(char *string, t_print *new)
 		while (i < b)
 			result[i++] = string[j++];
 	}
-	// ft_putstr("**");
-	// ft_putstr(result);
-	// ft_putstr("**");
 	return (result);
 }
 
@@ -114,8 +108,6 @@ char	*size_of_string_less(char *string, t_print *new)
 
 	a = ft_strlen(string);
 	b = ft_atoi(new->size);
-	// ft_putnbr(a);
-	// ft_putnbr(b);
 	if (b > a)
 	{
 		result = ft_strnew(b);
@@ -133,67 +125,6 @@ char	*size_of_string_less(char *string, t_print *new)
 
 void	ft_manage_struc(va_list arg, t_print *new)
 {
-
-	ft_initialize_functions_tab();
-	g_f[new->conversion](new, arg); // type == S_S => g_f[S_S](new, ap) => s_convertions(new, ap)
-
-
-	// int i;
-	// char *string;
-	// wchar_t *wstring;
-	// char *tmp;
-	//
-	// wstring = NULL;
-	// string = NULL;
-	// if (new->percentage)
-	// 		string = ft_strdup("%");
-	// else if ((new->conversion == 'C') || (new->conversion == 'S'))
-	// 	wstring = wkind_of_conversion(arg, new);
-	// else
-	// 	string = kind_of_conversion(arg, new);
-	// if (new->plus)
-	// {
-	// 	tmp = ft_strdup(add_sign(string, new));
-	// 	free(string);
-	// 	string =  ft_strdup(tmp);
-	// 	free(tmp);
-	// }
-	// if (new->size)
-	// {
-	// 	if (new->less)
-	// 		tmp = ft_strdup(size_of_string_less(string, new));
-	// 	else
-	// 		tmp = ft_strdup(size_of_string(string, new));
-	// 	free(string);
-	// 	string =  ft_strdup(tmp);
-	// 	free(tmp);
-	// }
-	//
-	// if (string)
-	// 	new->string = ft_strdup(string);
-	// else
-	// 	new->string = ft_strdup((char *)wstring);
-
-
-
-		// if (new->string)
-		// 	ft_putstr(new->string);
-	// if ((new->conversion == 'd') || (new->conversion == 'i'))
-	// 	ft_putnbr(i);
-	// printf("\nva_arg  : %i\n", i);
-	// printf("new->htag  : %d \n", new->htag);
-	// printf("new->plus  : %d \n", new->plus);
-	// printf("new->less  : ``%d ***\n", new->less);
-	// printf("new->space  : %d \n", new->space);
-	// printf("new->zero  : %d \n", new->zero);
-	// printf("new->precision  : %s \n", new->precision);
-	// printf("\nnew->conversion  : %c \n", new->conversion);
-	// printf("new->size  : %s \n", new->size);
-	// printf("new->flags  : %s \n", new->flags);
-}
-
-void				ft_initialize_functions_tab(void)
-{
 	g_f[s] = s_conversion;
 	g_f[S] = S_conversion;
 	g_f[p] = p_conversion;
@@ -208,5 +139,5 @@ void				ft_initialize_functions_tab(void)
 	g_f[X] = X_conversion;
 	g_f[c] = c_conversion;
 	g_f[C] = C_conversion;
-
+	g_f[new->conversion](new, arg);
 }

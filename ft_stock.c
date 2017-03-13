@@ -35,7 +35,7 @@ int		ft_stock_attributes(t_print *new, char *conversion, int i)
 int		ft_stock_size(t_print *new, char *conversion, int i)
 {
 	int		tmp;
-	// printf("conversion[i]:%c", conversion[i]);
+	// printf("conversion[i]:%c", conversion[i + 1]);
 	if(conversion[i] > '0' && conversion[i] <= '9')
 	{
 		tmp = i;
@@ -54,6 +54,7 @@ int		ft_stock_precision(t_print *new, char *conversion, int i)
 
 	if (conversion[i] == '.')
 	{
+		new->checkprecision = 1;
 		i++;
 		tmp = i;
 		if (conversion[i]  < '0' || conversion[i] > '9')

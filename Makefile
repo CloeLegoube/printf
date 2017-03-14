@@ -26,12 +26,12 @@ LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
 				libft/ft_count_bits.c
 
 CONVERSION 	= 	conversion/s_conversion.c conversion/S_conversion.c \
-								conversion/p_conversion.c conversion/d_conversion.c \
-								conversion/D_conversion.c conversion/i_conversion.c \
-								conversion/o_conversion.c conversion/O_conversion.c \
-								conversion/u_conversion.c conversion/U_conversion.c \
-								conversion/x_conversion.c conversion/X_conversion.c \
-								conversion/c_conversion.c conversion/C_conversion.c
+								conversion/p_conversion.c conversion/S_d_conversion.c \
+								conversion/G_D_conversion.c conversion/S_i_conversion.c \
+								conversion/S_o_conversion.c conversion/G_O_conversion.c \
+								conversion/S_u_conversion.c conversion/G_U_conversion.c \
+								conversion/S_x_conversion.c conversion/G_X_conversion.c \
+								conversion/S_c_conversion.c conversion/G_C_conversion.c
 
 MODIFICATION =	modify/ft_modify_length.c modify/ft_modify_htag.c \
 								modify/ft_modify_precision.c modify/ft_modify_sign+.c \

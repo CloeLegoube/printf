@@ -25,7 +25,7 @@ LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
 				libft/ft_wstrnew.c libft/ft_wstrcmp.c libft/ft_wstrsub.c \
 				libft/ft_count_bits.c
 
-CONVERSION 	= 	conversion/s_conversion.c conversion/S_conversion.c \
+CONVERSION 	= 	conversion/S_s_conversion.c conversion/G_S_conversion.c \
 								conversion/p_conversion.c conversion/S_d_conversion.c \
 								conversion/G_D_conversion.c conversion/S_i_conversion.c \
 								conversion/S_o_conversion.c conversion/G_O_conversion.c \

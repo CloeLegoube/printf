@@ -10,22 +10,13 @@ void				X_conversion(t_print *new, va_list arg)
     new->plus = 0;
   if (new->space)
     new->space = 0;
+if (new->less && new->zero)
+  new->zero = 0;
   //longueur
-  new->string  = htag_get_string(arg, new, "0123456789ABCDEF", "0X");
-  //precision
-  if (new->precision && !new->htag)
-    string = ft_strdup(kind_of_precision(new->string, new));
-  else
-    string = ft_strdup(new->string);
-  free(new->string);
-  new->string = ft_strdup(string);
-  free(string);
-  //taille
-  if (new->size)
-    string = ft_strdup(ft_modify_width(new->string, new));
-  else
-    string = ft_strdup(new->string);
-  free(new->string);
-  new->string = ft_strdup(string);
-  free(string);
+  new->htag_prefixe = ft_strdup("0X");
+  new->string  = ft_modify_htag(arg, new, "0123456789ABCDEF");
+  if (new->value_zero && new->checkprecision && new->precision == 0)
+	  new->precision = -1;
+  modify_string(&string, new, (new->precision && !new->htag), ft_modify_precision);
+  modify_string(&string, new, (new->size), ft_modify_width);
 }

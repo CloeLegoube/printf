@@ -10,8 +10,14 @@ void				s_conversion(t_print *new, va_list arg)
     new->plus = 0;
   if (new->space)
     new->space = 0;
+	// if (new->precision == 0)
+	//   new->precision = -1;
   if (!ft_strcmp(new->flags, "l"))
+  {
+      new->conversion= ft_indexchr("sSpdDioOuUxXcC", 'S');
       S_conversion(new, arg);
+      // new->index++;
+  }
   else
   {
     // longueur
@@ -21,21 +27,8 @@ void				s_conversion(t_print *new, va_list arg)
     else
       new->string = ft_strdup(argument);
     // new->string = ft_strdup(va_arg(arg, char*));
-    //precision
-    if (new->precision)
-      string = ft_strdup(kind_of_precision(new->string, new));
-    else
-      string = ft_strdup(new->string);
-    free(new->string);
-    new->string = ft_strdup(string);
-    free(string);
-    //taille
-    if (new->size)
-      string = ft_strdup(ft_modify_width(new->string, new));
-    else
-      string = ft_strdup(new->string);
-    free(new->string);
-    new->string = ft_strdup(string);
-    free(string);
+
+	modify_string(&string, new, (new->checkprecision), ft_modify_precision);
+    modify_string(&string, new, (new->size), ft_modify_width);
   }
 }

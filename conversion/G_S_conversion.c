@@ -1,18 +1,6 @@
 
 #include "../libftprintf.h"
 
-void ft_add_bits(wchar_t C, t_print *new)
-{
-  if (C <= 127)
-      new->wbit += 1;
-  else if (C <= 2047)
-		new->wbit += 2;
-	else if (C <= 65535)
-		new->wbit += 3;
-	else if (C <= 2097151)
-		new->wbit += 4;
-}
-
 void				S_conversion(t_print *new, va_list arg)
 {
   wchar_t *string;
@@ -20,31 +8,65 @@ void				S_conversion(t_print *new, va_list arg)
 
   if (new->plus)
     new->plus = 0;
+	// if (new->zero)
+	// 	new->zero = 0;
   if (new->space)
     new->space = 0;
   if (!ft_strcmp(new->flags, "h"))
+  {
+      new->conversion= ft_indexchr("sSpdDioOuUxXcC", 's');
       s_conversion(new, arg);
+  }
   else
   {
     argument = va_arg(arg, wchar_t*);
-    // longueur
-    new->wstring = ft_wstrdup(argument);
-    //precision
-    if (new->precision)
-      string = ft_wstrdup(wkind_of_precision(new->wstring, new));
-    else
-      string = ft_wstrdup(new->wstring);
-    free(new->wstring);
-    new->wstring = ft_wstrdup(string);
-    free(string);
+	if (argument !=  NULL)
+	{
+		//longueur
+			new->wstring = ft_wstrdup(argument);
+		//precision
+		modify_wstring(&string, new, (new->precision), ft_modify_precision);
+		//taille
+		// if (new->size)
+		// {
+		//   modify_wstring(&string, new, (new->size), ft_modify_width);
+		//   new->string = ft_strdup((char *)new->wstring);
+		//   free(new->wstring);
+		// }
+		if (new->precision)
+		  string = ft_wstrdup((wchar_t *)ft_modify_precision((char *)new->wstring, new));
+		else
+		  string = ft_wstrdup(new->wstring);
+		free(new->wstring);
+		new->wstring = ft_wstrdup(string);
+		free(string);
+		//taille
+		// if (new->size)
+		//   string = ft_wstrdup((wchar_t *)ft_modify_width((char *)new->wstring, new));
+		// else
+		//   string = ft_wstrdup(new->wstring);
+		// free(new->wstring);
+		// new->wstring = ft_wstrdup(string);
+		// free(string);
+		if (new->size)
+		{
+		  modify_wstring(&string, new, (new->size), ft_modify_width);
+		  new->string = ft_strdup((char *)new->wstring);
+		  new->wstring = NULL;
+		  free(new->wstring);
+		}
+	}
+	else
+		new->wstring = ft_wstrdup(L"(null)");
+	if (new->wstring)
+		new->len = ft_strcut_unicode(1, (char *)new->wstring, ft_wstrlen(new->wstring));
+	// printf("bytes: %d\n", ft_strcut_unicode(1, (char *)new->wstring, ft_wstrlen(new->wstring)));
+	// printf("ft_wstrlen: %zu", ft_wstrlen(new->wstring));
 
-    //taille
-    if (new->size)
-      string = ft_wstrdup(ft_modify_wwidth(new->wstring, new));
-    else
-      string = ft_wstrdup(new->wstring);
-    free(new->wstring);
-    new->wstring = ft_wstrdup(string);
-    free(string);
+    // printf("(char *)new->wstring: *%s* \n", (char *)new->wstring);
+    // printf("new->string : %s\n", new->string);
+    // printf("new->wstring : %S\n", new->wstring);
+    // write(1, new->wstring, new->size);
+
   }
 }

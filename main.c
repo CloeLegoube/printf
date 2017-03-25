@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/25 19:31:17 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/14 19:47:32 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		main(void)
 	wchar_t C3;
 	wchar_t C4;
 	void *p;
-	const char *str;
+	// const char *str;
 	wchar_t *wstr;
 	// char *tab;
 	// unsigned char ctest;
@@ -58,7 +58,7 @@ int		main(void)
 	C2 = L'壯';
 	C3 = 66363;
 	C4 = 514;
-	str = "Bonjour Éloïse❤";
+	// str = "Bonjour Éloïse❤";
 	p = "Hello Éloïse";
 	wstr = L"Slt Éloïse !☂ ❤ ☯";
 	// tab = (char*)malloc(256 * sizeof(char));
@@ -87,13 +87,15 @@ int		main(void)
 	// printf("\nITOA: %s\n", ft_itoa_base(x, "0123456789", 0, tab));
 	// printf("TAB: %s\n", tab);
 	// printf("ATOI: %d\n\n", ft_atoi_base(tab, "0123456789abcdef"));
+	// ft_printf("FT_Prinft%    :d  \n", d);
+	ft_printf("bonjour je suis une string avec un %%erente des autres\n");
 
 	printf("\n***Test avec i, d et s - d positif ou negatif\n");
 	ft_printf("FT_Prinft    :d: %d  \n", d);
 	printf("FT_Prinft    :d: %d  \n", d);
-	ft_printf("FT_Prinft    :%+6.3i) d-size: %-20.13d d: %-12.9d - str: %s\n\n", i, d, d, str);
-	// ft_printf("FT_printf :%i)",  i );
-	printf("   Prinft    :%+6.3i) d-size: %-20.13d d: %-12.9d - str: %s\n\n", i, d, d, str);
+	// ft_printf("FT_Prinft    :%+6.3i) d-size: %-20.13d d: %-12.9d - str: %s\n\n", i, d, d, str);
+	// // ft_printf("FT_printf :%i)",  i );
+	// printf("   Prinft    :%+6.3i) d-size: %-20.13d d: %-12.9d - str: %s\n\n", i, d, d, str);
 	//
 	printf("***Test avec p - pointeur void * en hexadecimal\n");
 	ft_printf("FT_printf :p: %p\n", p);
@@ -109,10 +111,10 @@ int		main(void)
 	printf("***Test avec x et X - chiffre hexadecimal non signe abcdef et ABCDEF\n");
 	// printf("ft_itobase de x:%d == %s\n", x, ft_itobase(x, "0123456789abcdef"));
 	// printf("ft_itobase de X:%d == %s\n", X, ft_itobase(X, "0123456789ABCDEF"));
-	ft_printf("FT_printf :x: %#-20.13x - X:%-#20.13X\n", x, X);
-	printf("Prinft    :x: %#-20.13x - X:%-#20.13X\n\n", x, X);
-	ft_printf("FT_printf :x: %-#20.13x - X:%#X\n", x, X);
-	printf("Prinft    :x: %-#20.13x - X:%#X\n\n", x, X);
+	ft_printf("FT_printf :x: *%#-20.13x* - X:*%-#20.13X*\n", x, X);
+	printf("Prinft    :x: *%#-20.13x* - X:*%-#20.13X*\n\n", x, X);
+	ft_printf("FT_printf :x: *%#20.13x* - X:*%#X*\n", x, X);
+	printf("Prinft    :x: *%#20.13x* - X:*%#X*\n\n", x, X);
 	//
 	printf("***Test avec c et C - int en unsigned char\n");
 	ft_printf("FT_printf :c: %c - C:%C\n", c, C);
@@ -137,14 +139,45 @@ int		main(void)
 	//
 	// // printf("recherche  : %s \n\n", ft_strchrstr("FT_printf :u: %u - U:%U\n", "sSpdDioOuUxXcC"));
 	//
+	printf("**********************************************\n");
+	printf("Comparaison sans less:\n");
+	printf("**********************************************\n\n");
+	ft_printf("\nFT - *%24S*\n", wstr);
+	printf("PF - *%24S*\n", wstr);
+	printf("**********************************************\n");
+	printf("Comparaison avec less:\n");
+		printf("**********************************************\n\n");
+	ft_printf("\nFT - *%-24S*\n", wstr);
+	printf("PF - *%-24S*\n", wstr);
+	printf("**********************************************\n");
+	printf("Comparaison sans less:\n");
+	printf("**********************************************\n\n");
+	ft_printf("\nFT - *%30S*\n", wstr);
+	printf("PF - *%30S*\n", wstr);
+	printf("**********************************************\n");
+	printf("Comparaison avec less:\n");
+		printf("**********************************************\n\n");
+	ft_printf("\nFT - *%-12S*\n", wstr);
+	printf("PF - *%-12S*\n", wstr);
+	printf("**********************************************\n");
+	printf("Comparaison sans less:\n");
+	printf("**********************************************\n\n");
+	ft_printf("\nFT - *%12S*\n", wstr);
+	printf("PF - *%12S*\n", wstr);
+	printf("**********************************************\n");
+	printf("Comparaison avec less:\n");
+		printf("**********************************************\n\n");
+	ft_printf("\nFT - *%-12S*\n", wstr);
+	printf("PF - *%-12S*\n", wstr);
+
 	printf("***Test avec S\n");
 	ft_printf("FT_printf :S: %Slalalalalal\n", wstr);
-	printf("FT_printf :S: %Slalalalalal\n", wstr);
-	ft_printf("Prinft    :S: %ls\n", wstr);
-	printf("Prinft    :S: %ls\n", wstr);
-	ft_printf("Prinft    :S: %S\n", wstr);
-	printf("Prinft    :S: %S\n\n", wstr);
-	//
+	printf("PF_printf :S: %Slalalalalal\n", wstr);
+	ft_printf("FT_printf    :S: %ls\n", wstr);
+	printf("PF_printf    :S: %ls\n", wstr);
+	ft_printf("FT_printf    :S: %S\n", wstr);
+	printf("PF_printf    :S: %S\n\n", wstr);
+
 	printf("***Test avec u et U - chiffre decimal non signe entree et sortie postif\n");
 	ft_printf("FT_printf :u: %u - U:%U\n", u, U);
 	printf("Prinft    :u: %u - U:%lu\n", u, U);
@@ -159,14 +192,18 @@ int		main(void)
 	ft_printf("FT_printf -i :% i - d2:%-d\n", i, d2);
 	printf("Prinft    -i :% -i - d2:%-d\n\n", i, d2);
 	// printf("Prinft    -i :%-i - d2:%-f\n\n", i, dble);
+	ft_printf("FT_printf jd :%jd\n", (intmax_t)0);
+	printf("Prinft    jd :%jd\n", (intmax_t)0);
 
+	ft_printf("FT_printf zd :%zd\n", (size_t)0);
+	printf("Prinft    zd :%zd\n", (size_t)0);
 
-	// ft_printf("FT_printf precision1 i :%#-00361080.10456752hhi \n\n", i);
-	// printf("FT_printf precision1 i :%#-00361080.10456752hhi \n\n", i);
-	// ft_printf("FT_printf precision2 i :%- 0+14524.45lli \n\n", i);
-	// printf("FT_printf precision2 i :%- 0+14524.45lli \n\n", i);
-	// ft_printf("Printf precision i :%+10.2i \n", i);
-	// printf("Printf precision i :%+10.2i \n", i);
+	ft_printf("FT_printf precision1 i :%#-00361080.10456752hhi \n\n", i);
+	printf("FT_printf precision1 i :%#-00361080.10456752hhi \n\n", i);
+	ft_printf("FT_printf precision2 i :%- 0+14524.45lli \n\n", i);
+	printf("FT_printf precision2 i :%- 0+14524.45lli \n\n", i);
+	ft_printf("Printf precision i :%+10.2i \n", i);
+	printf("Printf precision i :%+10.2i \n", i);
 	printf("Int MAX : %d\n", INT_MAX);
 	printf("Int MIN : %d\n", INT_MIN);
 	printf("LONG MAX : %ld\n", LONG_MAX);

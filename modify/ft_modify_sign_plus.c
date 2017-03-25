@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wstrsub.c                                       :+:      :+:    :+:   */
+/*   ft_modify_sign_plus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 15:21:28 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/14 21:13:52 by clegoube         ###   ########.fr       */
+/*   Created: 2017/01/25 19:26:21 by clegoube          #+#    #+#             */
+/*   Updated: 2017/03/23 16:35:38 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-wchar_t		*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
+char         *ft_modify_sign(char *string, t_print *new)
 {
-	wchar_t		*troncon;
-	size_t		i;
+	char *tmp;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	troncon = (wchar_t *)malloc((len + 1) * sizeof(*troncon));
-	if (troncon == NULL)
-		return (NULL);
-	while (*(wchar_t *)(s + i) && i < len)
+	// if (new->plus && ft_atoi(string) >= 0)
+	if (new->plus)
 	{
-		troncon[i] = *(wchar_t *)(s + start + i);
-		i++;
+		tmp = ft_strjoin("+", string);
+		free(string);
+		string =  ft_strdup(tmp);
+		free(tmp);
 	}
-	troncon[i] = '\0';
-	return (troncon);
+	// printf("string:%s", string);
+	return (string);
 }

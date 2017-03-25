@@ -6,48 +6,52 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/02/01 18:35:26 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:22:40 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		ft_display_string(t_print *new, size_t i)
+static	void		ft_display_string(t_print *new)
 {
-	// ft_putstr("string :: ");
-	// ft_putnbr_positif(ft_strlen(new->string));
-	// printf("string: %s", new->string);
-	// printf("ft_strlen(new->string): %li", ft_strlen(new->string));
-	// printf("i ==: %li", i);
-	// printf("new->string[i] ==: %c",new->string[i]);
-	// 		printf("new->string ==: %s",new->string);
-			// new->value_zero = 0;
+	size_t i;
+
+	i = 0;
+	// printf("new->value_zero: %d\n",new->value_zero);
+	// printf("new->conversion: %d\n",new->conversion);
 	while (i < ft_strlen(new->string))
 	{
+		// printf("new->string[i]: %c\n",new->string[i]);
 		if ((new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'c')) &&
-				new->value_zero && new->string[i] == '0')
-		{
-			// if (ft_strlen(new->string) == 1)
-			// 	ft_putchar('0');
-			// else
-				ft_putchar('\0');
-		}
+			new->value_zero && new->string[i] == '0')
+			{
+				if ((new->zero && i == ft_strlen(new->string) - 1) ||
+					!new->zero)
+					ft_putchar('\0');
+				else
+					ft_putchar(new->string[i]);
+			}
+
+
+		// if ((new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'c')) &&
+		// 	new->value_zero && new->string[i] == '0')
+		// 	{
+		// 		ft_putchar('\0');
+		// 	}
 		else
 			ft_putchar(new->string[i]);
 		i++;
 	}
-	// ft_putstr("<");
-	// ft_putstr(new->string);
-	// ft_putstr(">");
-
 	g_strlen += ft_strlen(new->string);
 	new->string =  NULL;
 	free(new->string);
 }
 
-void		ft_display_wstring(t_print *new, size_t i)
+static	void		ft_display_wstring(t_print *new)
 {
-	// ft_putstr("wstring :: ");
+	size_t i;
+
+	i = 0;
 	while (i < ft_wstrlen(new->wstring))
 	{
 		if (new->value_zero && new->wstring[i] == '0')
@@ -56,69 +60,55 @@ void		ft_display_wstring(t_print *new, size_t i)
 			ft_putwchar(new->wstring[i]);
 		i++;
 	}
-	g_strlen += ft_wstrlen(new->wstring);
+	g_strlen += new->len;
 	new->wstring =  NULL;
 	free(new->wstring);
 }
 
-int		ft_display_last_string(char *conversion)
+static	int		ft_display_last_string(char *conversion)
 {
-	ft_putstr(ft_strsub(conversion, g_end,ft_strlen(conversion)));
-	g_strlen += ft_strlen(ft_strsub(conversion, g_end,ft_strlen(conversion)));
+	if (g_end < (int)ft_strlen(conversion))
+	{
+		ft_putstr(ft_strsub(conversion, g_end,ft_strlen(conversion)));
+		g_strlen += ft_strlen(ft_strsub(conversion, g_end,ft_strlen(conversion)));
+	}
 	return (g_strlen);
 }
 
 
-void		ft_get_the_strings(char *conversion, t_print *new)
+static	void		ft_get_the_strings(char *conversion, t_print *new)
 {
-	size_t i;
 
-	if (g_start < g_end)
+
+	if (g_start < g_end && g_start < (int)ft_strlen(conversion))
 	{
 		ft_putstr(ft_strsub(conversion, 0, g_start));
 		g_strlen = ft_strlen(ft_strsub(conversion, 0, g_start));
 	}
-	else
+	else if (g_start > g_end && g_start < (int)ft_strlen(conversion))
 	{
 		ft_putstr(ft_strsub(conversion, g_end, g_start - g_end));
 		g_strlen += ft_strlen(ft_strsub(conversion, g_end, g_start - g_end));
 	}
-	i = 0;
 	if (new->string)
-		ft_display_string(new, i);
+		ft_display_string(new);
+		// write(1, new->string, ft_strlen(new->string));
+
 	if (new->wstring)
-		ft_display_wstring(new, i);
+	// 	write(1, new->wstring, new->size);
+		ft_display_wstring(new);
 }
 
-
-
-// void		ft_display_string(char *conversion, t_print *new)
-// {
-// 	char *tmp;
-// 	int i;
-//
-// 	tmp = ft_strdup(g_result);
-// 	free(g_result);
-// 	g_result = ft_strjoin(tmp, ft_strsub(conversion, g_end, ft_strlen(conversion)));
-// 	g_strlen = ft_strlen(g_result);
-//  	i = 0;
-// 	while (i < g_strlen)
-// 	{
-// 		if (new->value_zero && g_result[i] == '0')
-// 			ft_putchar('\0');
-// 		else
-// 			ft_putchar(g_result[i]);
-// 		i++;
-// 	}
-// }
 
 int		ft_printf(char *conversion, ...)
 {
 	va_list  arg;
 	int i;
+	// int check;
 	t_print	*new;
 
 	g_strlen = 0;
+	g_end = 0;
 	new = (t_print*)malloc(sizeof(t_print));
 	va_start(arg, conversion);
 	i = 0;
@@ -127,26 +117,51 @@ int		ft_printf(char *conversion, ...)
 		if (conversion[i] == '%')
 		{
 			g_start = i;
+			// printf("g_start: %d\n",g_start);
 			ft_initialize_struct(new);
-			i++;
-			if (conversion[i] == '\0')
-				return (0);
-			i = ft_manage_conversion(arg, conversion, i, new);
+			// if (conversion[i] == '\0')
+			// 	return (0);
+
+			// check = ft_manage_conversion(conversion, new);
+			// printf("check: %d\n",check);
+
+			ft_manage_conversion(conversion, new);
+			// if (new->conversion == 42)
+			// 	new->string = ft_strdup(conversion + new->index);
+				//
+				// printf("\nconversion :%i\n", new->conversion);
+				// printf("htag :%d\n", new->htag);
+				// printf("plus :%d\n", new->plus);
+				// printf("less :%d\n", new->less);
+				// printf("space :%d\n", new->space);
+				// printf("zero :%d\n", new->zero);
+				// printf("size :%d\n", new->size);
+				// printf("precision :%d\n", new->precision);
+				// printf("checkprecision :%d\n", new->checkprecision);
+				// printf("flags :%s\n", new->flags);
+				// printf("percentage :%d\n", new->percentage);
+				// printf("new->index :%d\n\n", new->index);
+
+			ft_manage_struc(arg, new);
+
+			// printf("new->string: *%s*\n",new->string);
+			// printf("new->index: %d\n",new->index);
 			ft_get_the_strings(conversion, new);
-			g_end = i;
+			// printf("\nconversion :%i\n", new->conversion);
+			if (new->conversion == 42)
+				new->index++;
+			g_end = new->index;
+
+			// printf("g_end: %d\n",g_end);
+			i = new->index;
+
 		}
-		i++;
+			// printf("new->conversion: %d\n",new->conversion);
+
+		if (conversion[i] != '%')
+			i++;
 	}
 	va_end(arg);
 	free(new);
 	return (ft_display_last_string(conversion));
 }
-
-
-// void				(*g_f[101])(t_print*, va_list);
-// void				ft_initialize_functions_tab(void);
-// void				s_convertion(t_print *new, va_list arg);
-// void				bs_convertion(t_print *new, va_list arg);
-// void				p_convertion(t_print *new, va_list arg);
-//
-// g_f[new->type](new, ap); // type == S_S => g_f[S_S](new, ap) => s_convertions(new, ap)

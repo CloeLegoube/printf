@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wstrsub.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 15:21:28 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/14 21:13:52 by clegoube         ###   ########.fr       */
+/*   Created: 2016/11/07 11:58:44 by clegoube          #+#    #+#             */
+/*   Updated: 2017/03/15 19:55:39 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-wchar_t		*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
+void		*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	wchar_t		*troncon;
-	size_t		i;
+	size_t i;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	troncon = (wchar_t *)malloc((len + 1) * sizeof(*troncon));
-	if (troncon == NULL)
-		return (NULL);
-	while (*(wchar_t *)(s + i) && i < len)
+	while (i < n)
 	{
-		troncon[i] = *(wchar_t *)(s + start + i);
+		*(char*)(dst + i) = *(char*)(src + i);
 		i++;
 	}
-	troncon[i] = '\0';
-	return (troncon);
+	return (dst);
 }

@@ -6,103 +6,100 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/30 17:50:53 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/23 14:06:40 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_stock_attributes(t_print *new, char *conversion, int i)
+void		ft_stock_attributes(t_print *new, char *conversion)
 {
-	if (conversion[i]== '#')
+	if (conversion[new->index]== '#' && new->index++)
 		new->htag = 1;
-	if (conversion[i] == '+')
+	if (conversion[new->index] == '+' && new->index++)
 		new->plus = 1;
-	if (conversion[i] == '-')
+	if (conversion[new->index] == '-' && new->index++)
 		new->less = 1;
-	if (conversion[i] == '0')
+	if (conversion[new->index] == '0' && new->index++)
 		new->zero = 1;
-	if (conversion[i] == ' ')
+	if (conversion[new->index] == ' ' && new->index++)
 		new->space = 1;
-	if (conversion[i] == '%')
-		new->percentage = 1;
-	if (conversion[i] == '.')
-		i = ft_stock_precision(new, conversion, i);
-	i++;
-	return (i);
+	// if (conversion[new->index] == '%' && new->index++)
+	// 	new->percentage = 1;
+	if (conversion[new->index] == '.')
+		ft_stock_precision(new, conversion);
 }
 
-int		ft_stock_size(t_print *new, char *conversion, int i)
+void		ft_stock_size(t_print *new, char *conversion)
 {
 	int		tmp;
-	// printf("conversion[i]:%c", conversion[i + 1]);
-	if(conversion[i] > '0' && conversion[i] <= '9')
+	// printf("conversion[new->index]:%c", conversion[i + 1]);
+	if(conversion[new->index] > '0' && conversion[new->index] <= '9')
 	{
-		tmp = i;
-
-		while(conversion[i] >= '0' && conversion[i] <= '9')
-			i++;
-		new->size = ft_strsub(conversion, tmp, i - tmp);
+		tmp = new->index;
+		while(conversion[new->index] >= '0' && conversion[new->index] <= '9')
+			new->index++;
+		new->size = ft_atoi(conversion + tmp);//ft_strsub(conversion, tmp, i - tmp);
 		// printf("TAILLE:%s", new->size);
 	}
-	return (i);
 }
 
-int		ft_stock_precision(t_print *new, char *conversion, int i)
+void		ft_stock_precision(t_print *new, char *conversion)
 {
 	int tmp;
 
-	if (conversion[i] == '.')
+	if (conversion[new->index] == '.' && new->index++)
 	{
 		new->checkprecision = 1;
-		i++;
-		tmp = i;
-		if (conversion[i]  < '0' || conversion[i] > '9')
-			new->precision = ft_strdup("empty");
+		tmp = new->index;
+		if (conversion[new->index]  < '0' || conversion[new->index] > '9')
+			new->precision = -1;
 		else
 		{
-			while(conversion[i] >= '0' && conversion[i] <= '9')
-				i++;
-			new->precision = ft_strsub(conversion, tmp, i - tmp);
+			while(conversion[new->index] >= '0' && conversion[new->index] <= '9')
+				new->index++;
+			new->precision = ft_atoi(conversion + tmp);
 		}
-		// printf("PRECISION :%s\n", new->precision);
-		// printf("conversion[i] :%c\n", conversion[i]);
-		if (new->size)
-			i++;
-		i--;
-
 	}
-	return (i);
+
+	// printf("PRECISION :%s\n", new->precision);
+	// printf("conversion[new->index] :%c\n", conversion[new->index]);
+	// if (new->size)
+	// 	new->index++;
+	// new->index--;
 }
 
-int		ft_stock_flags(t_print *new, char *conversion, int i)
+void		ft_stock_flags(t_print *new, char *conversion)
 {
-	if (conversion[i] == 'l')
-	{
-		i++;
-		if (conversion[i] == 'l')
-			new->flags = "ll";
-		else
-		{
-			conversion--;
-			new->flags = "l";
-		}
-	}
-	if (conversion[i] == 'h')
-	{
-		i++;
-		if (conversion[i] == 'h')
-			new->flags = "hh";
-		else
-		{
-			conversion--;
-			new->flags = "h";
-		}
-	}
-	if (conversion[i] == 'j')
-		new->flags = "j";
-	if (conversion[i] == 'z')
-		new->flags = "z";
 
-	return (i);
+	if (ft_strchr("hljz", conversion[new->index]))
+	{
+		if (!ft_strcmp(new->flags, "no-flags") || !ft_strcmp(new->flags, "h")
+			|| !ft_strcmp(new->flags, "hh"))
+		{
+			if (conversion[new->index] == 'l' && new->index++)
+			{
+				if (conversion[new->index] == 'l' && new->index++)
+					new->flags = "ll";
+				else
+					new->flags = "l";
+			}
+			else if (conversion[new->index] == 'h' && new->index++)
+			{
+				if (conversion[new->index] == 'h' && new->index++)
+					new->flags = "hh";
+				else
+					new->flags = "h";
+			}
+			else if (conversion[new->index] == 'j' && new->index++)
+				new->flags = "j";
+			else if (conversion[new->index] == 'z' && new->index++)
+				new->flags = "z";
+		}
+		else
+			new->index++;
+	}
+
+
+
 }

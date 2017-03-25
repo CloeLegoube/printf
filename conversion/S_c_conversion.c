@@ -27,23 +27,29 @@ void				c_conversion(t_print *new, va_list arg)
   char *string;
   // char charac;
 
-  //flags => +
-  if (new->plus)
-    new->plus = 0;
-  if (new->space)
-    new->space = 0;
-  if (new->zero)
-    new->zero = 0;
-  if (new->precision)
-    new->precision = 0;
-  //longueur
-  c_length(new, arg);
-  // taille
-  if (new->size)
-    string = ft_strdup(ft_modify_width(new->string, new));
-  else
-    string = ft_strdup(new->string);
-  free(new->string);
-  new->string = ft_strdup(string);
-  free(string);
+  	if (!ft_strcmp(new->flags, "l"))
+  		C_conversion(new, arg);
+	else
+	{
+		new->space = 0;
+	  //flags => +
+	  if (new->plus)
+	    new->plus = 0;
+	  if (new->space)
+	    new->space = 0;
+	//   if (new->zero)
+	//     new->zero = 0;
+	  if (new->precision)
+	    new->precision = 0;
+	  //longueur
+	  c_length(new, arg);
+	  // taille
+	  if (new->size)
+	    string = ft_strdup(ft_modify_width(new->string, new));
+	  else
+	    string = ft_strdup(new->string);
+	  free(new->string);
+	  new->string = ft_strdup(string);
+	  free(string);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/02/01 18:33:22 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/23 14:07:21 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_initialize_struct(t_print *new)
 {
-	new->conversion = 's';
+	new->conversion = 42;
 	new->htag = 0;
+	new->htag_prefixe = ft_strdup("no");
 	new->plus = 0;
 	new->less = 0;
 	new->percentage = 0;
@@ -23,105 +24,21 @@ void	ft_initialize_struct(t_print *new)
 	new->sign_less = 0;
 	new->value_zero = 0;
 	new->space = 0;
-	new->precision = NULL;
+	new->precision = 0;
 	new->checkprecision = 0;
-	new->size = NULL;
-	new->flags = "no-flags";
+	new->size = 0;
+	new->flags = ft_strdup("no-flags");
 	new->string = NULL;
 	new->result = NULL;
 	new->strlen = 0;
 	new->wstring = NULL;
-	new->wbit = 0;
-	new->start = 0;
-	new->end = 0;
+	new->wbyte = 0;
+	new->len = 0;
+	new->index = g_start + 1;
+	// new->start = 0;
+	// new->end = 0;
 	new->next = NULL;
 }
-
-int		ft_manage_conversion(va_list arg, char *conversion, int i, t_print	*new)
-{
-
-	while (!ft_strchr("sSpdDioOuUxXcC%", conversion[i]))
-	{
-		if (ft_strchr("#+-0 %.", conversion[i]))
-			i = ft_stock_attributes(new,conversion, i);
-		// printf("conversion1 :%c\n", conversion[i]);
-		i = ft_stock_size(new,conversion, i);
-		// printf("conversion2 :%c\n", conversion[i]);
-		if (!new->precision)
-			i = ft_stock_precision(new, conversion, i);
-		// printf("conversion3 :%c\n", conversion[i]);
-		i = ft_stock_flags(new, conversion, i);
-		// i++;
-	}
-	if (ft_strchr("%", conversion[i]))
-	{
-			new->conversion = ft_indexchr("sSpdDioOuUxXcC", 'c');
-			new->percentage = 1;
-	}
-	if (ft_strchr("sSpdDioOuUxXcC", conversion[i]))
-		new->conversion = ft_indexchr("sSpdDioOuUxXcC", conversion[i]);
-	i++;
-	// printf("\nconversion :%i\n", new->conversion);
-	// printf("plus :%d\n", new->plus);
-	// printf("less :%d\n", new->less);
-	// printf("space :%d\n", new->space);
-	// printf("precision :%s\n", new->precision);
-	// printf("htag :%d\n", new->htag);
-	// printf("size :%s\n", new->size);
-	// printf("flags :%s\n\n", new->flags);
-	ft_manage_struc(arg, new);
-	return (i);
-}
-
-
-char	*size_of_string(char *string, t_print *new)
-{
-	int a;
-	int b;
-	int i;
-	int j;
-	char *result;
-	result = NULL;
-	a = ft_strlen(string);
-	b = ft_atoi(new->size);
-	if (b > a)
-	{
-		result = ft_strnew(b);
-		i = 0;
-		j = 0;
-		while (i < b - a)
-			result[i++] = ' ';
-		while (i < b)
-			result[i++] = string[j++];
-	}
-	return (result);
-}
-
-char	*size_of_string_less(char *string, t_print *new)
-{
-	int a;
-	int b;
-	int i;
-	int j;
-	char *result;
-	result = NULL;
-
-	a = ft_strlen(string);
-	b = ft_atoi(new->size);
-	if (b > a)
-	{
-		result = ft_strnew(b);
-		i = 0;
-		j = 0;
-		while (i < a)
-			result[i++] = string[j++];
-		j = 0;
-		while (i < b)
-			result[i++] = ' ';
-	}
-	return (result);
-}
-
 
 void	ft_manage_struc(va_list arg, t_print *new)
 {
@@ -139,5 +56,67 @@ void	ft_manage_struc(va_list arg, t_print *new)
 	g_f[X] = X_conversion;
 	g_f[c] = c_conversion;
 	g_f[C] = C_conversion;
+	g_f[Q] = no_conversion;
 	g_f[new->conversion](new, arg);
+	// if (!new->size && new->string)
+	// 	new->size = ft_strlen(new->string);
+	// else if (!new->size && new->wstring)
+	// 	new->size = ft_strcut_unicode(1, (char *)new->wstring, ft_strlen((char *)new->wstring));
+}
+
+void		ft_manage_conversion(char *conversion, t_print	*new)
+{
+	int len_conversion;
+
+	len_conversion = ft_strlen(conversion);
+	while (new->index < len_conversion && !ft_strchr("sSpdDioOuUxXcC%", conversion[new->index]))
+	{
+		// printf("conversion :%c\n", conversion[new->index]);
+		if (!ft_strchr("#+-0123456789 .hljz%", conversion[new->index]))
+		{
+			new->string = ft_strsub(conversion, new->index, 1);
+			return ;
+		}
+		if (ft_strchr("#+-0 .", conversion[new->index]))
+			ft_stock_attributes(new,conversion);
+		// printf("conversion1 :%c\n", conversion[new->index]);
+		ft_stock_size(new,conversion);
+		// printf("conversion2 :%c\n", conversion[new->index]);
+		if (!new->checkprecision)
+			ft_stock_precision(new, conversion);
+		// printf("conversion3 :%c\n", conversion[new->index]);
+		ft_stock_flags(new, conversion);
+		// i++;
+
+		// printf("ici, %d => %c\n", new->index, conversion[new->index] );
+	}
+	if (new->index < len_conversion && ft_strchr("%", conversion[new->index])
+		&& new->index++)
+	{
+			new->conversion = ft_indexchr("sSpdDioOuUxXcC", 'c');
+			new->percentage = 1;
+	}
+
+	if (new->index < len_conversion && ft_strchr("sSpdDioOuUxXcC", conversion[new->index]))
+	{
+			// printf("sSpdDioOuUxXcC :%d\n\n", new->index);
+			new->conversion = ft_indexchr("sSpdDioOuUxXcC", conversion[new->index++]);
+	}
+
+	//
+	//
+	// printf("\nconversion :%i\n", new->conversion);
+	// printf("htag :%d\n", new->htag);
+	// printf("plus :%d\n", new->plus);
+	// printf("less :%d\n", new->less);
+	// printf("space :%d\n", new->space);
+	// printf("zero :%d\n", new->zero);
+	// printf("size :%d\n", new->size);
+	// printf("precision :%d\n", new->precision);
+	// printf("checkprecision :%d\n", new->checkprecision);
+	// printf("flags :%s\n", new->flags);
+	// printf("percentage :%d\n", new->percentage);
+	// printf("new->index :%d\n\n", new->index);
+
+
 }

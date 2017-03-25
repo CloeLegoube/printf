@@ -23,7 +23,7 @@ void				no_conversion(t_print *new, va_list arg)
 // printf("string : *%s*\n", new->string);
 // printf("new->conversion: %d\n",new->conversion);
 // new->conversion = ft_indexchr("sSpdDioOuUxXcC", 'c');
-modify_string(&string, new, (new->precision && !new->htag), ft_modify_precision);
+modify_string(&string, new, (new->checkprecision && !new->htag), ft_modify_precision);
 modify_string(&string, new, (new->size), ft_modify_width);
 modify_string(&string, new, (new->space), ft_modify_space);
 modify_string(&string, new, (new->plus), ft_modify_sign);

@@ -10,7 +10,7 @@ void				s_conversion(t_print *new, va_list arg)
     new->plus = 0;
   if (new->space)
     new->space = 0;
-	// if (new->precision == 0)
+	// if (new->precision == 0 && !ft_strcmp(new->flags, "l"))
 	//   new->precision = -1;
   if (!ft_strcmp(new->flags, "l"))
   {
@@ -21,6 +21,7 @@ void				s_conversion(t_print *new, va_list arg)
   else
   {
     // longueur
+
     argument  = va_arg(arg, char*);
     if (!argument)
       new->string = ft_strdup("(null)");

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:48:42 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/14 20:17:18 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:55:40 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ void	modify_string(char **string, t_print *new, int yes, char *(*f)(char *, t_pr
 
 void	modify_wstring(wchar_t **string, t_print *new, int yes, char *(*f)(char *, t_print *))
 {
+
 	if (yes)
 		*string = ft_wstrdup((wchar_t *)(f((char *)new->wstring, new)));
 	else
 		*string = ft_wstrdup((wchar_t *)((char *)new->wstring));
+	// printf("new->wstring %S", string);
 	free(new->wstring);
 	new->wstring = ft_wstrdup(*string);
+
 
 	free(*string);
 }

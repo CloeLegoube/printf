@@ -24,7 +24,7 @@ if (new->checkprecision && new->precision == 0)
 	  new->value_zero = 1;
 	//   printf("new->value_zero: %d\n", new->value_zero);
 	// printf("string1: %s\n", new->string );
-  modify_string(&string, new, (new->precision), ft_modify_precision);
+  modify_string(&string, new, (new->checkprecision), ft_modify_precision);
   // printf("string2: %s\n", new->string );
  //  	printf("string: %s\n", new->string );
   modify_string(&string, new, (new->size), ft_modify_width);

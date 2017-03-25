@@ -19,7 +19,7 @@ void				x_conversion(t_print *new, va_list arg)
   new->string  = ft_modify_htag(arg, new, "0123456789abcdef");
   // printf("string: %s", new->string );
   // printf("(new->precision && !new->htag): %d", (new->precision && !new->htag) );
-  modify_string(&string, new, (new->precision && !new->htag), ft_modify_precision);
+  modify_string(&string, new, (new->checkprecision && !new->htag), ft_modify_precision);
   modify_string(&string, new, (new->size), ft_modify_width);
 
 }

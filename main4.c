@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/23 17:03:41 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/25 19:51:05 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -551,8 +551,54 @@ int		main(void)
 	// printf("|%+3lD|\n", -435);
 	// ft_printf("|%+06.12hhD|\n", -123456789);
 	// printf("|%+06.12hhD|\n", -123456789);
-	ft_printf("|%.0s|\n", "qwerty");
-	printf("|%.0s|\n", "qwerty");
+	// ft_printf("|%.0s|\n", "qwerty");
+	// printf("|%.0s|\n", "qwerty");
+	// ft_printf("%#.o\n", 42);
+	// printf("%#.o\n\n", 42);
+
+	// ft_printf("FT - %.0ls\n", L"fasg");
+	// printf("PF - %.0ls\n\n", L"fasg");
+	// ft_printf("FT - %.ls\n", L"fasg");
+	// printf("PF - %.ls\n\n", L"fasg");
+	// ft_printf("%.3S\n", NULL);
+	// printf("%.3S\n\n", NULL);
+	// ft_printf("%.5S\n", L"†œø˙Unicode string");
+	// printf("%.5S\n\n", L"†œø˙Unicode string");
+	// ft_printf("%c  %C  %5C %5c %5lc\n", 0, 0, 0x20ac, 'x', L'L');
+	// printf("%c  %C  %5C %5c %5lc\n\n", 0, 0, 0x20ac, 'x', L'L');
+	// ft_printf("*%5C*\n", L'®');
+	// printf("*%5C*\n\n", L'®');
+	// ft_printf("%--5C\n", L'a');
+	// printf("%--5C\n\n", L'a');
+	// ft_printf("%p %5p %.2p %.15p %.15p\n", 5, 4896548, 15694, 0, -1);
+	// printf("%p %5p %.2p %.15p %.15p\n\n", 5, 4896548, 15694, 0, -1);
+	// ft_printf("%48p\n", 587);
+	// printf("%48p\n\n", 587);
+	// ft_printf("%--.5p\n", 42);
+	// printf("%--.5p\n\n", 42);
+	// ft_printf("%.5p\n", 42);
+	// printf("%.5p\n\n", 42);
+	// ft_printf("%9.0p\n", 482);
+	// printf("%9.0p\n\n", 482);
+	// ft_printf("%.5p\n", 32);
+	// printf("%.5p\n\n", 32);
+	// ft_printf("%.5p\n", 0);
+	// printf("%.5p\n\n", 0);
+	ft_printf("%09.0U\n", 482);
+	ft_printf("%9.0U\n", 482);
+	printf("%09.0U\n\n", 482);
+	ft_printf("%#09.0X\n", 482);
+	// ft_printf("%#9.0X\n", 482);
+	printf("%#09.0X\n\n", 482);
+	// printf("%#09.X\n\n", 482);
+	// printf("%#09.2X\n\n", 482);
+	// printf("%#09.5X\n\n", 482);
+	// printf("%#09X\n\n", 482);
+	// printf("%09.0X\n\n", 482);
+	// printf("%0.0X\n\n", 482);
+	ft_printf("%#09.0o\n", 482);
+	ft_printf("%#9.0o\n", 482);
+	printf("%#09.0o\n\n", 482);
 
 
 	return (0);

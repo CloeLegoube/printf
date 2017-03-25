@@ -39,9 +39,21 @@ void				C_conversion(t_print *new, va_list arg)
   //longueur
   C_length(new, arg);
   // taille
-	modify_wstring(&string, new, (new->size), ft_modify_width);
+  // printf("new->wstring1 : %S\n", new->wstring);
+  if (new->size)
+  {
+	  modify_wstring(&string, new, (new->size), ft_modify_width);
+	  new->string = ft_strdup(new->wstring);
+	  	new->wstring = NULL;
+	  	free(new->wstring);
+  }
+
 	if (new->wstring)
 		new->len = ft_strcut_unicode(1, (char *)new->wstring, ft_wstrlen(new->wstring));
+
+	// printf("new->wstring2 : %s\n", new->wstring);
+	// printf("new->string : %s\n", new->string);
+
   // if (new->size)
   //   string = ft_wstrdup((wchar_t *)ft_modify_width((char *)new->wstring, new));
   // else

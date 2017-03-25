@@ -18,6 +18,6 @@ void				u_conversion(t_print *new, va_list arg)
 	  new->value_zero = 1;
 	if (new->value_zero && new->checkprecision && new->precision == 0)
 		new->precision = -1;
-  modify_string(&string, new, (new->precision && !new->htag), ft_modify_precision);
+  modify_string(&string, new, (new->checkprecision && !new->htag), ft_modify_precision);
   modify_string(&string, new, (new->size), ft_modify_width);
 }

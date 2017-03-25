@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:21:28 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/15 22:44:25 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/25 15:11:23 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			ft_strcut_unicode(int is_wstring, char *string, int size)
 	count = -1;
 	bytes = 0;
 		// printf("unicode len_string: %d \n", size);
-		// printf("unicode string: *%S* \n", (wchar_t *)string);
+		// printf("unicode string1: *%S* \n", (wchar_t *)string);
 
 	if (is_wstring)
 	{
@@ -34,8 +34,11 @@ int			ft_strcut_unicode(int is_wstring, char *string, int size)
 				bytes += 3;
 			else if (((wchar_t *)string)[count] <= 2097151)
 				bytes += 4;
+				// printf("unicode count: %d \n", count);
 		}
 		((wchar_t *)string)[count] = 0;
+		// printf("unicode string2: *%S* \n", (wchar_t *)string);
+
 	}
 	else
 	{

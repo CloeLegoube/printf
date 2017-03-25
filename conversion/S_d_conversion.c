@@ -38,7 +38,7 @@ void				d_conversion(t_print *new, va_list arg)
   if (new->checkprecision && new->htag)
 	 new->htag = 0;
 
-modify_string(&string, new, (new->precision), ft_modify_precision);
+modify_string(&string, new, (new->checkprecision), ft_modify_precision);
 modify_string(&string, new, (new->size), ft_modify_width);
 modify_string(&string, new, (new->space), ft_modify_space);
 modify_string(&string, new, (new->plus), ft_modify_sign);

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/23 16:41:22 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/25 18:30:58 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static void		ft_conditionless(char *string, char *result,
 {
  	int		byte_len;
  	int		is_wstring;
+	char 	*tmp;
 
 	//  printf("wstring avant byte_len: *%s* \n", (char *)string);
 	is_wstring = (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'S')) ||
@@ -83,11 +84,10 @@ static void		ft_conditionless(char *string, char *result,
 	// 	byte_len = ft_strlen());
  // 	else
 
-		byte_len = ft_strcut_unicode(is_wstring, (char *)string, len_string);
+	byte_len = ft_strcut_unicode(is_wstring, (char *)string, len_string);
 	if ((new->size - byte_len) < 0)
 		byte_len = new->size;
- // 	printf("len_string: %d \n", len_string);
- // 	printf("new->size: %d \n\n", new->size);
+
  // 	printf("string: %s \n\n", string);
 	//
 	// printf("\nwstring apres byte_len :");
@@ -101,12 +101,16 @@ static void		ft_conditionless(char *string, char *result,
 	else
 	{
 		// printf("byte_len: %d \n", byte_len);
+		// printf("new->size:%d\n", new->size);
 		// printf("new->zero: %d \n", new->zero);
 // printf("less:%d\n", new->sign_less);
 		if (new->zero)
 			ft_memset(result, '0', new->size - byte_len);
 		else
+		{
 			ft_memset(result, ' ', new->size - byte_len);
+		}
+
 		if (new->sign_less && new->size != byte_len && new->sign_less--)
 		{
 			// printf("new->size - byte_len - 1:%d\n", new->size - byte_len - 1);
@@ -119,10 +123,29 @@ static void		ft_conditionless(char *string, char *result,
 			// printf("byte_len:%d\n", byte_len);
 			// printf("new->size:%d\n", new->size);
 			result[new->size - byte_len - 1] = '+';
-			// printf("result:%s\n", result);
 		}
 
+		if (ft_strcmp(new->htag_prefixe, "no") && new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'p'))
+			ft_strcpy_unicode(is_wstring, result + new->size - byte_len - ft_strlen(new->htag_prefixe), new->htag_prefixe);
+			// printf("new->htag_prefixe: %s \n", new->htag_prefixe);
+			// // printf("new->htag: %d \n", new->htag);
+			// tmp = ft_strjoin(new->htag_prefixe,result);
+			// free(result);
+			// result = ft_strdup(tmp);
+			// printf("result:*%s*\n", result);
+
+			// printf("result:*%s*\n", result);
+			// ft_strcpy_unicode(is_wstring, result + new->size - byte_len , string);
+			// printf("result:*%s*\n", result);
+			// ft_strcpy_unicode(is_wstring, result + new->size - byte_len, new->htag_prefixe);
+			// new->size -= ft_strlen(new->htag_prefixe);
+			// i = ft_strlen(new->htag_prefixe);
 		ft_strcpy_unicode(is_wstring, result + new->size - byte_len, string);
+		// 	printf("len_string: %d \n", len_string);
+	    	// printf("new->size: %d \n", new->size);
+			// printf("result:*%s*\n", result);
+
+
 
 	}
 
@@ -140,6 +163,7 @@ char			*ft_modify_width(char *string, t_print *new)
 	int			is_wstring;
 
 	i = 0;
+	// printf("new->htag_prefixe: *%s* \n", new->htag_prefixe);
 	is_wstring = (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'S')) ||
 		(new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'C'));
 	if (ft_strcmp(new->htag_prefixe, "no") && new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'p') && new->value_zero)
@@ -180,7 +204,7 @@ char			*ft_modify_width(char *string, t_print *new)
 		}
 		// printf("result: *%s* \n", result);
 		// printf("string: *%s* \n", string);
-		// printf("new->htag_prefixe: *%s* \n", new->htag_prefixe);
+
 	}
 	// if (ft_strcmp(new->htag_prefixe, "no"))
 	// {
@@ -192,6 +216,8 @@ char			*ft_modify_width(char *string, t_print *new)
 	// 	new->size -= ft_strlen(new->htag_prefixe);
 	// }
 	ft_conditionless((char *)string, result + i, len_string, new);
+	// printf("result:*%s*\n", result);
+
 	return (result);
 }
 

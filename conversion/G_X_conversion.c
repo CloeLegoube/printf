@@ -10,6 +10,8 @@ void				X_conversion(t_print *new, va_list arg)
     new->plus = 0;
   if (new->space)
     new->space = 0;
+	if (new->zero && new->checkprecision && new->precision == 0)
+	  new->zero = 0;
 // if ((new->less && new->zero) || (new->zero && new->size && (-1 == new->precision || 0 == new->precision)))
 //   new->zero = 0;
   if (new->less && new->zero)

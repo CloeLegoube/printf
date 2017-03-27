@@ -21,5 +21,4 @@ void				x_conversion(t_print *new, va_list arg)
   // printf("(new->precision && !new->htag): %d", (new->precision && !new->htag) );
   modify_string(&string, new, (new->checkprecision && !new->htag), ft_modify_precision);
   modify_string(&string, new, (new->size), ft_modify_width);
-
 }

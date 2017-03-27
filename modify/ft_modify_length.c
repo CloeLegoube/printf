@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 14:48:12 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/23 16:35:13 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/27 12:12:42 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,8 @@ char	ft_modify_length_c(va_list arg, t_print *new)
 	char nb;
 
 	nb = 0;
-	if (ft_strcmp(new->flags,"no-flags"))
-	{
-		if (!ft_strcmp(new->flags,"l"))
-			nb = va_arg(arg, wint_t);
-	}
+	if (ft_strcmp(new->flags,"no-flags") && !ft_strcmp(new->flags,"l"))
+		nb = va_arg(arg, wint_t);
 	else
 		nb = va_arg(arg, uintmax_t);
 	// if (nb == 0)

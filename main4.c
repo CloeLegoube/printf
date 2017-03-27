@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/25 19:51:05 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/27 11:03:26 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -572,6 +572,16 @@ int		main(void)
 	// printf("%--5C\n\n", L'a');
 	// ft_printf("%p %5p %.2p %.15p %.15p\n", 5, 4896548, 15694, 0, -1);
 	// printf("%p %5p %.2p %.15p %.15p\n\n", 5, 4896548, 15694, 0, -1);
+	// ft_printf("%5p\n", 4896548);
+	// printf("%5p\n\n", 4896548);
+	// ft_printf("%4p\n", 0);
+	// printf("%4p\n\n", 0);
+	ft_printf("%#.o\n", 42);
+	printf("%#.o\n\n", 42);
+	ft_printf("%.o\n", 42);
+	printf("%.o\n\n", 42);
+	ft_printf("%#o\n", 42);
+	printf("%#o\n\n", 42);
 	// ft_printf("%48p\n", 587);
 	// printf("%48p\n\n", 587);
 	// ft_printf("%--.5p\n", 42);
@@ -584,21 +594,22 @@ int		main(void)
 	// printf("%.5p\n\n", 32);
 	// ft_printf("%.5p\n", 0);
 	// printf("%.5p\n\n", 0);
-	ft_printf("%09.0U\n", 482);
-	ft_printf("%9.0U\n", 482);
-	printf("%09.0U\n\n", 482);
-	ft_printf("%#09.0X\n", 482);
+	// ft_printf("%09.0U\n", 482);
+	// ft_printf("%9.0U\n", 482);
+	// printf("%09.0U\n\n", 482);
+	// ft_printf("%#09.0X\n", 482);
 	// ft_printf("%#9.0X\n", 482);
-	printf("%#09.0X\n\n", 482);
+	// printf("%#09.0X\n\n", 482);
 	// printf("%#09.X\n\n", 482);
 	// printf("%#09.2X\n\n", 482);
 	// printf("%#09.5X\n\n", 482);
 	// printf("%#09X\n\n", 482);
 	// printf("%09.0X\n\n", 482);
 	// printf("%0.0X\n\n", 482);
-	ft_printf("%#09.0o\n", 482);
-	ft_printf("%#9.0o\n", 482);
-	printf("%#09.0o\n\n", 482);
+	// ft_printf("%#09.0o\n", 482);
+	// printf("%#09.0o\n", 482);
+	// ft_printf("%#9.0o\n", 482);
+	// printf("%#9.0o\n\n", 482);
 
 
 	return (0);

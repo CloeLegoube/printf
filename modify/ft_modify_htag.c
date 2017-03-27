@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/22 18:13:15 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/27 17:47:49 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ char	*ft_modify_htag(va_list arg, t_print *new, char *base)
 		// 	new->value_zero = 0;
 	}
 
+	if (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'o') &&
+		new->checkprecision && new->precision < ft_strlen(string))
+			new->htag_prefixe = ft_strdup("0");
 	if ((!new->htag && new->value_zero) ||
 		(new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'o') &&
 		new->htag && new->value_zero))
@@ -40,7 +43,6 @@ char	*ft_modify_htag(va_list arg, t_print *new, char *base)
 		string = ft_strdup(tmp);
 		free(tmp);
 	}
-	// printf("stringhtag1:%s\n", string);
 	// printf("new->precision:%d\n", new->precision);
 	if (new->precision && new->precision != -1)
 		tmp = ft_strdup(ft_modify_precision(string, new));

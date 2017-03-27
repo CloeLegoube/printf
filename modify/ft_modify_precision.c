@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:41:27 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/25 19:26:34 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/27 10:51:06 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char		*ft_modify_precision(char *string, t_print *new)
 	// printf("(char *)string: %s", (char *)string );
 	// printf("(char *)string: %s", new->string );
 	void	*result;
+	void	*tmp;
 	int		bytes;
 	int		is_wstring;
 	int		is_string;
@@ -63,7 +64,7 @@ char		*ft_modify_precision(char *string, t_print *new)
 	bytes = (!is_wstring && !is_string) ? (int)ft_strlen(string) : ft_strcut_unicode(is_wstring, string, new->precision);
 	// printf("bytes: %d\n", bytes );
 	// printf("precision: %d\n", new->precision );
-	// // printf("string: %s", string );
+	// printf("string: %s", string );
 	// printf("string: %s\n", string );
 	// printf("new->precision - bytes: %d\n", new->precision - bytes);
 	if (!is_wstring && !is_string && (new->precision - bytes) > 0)
@@ -73,7 +74,12 @@ char		*ft_modify_precision(char *string, t_print *new)
 		ft_memcpy(result + new->precision - bytes, string, bytes);
 		string = result;
 	}
-
+	// if (new->htag && new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'o'))
+	// {
+	// 	result = ft_strjoin(new->htag_prefixe, string);
+	// 	// free(string);
+	// 	string = result;
+	// }
 
 	// printf("wstring2:*%s*\n", new->wstring);
 	return ((char *)string);

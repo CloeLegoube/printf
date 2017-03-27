@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/23 16:22:40 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/27 17:58:44 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ int		ft_printf(char *conversion, ...)
 
 			// printf("new->string: *%s*\n",new->string);
 			// printf("new->index: %d\n",new->index);
+			if (new->len == -1)
+				return (new->len);
 			ft_get_the_strings(conversion, new);
 			// printf("\nconversion :%i\n", new->conversion);
 			if (new->conversion == 42)

@@ -11,8 +11,9 @@ void				c_length(t_print *new, va_list arg)
   else if (new->percentage)
     charac = '%';
   else
-    charac = va_arg(arg, int);
-  if (charac == 0)
+	  charac = va_arg(arg, int);
+
+  if (charac == 0  )
   {
     new->value_zero = 1;
     charac = charac + 48;

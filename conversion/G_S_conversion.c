@@ -5,6 +5,7 @@ void				S_conversion(t_print *new, va_list arg)
 {
   wchar_t *string;
   wchar_t *argument;
+  // int i;
 
   if (new->plus)
     new->plus = 0;
@@ -22,6 +23,14 @@ void				S_conversion(t_print *new, va_list arg)
   else
   {
     argument = va_arg(arg, wchar_t*);
+	// i = 0;
+	// while(argument[i])
+	// {
+	// 	if (MB_CUR_MAX <= 1 || argument[i++] >= 255)
+	// 	{
+	// 		new->len = -1;
+	// 	}
+	// }
 	if (argument !=  NULL)
 	{
 		//longueur

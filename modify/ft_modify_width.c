@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/25 18:30:58 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/27 12:38:33 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,30 @@ static void		ft_conditionless(char *string, char *result,
 	if ((new->size - byte_len) < 0)
 		byte_len = new->size;
 
- // 	printf("string: %s \n\n", string);
+
 	//
 	// printf("\nwstring apres byte_len :");
 	// write(1, string, ft_strlen(string));
 	// printf("\n");
+	// if (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'p'))
+	// {
+	// 	printf("string: %s \n\n", string);
+	// 	// printf("result: %s \n\n", result);
+	// 	// printf("new->htag_prefixe: %s \n\n", new->htag_prefixe);
+	// 	tmp = ft_strjoin(new->htag_prefixe, string);
+	// 	free(string);
+	// 	string = ft_strdup(tmp);
+	// 	free(tmp);
+	// 	printf("string: %s \n\n", string);
+	//
+	// 	free(new->htag_prefixe);
+	// 	new->htag_prefixe = ft_strdup("no");
+	// 	// if (new->value_zero && new->zero)
+	// 	// {
+	// 	// 	free(string);
+	// 	// 	string =ft_strdup("");
+	// 	// }
+	// }
 	if (new->less)
 	{
 		ft_strcpy_unicode(is_wstring, result, string);
@@ -125,9 +144,33 @@ static void		ft_conditionless(char *string, char *result,
 			result[new->size - byte_len - 1] = '+';
 		}
 
-		if (ft_strcmp(new->htag_prefixe, "no") && new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'p'))
-			ft_strcpy_unicode(is_wstring, result + new->size - byte_len - ft_strlen(new->htag_prefixe), new->htag_prefixe);
+		if (ft_strcmp(new->htag_prefixe, "no") &&
+		(new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'p') ||
+		(new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'o') && new->htag)))
+		{
+				// tmp = ft_strjoin(new->htag_prefixe, result);
+				// free(result);
+				// result = ft_strdup(tmp);
+				// free(tmp);
+			// 	printf("result:*%s*\n", result);
+			// 	printf("new->size:*%d*\n", new->size);
+			// printf("byte_len:*%d*\n", byte_len);
+			if (new->size - byte_len <= ft_strlen(new->htag_prefixe))
+			{
+				ft_strcpy_unicode(is_wstring, result + new->size - byte_len, new->htag_prefixe);
+				if (!new->value_zero)
+					result = result + ft_strlen(new->htag_prefixe);
+			}
+
+			else
+				ft_strcpy_unicode(is_wstring, result + new->size - byte_len - ft_strlen(new->htag_prefixe), new->htag_prefixe);
+
+			// ft_strcpy_unicode(is_wstring, result + new->size - byte_len + ft_strlen(new->htag_prefixe), string);
+			// printf("result:*%s*\n", result);
 			// printf("new->htag_prefixe: %s \n", new->htag_prefixe);
+		}
+		// else
+			ft_strcpy_unicode(is_wstring, result + new->size - byte_len, string);
 			// // printf("new->htag: %d \n", new->htag);
 			// tmp = ft_strjoin(new->htag_prefixe,result);
 			// free(result);
@@ -140,7 +183,7 @@ static void		ft_conditionless(char *string, char *result,
 			// ft_strcpy_unicode(is_wstring, result + new->size - byte_len, new->htag_prefixe);
 			// new->size -= ft_strlen(new->htag_prefixe);
 			// i = ft_strlen(new->htag_prefixe);
-		ft_strcpy_unicode(is_wstring, result + new->size - byte_len, string);
+
 		// 	printf("len_string: %d \n", len_string);
 	    	// printf("new->size: %d \n", new->size);
 			// printf("result:*%s*\n", result);

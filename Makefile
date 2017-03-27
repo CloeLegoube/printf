@@ -6,7 +6,7 @@
 #    By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/04 10:22:13 by clegoube          #+#    #+#              #
-#    Updated: 2017/03/25 14:01:45 by clegoube         ###   ########.fr        #
+#    Updated: 2017/03/27 11:43:27 by clegoube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ GCCF = gcc
 FLAGS = -g
 # FLAGS = -Wall -Werror -Wextra -g
 NAME = libftprintf.a
-SRCLIB = main4.c ft_printf.c \
+SRCLIB = main5.c ft_printf.c \
 				ft_stock.c ft_manage_struc.c
 
 LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
@@ -75,7 +75,7 @@ re: fclean all
 .PHONY: all clean re fclean
 
 exec: re
-	@gcc -o printf main4.c libftprintf.a && ./printf
+	@gcc -o printf main5.c libftprintf.a && ./printf
 
 run: exec fclean
 

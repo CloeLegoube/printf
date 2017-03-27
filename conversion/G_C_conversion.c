@@ -6,6 +6,8 @@ void				C_length(t_print *new, va_list arg)
 	wchar_t charac;
 
 	charac = va_arg(arg, int);
+	// printf("charac %d",charac );
+	// printf("MB_CUR_MAX %d",MB_CUR_MAX );
 	if (charac == 0)
 	{
 		new->value_zero = 1;
@@ -19,9 +21,19 @@ void				C_length(t_print *new, va_list arg)
 		new->wbyte = 2;
 	else if (charac <= 2097151)
 		new->wbyte = 3;
-	new->wstring = (wchar_t *)malloc(2 * sizeof(*new->wstring));
-	new->wstring[0] = charac;
-	new->wstring[1] = '\0';
+
+	if (MB_CUR_MAX > 1 || charac <= 255)
+	{
+		new->wstring = (wchar_t *)malloc(2 * sizeof(*new->wstring));
+		new->wstring[0] = charac;
+		new->wstring[1] = '\0';
+	}
+	else
+	{
+		new->len = -1;
+		return;
+	}
+
 }
 
 void				C_conversion(t_print *new, va_list arg)
@@ -40,10 +52,10 @@ void				C_conversion(t_print *new, va_list arg)
   C_length(new, arg);
   // taille
   // printf("new->wstring1 : %S\n", new->wstring);
-  if (new->size)
+  if (new->size && new->wstring)
   {
 	  modify_wstring(&string, new, (new->size), ft_modify_width);
-	  new->string = ft_strdup(new->wstring);
+	  new->string = ft_strdup((char *)new->wstring);
 	  	new->wstring = NULL;
 	  	free(new->wstring);
   }

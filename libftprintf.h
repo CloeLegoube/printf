@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/22 11:39:06 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/28 20:48:17 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,24 @@ enum conversion
 	Q = 42,
 };
 
+enum couleur
+{
+	eoc,
+	noir = 30,
+	rouge,
+	vert,
+	jaune,
+	bleu,
+	magenta,
+	cyan,
+	blanc,
+};
+
 typedef	struct	s_print
 {
 	int 			conversion;
 	int				htag;
+	int				wildcard;
 	char			*htag_prefixe;
 	int				plus;
 	int				less;
@@ -87,12 +101,12 @@ int				g_end;
 
 int				ft_printf(char *format, ...);
 void			ft_initialize_struct(t_print *new);
-void			ft_manage_conversion(char *conversion, t_print *new);
+void			ft_manage_conversion(char *conversion, t_print *new, va_list arg);
 void			ft_manage_struc(va_list arg, t_print *new);
 
-void			ft_stock_attributes(t_print *new, char *conversion);
-void			ft_stock_size(t_print *new, char *conversion);
-void			ft_stock_precision(t_print *new, char *conversion);
+void			ft_stock_attributes(t_print *new, char *conversion, va_list arg);
+void			ft_stock_size(t_print *new, char *conversion, va_list arg);
+void			ft_stock_precision(t_print *new, char *conversion, va_list arg);
 void			ft_stock_flags(t_print *new, char *conversion);
 
 char			*ft_modify_htag(va_list arg, t_print *new, char *base);
@@ -103,6 +117,7 @@ char			*ft_modify_precision(char *string, t_print *new);
 char			*ft_modify_sign(char *string, t_print *new);
 char			*ft_modify_space(char *string, t_print *new);
 char			*ft_modify_width(char *string, t_print *new);
+void			ft_modify_color(va_list arg, t_print *new);
 
 void			modify_string(char **string, t_print *new, int yes, char *(*f)(char *, t_print *));
 void			modify_wstring(wchar_t **string, t_print *new, int yes, char *(*f)(char *, t_print *));

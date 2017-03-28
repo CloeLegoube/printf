@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/27 11:03:26 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/28 20:00:43 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -576,12 +576,54 @@ int		main(void)
 	// printf("%5p\n\n", 4896548);
 	// ft_printf("%4p\n", 0);
 	// printf("%4p\n\n", 0);
-	ft_printf("%#.o\n", 42);
-	printf("%#.o\n\n", 42);
-	ft_printf("%.o\n", 42);
-	printf("%.o\n\n", 42);
-	ft_printf("%#o\n", 42);
-	printf("%#o\n\n", 42);
+
+	// ft_printf("*%*.d*\n", 42, 5);
+	// printf("*%*.d*\n\n", 42, 5);
+	// ft_printf("*%5d*\n", -42);
+	// printf("*%5d*\n\n", -42);
+	// ft_printf("*%*d*\n",-5, -42);
+	// printf("*%*d*\n\n", -5,-42);
+	// ft_printf("*%*d*\n",-5, 42);
+	// printf("*%*d*\n\n", -5,42);
+	// ft_printf("{%*d}\n", -5, 42);
+	// printf("{%*d}\n\n", -5, 42);
+	// ft_printf("{%05.*d}\n", -15, 42);
+	// ft_printf("{%05.4d}\n", 42);
+	// printf("{%05.*d}\n\n", 4, 42);
+	// printf("{%0.*d}\n\n", -15, 42);
+	// printf("{%05.*d}\n\n", -6, 42);
+	//
+	// ft_printf("{%.*s}\n", -5, "42");
+	// printf("{%.*s}\n\n", -5, "42");
+	// int i;
+	// ft_printf("{%3*p}\n", 10, 0);
+	// printf("{%3*p}\n\n", 10, 0);
+	// ft_printf("{%05p}\n", 0);
+	// printf("{%05p}\n\n", 0);
+	// ft_printf("Bonjour%n\n", &i);
+	// printf("Bonjour%n\n\n", &i);
+	// ft_printf("%d\n", i);
+	// printf("%d\n\n", i);
+
+
+	ft_printf("Afiiche la couleur : %s%k et eteind la\n", "hello", cyan);
+	// ft_printf("{%10p}\n", 0);
+	// printf("{%10p}\n\n", 0);
+	//
+	// ft_printf("{%6p}\n", 0);
+	// printf("{%6p}\n\n", 0);
+	// ft_printf("{%7p}\n", 0);
+	// printf("{%7p}\n\n", 0);
+	// ft_printf("{%8p}\n", 0);
+	// printf("{%8p}\n\n", 0);
+	// ft_printf("{%9p}\n", 0);
+	// printf("{%9p}\n\n", 0);
+	// ft_printf("{%10p}\n", 0);
+	// printf("{%10p}\n\n", 0);
+	// ft_printf("%.o\n", 42);
+	// printf("%.o\n\n", 42);
+	// ft_printf("%#o\n", 42);
+	// printf("%#o\n\n", 42);
 	// ft_printf("%48p\n", 587);
 	// printf("%48p\n\n", 587);
 	// ft_printf("%--.5p\n", 42);

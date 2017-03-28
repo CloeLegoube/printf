@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/27 12:38:33 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/28 19:09:35 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void		ft_conditionless(char *string, char *result,
 	// printf("\n");
 	// if (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'p'))
 	// {
-	// 	printf("string: %s \n\n", string);
+		// printf("string: %s \n\n", string);
 	// 	// printf("result: %s \n\n", result);
 	// 	// printf("new->htag_prefixe: %s \n\n", new->htag_prefixe);
 	// 	tmp = ft_strjoin(new->htag_prefixe, string);
@@ -161,7 +161,6 @@ static void		ft_conditionless(char *string, char *result,
 				if (!new->value_zero)
 					result = result + ft_strlen(new->htag_prefixe);
 			}
-
 			else
 				ft_strcpy_unicode(is_wstring, result + new->size - byte_len - ft_strlen(new->htag_prefixe), new->htag_prefixe);
 
@@ -210,7 +209,12 @@ char			*ft_modify_width(char *string, t_print *new)
 	is_wstring = (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'S')) ||
 		(new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'C'));
 	if (ft_strcmp(new->htag_prefixe, "no") && new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'p') && new->value_zero)
-		 string = ft_strdup(new->htag_prefixe);
+	{
+		string = ft_strdup(new->htag_prefixe);
+		if (!new->zero)
+			new->htag_prefixe = "no";
+	}
+
 	len_string = is_wstring ? ft_wstrlen((wchar_t *)string) : ft_strlen(string);
 	// if (new->size + new->sign_less <= ft_strcut_unicode(1, (char *)string, len_string))
 	// 	return (string);

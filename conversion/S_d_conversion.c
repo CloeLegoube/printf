@@ -14,6 +14,10 @@ void				d_conversion(t_print *new, va_list arg)
 	// printf("new->string %s\n",new->string );
 	// if (new->string[0] == '0')
 	// 	new->value_zero = 1;
+	// if (new->wildcard == 1)
+	// 	new->size = va_arg(arg, uintmax_t);
+	// if (new->wildcard == 2)
+	// 	new->precision = va_arg(arg, uintmax_t);
 	if (new->checkprecision && new->precision == 0)
       new->precision = -1;
 	if (new->string[0] == '-')

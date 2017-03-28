@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/27 17:58:44 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/28 21:11:48 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int		ft_printf(char *conversion, ...)
 			// check = ft_manage_conversion(conversion, new);
 			// printf("check: %d\n",check);
 
-			ft_manage_conversion(conversion, new);
+			ft_manage_conversion(conversion, new, arg);
 			// if (new->conversion == 42)
 			// 	new->string = ft_strdup(conversion + new->index);
 				//
@@ -145,10 +145,17 @@ int		ft_printf(char *conversion, ...)
 			ft_manage_struc(arg, new);
 
 			// printf("new->string: *%s*\n",new->string);
-			// printf("new->index: %d\n",new->index);
+			// printf("conversion[i]: %c\n",conversion[i]);
+			if (conversion[new->index] == '%' && conversion[new->index + 1] == 'k')
+			{
+				ft_modify_color(arg, new);
+				new->index += 2;
+			}
+
 			if (new->len == -1)
 				return (new->len);
 			ft_get_the_strings(conversion, new);
+			// printf("\nconversion :%i\n", new->conversion);
 			// printf("\nconversion :%i\n", new->conversion);
 			if (new->conversion == 42)
 				new->index++;

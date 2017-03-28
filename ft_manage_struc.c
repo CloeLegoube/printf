@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/25 14:19:28 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/28 19:27:59 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_initialize_struct(t_print *new)
 	new->wstring = NULL;
 	new->wbyte = 0;
 	new->len = 0;
+	new->wildcard = 0;
 	new->index = g_start + 1;
 	// new->start = 0;
 	// new->end = 0;
@@ -64,26 +65,26 @@ void	ft_manage_struc(va_list arg, t_print *new)
 	// 	new->size = ft_strcut_unicode(1, (char *)new->wstring, ft_strlen((char *)new->wstring));
 }
 
-void		ft_manage_conversion(char *conversion, t_print	*new)
+void		ft_manage_conversion(char *conversion, t_print	*new, va_list arg)
 {
 	int len_conversion;
 
 	len_conversion = ft_strlen(conversion);
-	while (new->index < len_conversion && !ft_strchr("sSpdDioOuUxXcC%", conversion[new->index]))
+	while (new->index < len_conversion && !ft_strchr("sSpdDioOuUxXcCn%", conversion[new->index]))
 	{
 		// printf("conversion :%c\n", conversion[new->index]);
-		if (!ft_strchr("#+-0123456789 .hljz%", conversion[new->index]))
+		if (!ft_strchr("#+-*0123456789 .hljz%", conversion[new->index]))
 		{
 			new->string = ft_strsub(conversion, new->index, 1);
 			return ;
 		}
 		if (ft_strchr("#+-0 .", conversion[new->index]))
-			ft_stock_attributes(new,conversion);
+			ft_stock_attributes(new,conversion, arg);
 		// printf("conversion1 :%c\n", conversion[new->index]);
-		ft_stock_size(new,conversion);
+		ft_stock_size(new,conversion, arg);
 		// printf("conversion2 :%c\n", conversion[new->index]);
 		if (!new->checkprecision)
-			ft_stock_precision(new, conversion);
+			ft_stock_precision(new, conversion, arg);
 		// printf("conversion3 :%c\n", conversion[new->index]);
 		ft_stock_flags(new, conversion);
 		// i++;

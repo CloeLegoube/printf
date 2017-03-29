@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/28 19:09:35 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 20:00:38 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static char 	*ft_strcpy_unicode(int is_wstring, char *dest, const char *source)
 		}
 		*(dest + i) = 0;
 	}
+
 	return (dest);
 }
 
@@ -212,7 +213,11 @@ char			*ft_modify_width(char *string, t_print *new)
 	{
 		string = ft_strdup(new->htag_prefixe);
 		if (!new->zero)
+		{
+			free(new->htag_prefixe);
 			new->htag_prefixe = "no";
+		}
+
 	}
 
 	len_string = is_wstring ? ft_wstrlen((wchar_t *)string) : ft_strlen(string);
@@ -241,7 +246,7 @@ char			*ft_modify_width(char *string, t_print *new)
 			new->size -= ft_strlen(new->htag_prefixe);
 			i = ft_strlen(new->htag_prefixe);
 			free(new->htag_prefixe);
-			new->htag_prefixe = ft_strdup("no");
+			new->htag_prefixe = "no";
 			if (new->value_zero && new->zero)
 			{
 				free(string);
@@ -264,7 +269,6 @@ char			*ft_modify_width(char *string, t_print *new)
 	// }
 	ft_conditionless((char *)string, result + i, len_string, new);
 	// printf("result:*%s*\n", result);
-
 	return (result);
 }
 

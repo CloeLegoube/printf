@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/29 15:35:50 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 19:08:16 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_initialize_struct(t_print *new)
 {
 	new->conversion = 42;
 	new->htag = 0;
-	new->htag_prefixe = ft_strdup("no");
+	new->htag_prefixe = "no";
 	new->plus = 0;
 	new->less = 0;
 	new->percentage = 0;
@@ -27,7 +27,7 @@ void	ft_initialize_struct(t_print *new)
 	new->precision = 0;
 	new->checkprecision = 0;
 	new->size = 0;
-	new->flags = ft_strdup("no-flags");
+	new->flags = "no-flags";
 	new->string = NULL;
 	new->result = NULL;
 	new->strlen = 0;
@@ -37,8 +37,6 @@ void	ft_initialize_struct(t_print *new)
 	new->bold = 0;
 	new->wildcard = 0;
 	new->index = g_start + 1;
-	// new->start = 0;
-	// new->end = 0;
 	new->next = NULL;
 }
 

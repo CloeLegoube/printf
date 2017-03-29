@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/29 15:35:57 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 20:18:55 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ static	void		ft_display_string(t_print *new)
 		i++;
 	}
 	g_strlen += ft_strlen(new->string);
-	new->string =  NULL;
 	free(new->string);
+	// new->string =  NULL;
+
 }
 
 static	void		ft_display_wstring(t_print *new)
@@ -61,8 +62,8 @@ static	void		ft_display_wstring(t_print *new)
 		i++;
 	}
 	g_strlen += new->len;
-	new->wstring =  NULL;
 	free(new->wstring);
+	// new->wstring =  NULL;
 }
 
 static	int		ft_display_last_string(char *conversion)
@@ -98,6 +99,25 @@ static	void		ft_get_the_strings(char *conversion, t_print *new)
 	// 	write(1, new->wstring, new->size);
 		ft_display_wstring(new);
 }
+//
+// static void	ft_free_struct(t_print *new)
+// {
+// 	if (new->htag_prefixe)
+// 	{
+// 		// printf("new->htag_prefixe : %s\n", new->htag_prefixe);
+// 		free(new->htag_prefixe);
+// 		new->htag_prefixe = NULL;
+// 	}
+// 	if (new->flags)
+// 	{
+// 		// printf("new->flags : %s\n", new->flags);
+// 		free(new->flags);
+// 		new->flags = NULL;
+// 	}
+// 	// free(new);
+// 	// new = NULL;
+//
+// }
 
 
 int		ft_printf(char *conversion, ...)
@@ -167,6 +187,7 @@ int		ft_printf(char *conversion, ...)
 
 			// printf("g_end: %d\n",g_end);
 			i = new->index;
+			// ft_free_struct(new);
 
 		}
 		// printf("conversion[new->index]: %c\n",conversion[new->index]);

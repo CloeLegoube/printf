@@ -36,7 +36,11 @@ void				p_conversion(t_print *new, va_list arg)
   if (new->size)
     string = ft_strdup(ft_modify_width(new->string, new));
   else
-    string = ft_strjoin(new->htag_prefixe, new->string);
+  {
+	  string = ft_strjoin(new->htag_prefixe, new->string);
+	  free(new->htag_prefixe);
+  }
+
   free(new->string);
   new->string = ft_strdup(string);
   free(string);

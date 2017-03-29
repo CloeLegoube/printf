@@ -55,8 +55,8 @@ void				C_conversion(t_print *new, va_list arg)
   {
 	  modify_wstring(&string, new, (new->size), ft_modify_width);
 	  new->string = ft_strdup((char *)new->wstring);
-	  	new->wstring = NULL;
-	  	free(new->wstring);
+		new->wstring = NULL;
+	  free(new->wstring);
   }
 
 	if (new->wstring)

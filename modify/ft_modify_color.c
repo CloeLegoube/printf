@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:48:42 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/29 15:23:37 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 20:11:23 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,17 @@ void	ft_modify_color(va_list arg, t_print *new)
 	else
 		code = ft_strdup("\033[");
 	if (new->wstring)
+	{
 		new->string = ft_strdup((char *)new->wstring);
-	free(new->wstring);
-	new->wstring = NULL;
+		free(new->wstring);
+		new->wstring = NULL;
+	}
 	tmp = ft_straddend(ft_straddend(ft_straddend(ft_straddend(code, color), "m"), new->string), "\033[0m");
 	free(new->string);
+	free(color);
+	free(code);
 	new->string = ft_strdup(tmp);
+	free(tmp);
 	// printf("new->string: %s\n", new->string);
 
 }

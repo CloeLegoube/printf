@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/27 17:47:49 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 13:44:45 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_modify_htag(va_list arg, t_print *new, char *base)
 	// printf("stringhtag1:%s\n", string);
 	if (new->value_zero)
 	{
-		if (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'o') && !new->precision)
+		if (new->conversion == ft_indexchr("sSpdDioOuUxXcCb", 'o') && !new->precision)
 			new->htag_prefixe = ft_strdup("");
 		else
 			new->htag_prefixe = ft_strdup("0");
@@ -31,11 +31,11 @@ char	*ft_modify_htag(va_list arg, t_print *new, char *base)
 		// 	new->value_zero = 0;
 	}
 
-	if (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'o') &&
+	if (new->conversion == ft_indexchr("sSpdDioOuUxXcCb", 'o') &&
 		new->checkprecision && new->precision < ft_strlen(string))
 			new->htag_prefixe = ft_strdup("0");
 	if ((!new->htag && new->value_zero) ||
-		(new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'o') &&
+		(new->conversion == ft_indexchr("sSpdDioOuUxXcCb", 'o') &&
 		new->htag && new->value_zero))
 	{
 		tmp = ft_strdup("0");
@@ -54,7 +54,7 @@ char	*ft_modify_htag(va_list arg, t_print *new, char *base)
 	// printf("stringhtag2:%s\n", string);
 	if ((new->htag && !new->precision && !new->zero ) ||
 		(new->htag && new->precision && !new->zero && !new->value_zero
-		&& new->conversion != ft_indexchr("sSpdDioOuUxXcC", 'o')))
+		&& new->conversion != ft_indexchr("sSpdDioOuUxXcCb", 'o')))
 	{
 		tmp = ft_strjoin(new->htag_prefixe, string);
 		free(string);

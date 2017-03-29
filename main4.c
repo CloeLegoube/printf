@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/28 20:00:43 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:15:05 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -606,7 +606,20 @@ int		main(void)
 	// printf("%d\n\n", i);
 
 
-	ft_printf("Afiiche la couleur : %s%k et eteind la\n", "hello", cyan);
+	// ft_printf("Afiiche la couleur : %s%k et eteind la\n", "hello", cyan);
+	// ft_printf("Afiiche la couleur : %s%k et %d%k eteind la\n", "hello", jaune, 12, bleu);
+	// ft_printf("Afiiche la couleur : %s%k et %c%k eteind la\n", "hello", rouge, 'A', magenta);
+	// // ft_printf("Afiiche la couleur : %s%k et eteind la\n", "hello", vert);
+	// ft_printf("Afiiche la couleur : %0+- #15.4s%koui\n", "hello", cyan);
+	ft_printf("Afiiche la couleur : %0+- #15.4soui\n", "hello");
+	// //
+	// ft_printf("Afiiche en binaire : %15.6x%k\n", 34, rouge);
+	// ft_printf("Afiiche en binaire : %15.6b%kG\n", 34, magenta);
+
+	ft_printf("aa%%bb\n");
+	printf("aa%%bb\n");
+	ft_printf("Afiiche la couleur : %0+- #*.*soui\n", 15, 4, "hello");
+	printf("Afiiche la couleur : %0+- #*.*soui\n\n", 15, 4, "hello");
 	// ft_printf("{%10p}\n", 0);
 	// printf("{%10p}\n\n", 0);
 	//

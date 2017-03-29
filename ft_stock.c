@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/28 18:48:49 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 14:55:45 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ void		ft_stock_attributes(t_print *new, char *conversion, va_list arg)
 void		ft_stock_size(t_print *new, char *conversion, va_list arg)
 {
 	int		tmp;
-	// printf("conversion[new->index]:%c", conversion[i + 1]);
 	if (conversion[new->index] == '*' && new->index++)
 	{
+		// printf("conversion[new->index]:%c", conversion[i + 1]);
+
 		new->size = va_arg(arg, uintmax_t);
 		if (new->size < 0)
 		{

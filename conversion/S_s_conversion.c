@@ -14,7 +14,7 @@ void				s_conversion(t_print *new, va_list arg)
 	//   new->precision = -1;
   if (!ft_strcmp(new->flags, "l"))
   {
-      new->conversion= ft_indexchr("sSpdDioOuUxXcC", 'S');
+      new->conversion= ft_indexchr("sSpdDioOuUxXcCb", 'S');
       S_conversion(new, arg);
       // new->index++;
   }

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/28 21:11:48 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 15:35:57 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	void		ft_display_string(t_print *new)
 	while (i < ft_strlen(new->string))
 	{
 		// printf("new->string[i]: %c\n",new->string[i]);
-		if ((new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'c')) &&
+		if ((new->conversion == ft_indexchr("sSpdDioOuUxXcCb", 'c')) &&
 			new->value_zero && new->string[i] == '0')
 			{
 				if ((new->zero && i == ft_strlen(new->string) - 1) ||
@@ -145,11 +145,15 @@ int		ft_printf(char *conversion, ...)
 			ft_manage_struc(arg, new);
 
 			// printf("new->string: *%s*\n",new->string);
-			// printf("conversion[i]: %c\n",conversion[i]);
+
 			if (conversion[new->index] == '%' && conversion[new->index + 1] == 'k')
 			{
+				// printf("conversion[new->index]: %c\n",conversion[new->index]);
+				if (conversion[new->index + 2] == 'G' && new->index++)
+					new->bold = 1;
 				ft_modify_color(arg, new);
 				new->index += 2;
+				// printf("conversion[new->index]: %c\n",conversion[new->index]);
 			}
 
 			if (new->len == -1)
@@ -165,6 +169,8 @@ int		ft_printf(char *conversion, ...)
 			i = new->index;
 
 		}
+		// printf("conversion[new->index]: %c\n",conversion[new->index]);
+
 			// printf("new->conversion: %d\n",new->conversion);
 
 		if (conversion[i] != '%')

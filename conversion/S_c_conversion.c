@@ -29,7 +29,10 @@ void				c_conversion(t_print *new, va_list arg)
   // char charac;
 
   	if (!ft_strcmp(new->flags, "l"))
-  		C_conversion(new, arg);
+	{
+		new->conversion = ft_indexchr("sSpdDioOuUxXcCb", 'C');
+		C_conversion(new, arg);
+	}
 	else
 	{
 		new->space = 0;

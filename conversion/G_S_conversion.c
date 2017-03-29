@@ -35,7 +35,15 @@ void				S_conversion(t_print *new, va_list arg)
 	{
 		//longueur
 		new->wstring = ft_wstrdup(argument);
-
+		// i = -1;
+		// while (new->wstring[++i])
+		// {
+		// 	if (MB_CUR_MAX <= 1 || new->wstring[i] > 255)
+		// 	{
+		// 		new->len = -1;
+		// 		return;
+		// 	}
+		// }
 	}
 	else
 		new->wstring = ft_wstrdup(L"(null)");

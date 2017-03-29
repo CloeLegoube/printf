@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:13:24 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/28 20:50:35 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 15:14:33 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ size_t		ft_wstrlen(const wchar_t *s);
 void			ft_putnbr_positif(unsigned int nb);
 char			*ft_itoa_positif(uintmax_t n);
 int					ft_strcut_unicode(int is_wstring, char *string, int size);
-char			*ft_strcat(char *s1, const char *s2);
+char			*ft_straddend(char *s1, const char *s2);
 // char			*ft_itoa_base(int nbr, char *base, int base_len, char *tab);
 // int				ft_atoi_base(char *str, char *base);
 

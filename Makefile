@@ -6,7 +6,7 @@
 #    By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/04 10:22:13 by clegoube          #+#    #+#              #
-#    Updated: 2017/03/28 20:58:01 by clegoube         ###   ########.fr        #
+#    Updated: 2017/03/29 18:10:05 by clegoube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
 		libft/ft_strrchr.c libft/ft_indexchr.c libft/ft_wstrlen.c \
 		libft/ft_wstrnew.c libft/ft_wstrcmp.c libft/ft_wstrsub.c \
 		libft/ft_strcut_unicode.c libft/ft_memset.c libft/ft_memcpy.c \
-		libft/ft_wmemset.c libft/ft_strcat.c
+		libft/ft_wmemset.c libft/ft_straddend.c
 
 CONVERSION 	= 	conversion/S_s_conversion.c conversion/G_S_conversion.c \
 				conversion/p_conversion.c conversion/S_d_conversion.c \
@@ -35,7 +35,7 @@ CONVERSION 	= 	conversion/S_s_conversion.c conversion/G_S_conversion.c \
 				conversion/S_u_conversion.c conversion/G_U_conversion.c \
 				conversion/S_x_conversion.c conversion/G_X_conversion.c \
 				conversion/S_c_conversion.c conversion/G_C_conversion.c \
-				conversion/no_conversion.c
+				conversion/S_b_conversion.c conversion/no_conversion.c
 
 MODIFICATION =	modify/ft_modify_length.c modify/ft_modify_htag.c \
 				modify/ft_modify_precision.c modify/ft_modify_sign_plus.c \

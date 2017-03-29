@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/28 20:48:17 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/29 15:23:04 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ enum conversion
 	X,
 	c,
 	C,
+	b,
 	Q = 42,
 };
 
@@ -88,6 +89,7 @@ typedef	struct	s_print
 	wchar_t			*wstring;
 	int				wbyte;
 	int				len;
+	int				bold;
 	int				index;
 	// int				start;
 	// int				end;
@@ -138,6 +140,7 @@ void				u_conversion(t_print*, va_list);
 void				U_conversion(t_print*, va_list);
 void				x_conversion(t_print*, va_list);
 void				X_conversion(t_print*, va_list);
+void				b_conversion(t_print*, va_list);
 void				no_conversion(t_print*, va_list);
 
 #endif

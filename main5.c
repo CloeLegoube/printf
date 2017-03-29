@@ -128,15 +128,16 @@ int 	main (void)
 
 
 	printf("\n\n/*****************************************************    TEST C S    *****************************************************/\n");
-	printf("%d\n", printf("PF |%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις"));
 	ft_printf("%d\n", ft_printf("FT |%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις"));
+	printf("%d\n", printf("PF |%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις"));
+
 
 	ft_printf("%d", ft_printf("\nFT |%#0 9lc|", L'ℜ'));
 	printf("%d", printf("\nPF |%#0 9lc|", L'ℜ'));
 
 	ft_printf("%d", ft_printf("\nFT |%9lc|", L'ℜ'));
 	printf("%d", printf("\nPF |%9lc|", L'ℜ'));
-	ft_printf("%d", ft_printf("\nPF |%#0 9S|\n", L"abℜba"));
+	ft_printf("%d", ft_printf("\nFT |%#0 9S|\n", L"abℜba"));
 	printf("%d", printf("\nPF |%#0 9S|\n", L"abℜba"));
 
 	// int			ret[16];

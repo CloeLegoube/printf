@@ -24,7 +24,7 @@ void				p_conversion(t_print *new, va_list arg)
   }
   else
   	new->htag_prefixe = ft_strdup("0x");
-  new->string = ft_strdup(ft_itobase(nb, "0123456789abcdef"));
+  new->string = ft_itobase(nb, "0123456789abcdef");
   // if (nb != 0)
   //   string = ft_strdup("0x");
   // else
@@ -34,7 +34,7 @@ void				p_conversion(t_print *new, va_list arg)
   modify_string(&string, new, (new->checkprecision), ft_modify_precision);
   //taille
   if (new->size)
-    string = ft_strdup(ft_modify_width(new->string, new));
+    string = ft_modify_width(new->string, new);
   else
   {
 	  string = ft_strjoin(new->htag_prefixe, new->string);

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:19:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/29 20:18:55 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/30 10:30:07 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,13 @@ static	void		ft_display_wstring(t_print *new)
 
 static	int		ft_display_last_string(char *conversion)
 {
+	char *string;
 	if (g_end < (int)ft_strlen(conversion))
 	{
-		ft_putstr(ft_strsub(conversion, g_end,ft_strlen(conversion)));
-		g_strlen += ft_strlen(ft_strsub(conversion, g_end,ft_strlen(conversion)));
+		string = ft_strsub(conversion, g_end,ft_strlen(conversion));
+		ft_putstr(string);
+		g_strlen += ft_strlen(string);
+		free(string);
 	}
 	return (g_strlen);
 }

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/29 18:15:05 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/30 10:53:32 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -611,15 +611,15 @@ int		main(void)
 	// ft_printf("Afiiche la couleur : %s%k et %c%k eteind la\n", "hello", rouge, 'A', magenta);
 	// // ft_printf("Afiiche la couleur : %s%k et eteind la\n", "hello", vert);
 	// ft_printf("Afiiche la couleur : %0+- #15.4s%koui\n", "hello", cyan);
-	ft_printf("Afiiche la couleur : %0+- #15.4soui\n", "hello");
+	// ft_printf("Afiiche la couleur : %0+- #15.4soui\n", "hello");
 	// //
 	// ft_printf("Afiiche en binaire : %15.6x%k\n", 34, rouge);
 	// ft_printf("Afiiche en binaire : %15.6b%kG\n", 34, magenta);
-
-	ft_printf("aa%%bb\n");
-	printf("aa%%bb\n");
-	ft_printf("Afiiche la couleur : %0+- #*.*soui\n", 15, 4, "hello");
-	printf("Afiiche la couleur : %0+- #*.*soui\n\n", 15, 4, "hello");
+	//
+	// ft_printf("aa%%bb\n");
+	// printf("aa%%bb\n");
+	// ft_printf("Afiiche la couleur : %0+- #*.*soui\n", 15, 4, "hello");
+	// printf("Afiiche la couleur : %0+- #*.*soui\n\n", 15, 4, "hello");
 	// ft_printf("{%10p}\n", 0);
 	// printf("{%10p}\n\n", 0);
 	//
@@ -666,6 +666,36 @@ int		main(void)
 	// ft_printf("%#9.0o\n", 482);
 	// printf("%#9.0o\n\n", 482);
 
+	ft_printf("\n");
+    ft_printf("%%\n");
+    ft_printf("%d\n", 42);
+    ft_printf("%d%d\n", 42, 41);
+    ft_printf("%d%d%d\n", 42, 43, 44);
+    ft_printf("%ld\n", 2147483647);
+    ft_printf("%lld\n", 9223372036854775807);
+    ft_printf("%x\n", 505);
+    ft_printf("%X\n", 505);
+    ft_printf("%p\n", &ft_printf);
+    ft_printf("%20.15d\n", 54321);
+    ft_printf("%-10d\n", 3);
+    ft_printf("% d\n", 3);
+    ft_printf("%+d\n", 3);
+    ft_printf("%010d\n", 1);
+    ft_printf("%hhd\n", 0);
+    ft_printf("%jd\n", 9223372036854775807);
+    ft_printf("%zd\n", 4294967295);
+    ft_printf("%\n");
+    ft_printf("%U\n", 4294967295);
+    ft_printf("%u\n", 4294967295);
+    ft_printf("%o\n", 40);
+    ft_printf("%%#08x\n", 42);
+    ft_printf("%x\n", 1000);
+    ft_printf("%#X\n", 1000);
+    ft_printf("%s\n", NULL);
+    ft_printf("%S\n", L"ݗݜशব");
+    ft_printf("%s%s\n", "test", "test");
+    ft_printf("%s%s%s\n", "test", "test", "test");
+    ft_printf("%C\n", 15000);
 
 	return (0);
 }

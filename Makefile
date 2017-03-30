@@ -6,7 +6,7 @@
 #    By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/04 10:22:13 by clegoube          #+#    #+#              #
-#    Updated: 2017/03/29 19:49:47 by clegoube         ###   ########.fr        #
+#    Updated: 2017/03/30 11:38:26 by clegoube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ GCCF = gcc
 FLAGS = -g
 # FLAGS = -Wall -Werror -Wextra -g
 NAME = libftprintf.a
-SRCLIB = main5.c ft_printf.c \
+SRCLIB = main4.c ft_printf.c \
 				ft_stock.c ft_manage_struc.c
 
 LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
@@ -26,7 +26,7 @@ LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
 		libft/ft_strrchr.c libft/ft_indexchr.c libft/ft_wstrlen.c \
 		libft/ft_wstrnew.c libft/ft_wstrcmp.c libft/ft_wstrsub.c \
 		libft/ft_strcut_unicode.c libft/ft_memset.c libft/ft_memcpy.c \
-		libft/ft_wmemset.c libft/ft_straddend.c
+		libft/ft_wmemset.c libft/ft_straddend.c libft/ft_bzero.c
 
 CONVERSION 	= 	conversion/S_s_conversion.c conversion/G_S_conversion.c \
 				conversion/p_conversion.c conversion/S_d_conversion.c \
@@ -75,7 +75,7 @@ re: fclean all
 .PHONY: all clean re fclean
 
 exec: re
-	@gcc -o printf main5.c libftprintf.a && ./printf
+	@gcc -o printf main4.c libftprintf.a && ./printf
 
 run: exec fclean
 

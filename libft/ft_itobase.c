@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:18:31 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/22 18:07:44 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/30 10:22:02 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ char	*ft_itobase(uintmax_t nbr, char *base)
 			tab[k++] = base[0 + temp[i]];
 		tab[k] = 0;
 	}
+	free(temp);
 	return (tab);
 }

@@ -1,97 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   g_s_conversion.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/30 17:45:13 by clegoube          #+#    #+#             */
+/*   Updated: 2017/03/30 18:35:06 by clegoube         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-void				S_conversion(t_print *new, va_list arg)
+static void		if_size(wchar_t *string, t_print *new)
 {
-  wchar_t *string;
-  wchar_t *argument;
-  // int i;
-
-  if (new->plus)
-    new->plus = 0;
-	// if (new->zero)
-		// new->zero = 0;
-	// if (new->precision == 0 && !ft_strcmp(new->flags, "l"))
-	//   new->precision = -1;
-  if (new->space)
-    new->space = 0;
-  if (!ft_strcmp(new->flags, "h"))
-  {
-      new->conversion= ft_indexchr("sSpdDioOuUxXcC", 's');
-      s_conversion(new, arg);
-  }
-  else
-  {
-    argument = va_arg(arg, wchar_t*);
-	// i = 0;
-	// while(argument[i])
-	// {
-	// 	if (MB_CUR_MAX <= 1 || argument[i++] >= 255)
-	// 	{
-	// 		new->len = -1;
-	// 	}
-	// }
-	if (argument !=  NULL)
+	if (new->size)
 	{
-		//longueur
-		new->wstring = ft_wstrdup(argument);
-		// i = -1;
-		// while (new->wstring[++i])
-		// {
-		// 	if (MB_CUR_MAX <= 1 || new->wstring[i] > 255)
-		// 	{
-		// 		new->len = -1;
-		// 		return;
-		// 	}
-		// }
+		modify_wstring(&string, new, (new->size), ft_modify_width);
+		new->string = ft_strdup((char *)new->wstring);
+		new->wstring = NULL;
+		free(new->wstring);
+	}
+}
+
+void			g_s_conversion(t_print *new, va_list arg)
+{
+	wchar_t *string;
+	wchar_t *argument;
+
+	new->plus = (new->plus) ? 0 : 0;
+	new->space = (new->space) ? 0 : 0;
+	if (!ft_strcmp(new->flags, "h"))
+	{
+		new->conversion = ft_indexchr("sSpdDioOuUxXcC", 's');
+		p_s_conversion(new, arg);
 	}
 	else
-		new->wstring = ft_wstrdup(L"(null)");
-		//precision
-		// printf("before:%S\n", new->wstring);
-		modify_wstring(&string, new, (new->checkprecision), ft_modify_precision);
-		// printf("after:%S\n", new->wstring);
-
-		//taille
-		// if (new->size)
-		// {
-		//   modify_wstring(&string, new, (new->size), ft_modify_width);
-		//   new->string = ft_strdup((char *)new->wstring);
-		//   free(new->wstring);
-		// }
-		// if (new->precision)
-		//   string = ft_wstrdup((wchar_t *)ft_modify_precision((char *)new->wstring, new));
-		// else
-		//   string = ft_wstrdup(new->wstring);
-		// free(new->wstring);
-		// new->wstring = ft_wstrdup(string);
-		// free(string);
-		//taille
-		// if (new->size)
-		//   string = ft_wstrdup((wchar_t *)ft_modify_width((char *)new->wstring, new));
-		// else
-		//   string = ft_wstrdup(new->wstring);
-		// free(new->wstring);
-		// new->wstring = ft_wstrdup(string);
-		// free(string);
-		if (new->size)
-		{
-		  modify_wstring(&string, new, (new->size), ft_modify_width);
-		  new->string = ft_strdup((char *)new->wstring);
-		  new->wstring = NULL;
-		  free(new->wstring);
-		}
-// printf("after2:%S\n", new->wstring);
-	if (new->wstring)
-		new->len = ft_strcut_unicode(1, (char *)new->wstring, ft_wstrlen(new->wstring));
-		// printf("after3:%S\n", new->wstring);
-	// printf("bytes: %d\n", ft_strcut_unicode(1, (char *)new->wstring, ft_wstrlen(new->wstring)));
-	// printf("ft_wstrlen: %zu", ft_wstrlen(new->wstring));
-
-    // printf("(char *)new->wstring: *%s* \n", (char *)new->wstring);
-    // printf("new->string : %s\n", new->string);
-    // printf("new->wstring : %S\n", new->wstring);
-    // write(1, new->wstring, new->size);
-
-  }
+	{
+		argument = va_arg(arg, wchar_t*);
+		new->wstring = (argument) ?
+			ft_wstrdup(argument) : ft_wstrdup(L"(null)");
+		modify_wstring(&string, new, (new->checkprecision),
+			ft_modify_precision);
+		if_size(string, new);
+		if (new->wstring)
+			new->len = ft_strcut_unicode(1, (char *)new->wstring,
+			ft_wstrlen(new->wstring));
+	}
 }

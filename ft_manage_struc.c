@@ -6,13 +6,13 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/29 19:08:16 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/30 19:10:13 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_initialize_struct(t_print *new)
+void		ft_initialize_struct(t_print *new)
 {
 	new->conversion = 42;
 	new->htag = 0;
@@ -40,37 +40,34 @@ void	ft_initialize_struct(t_print *new)
 	new->next = NULL;
 }
 
-void	ft_manage_struc(va_list arg, t_print *new)
+void		ft_manage_struc(va_list arg, t_print *new)
 {
-	g_f[s] = s_conversion;
-	g_f[S] = S_conversion;
-	g_f[p] = p_conversion;
-	g_f[d] = d_conversion;
-	g_f[D] = D_conversion;
-	g_f[i] = i_conversion;
-	g_f[o] = o_conversion;
-	g_f[O] = O_conversion;
-	g_f[u] = u_conversion;
-	g_f[U] = U_conversion;
-	g_f[x] = x_conversion;
-	g_f[X] = X_conversion;
-	g_f[c] = c_conversion;
-	g_f[C] = C_conversion;
-	g_f[b] = b_conversion;
+	g_f[s] = p_s_conversion;
+	g_f[S] = g_s_conversion;
+	g_f[p] = p_p_conversion;
+	g_f[d] = p_d_conversion;
+	g_f[D] = g_d_conversion;
+	g_f[i] = p_i_conversion;
+	g_f[o] = p_o_conversion;
+	g_f[O] = g_o_conversion;
+	g_f[u] = p_u_conversion;
+	g_f[U] = g_u_conversion;
+	g_f[x] = p_x_conversion;
+	g_f[X] = g_x_conversion;
+	g_f[c] = p_c_conversion;
+	g_f[C] = g_c_conversion;
+	g_f[b] = p_b_conversion;
 	g_f[Q] = no_conversion;
 	g_f[new->conversion](new, arg);
-	// if (!new->size && new->string)
-	// 	new->size = ft_strlen(new->string);
-	// else if (!new->size && new->wstring)
-	// 	new->size = ft_strcut_unicode(1, (char *)new->wstring, ft_strlen((char *)new->wstring));
 }
 
-void		ft_manage_conversion(char *conversion, t_print	*new, va_list arg)
+void		ft_manage_conversion(char *conversion, t_print *new, va_list arg)
 {
 	int len_conversion;
 
 	len_conversion = ft_strlen(conversion);
-	while (new->index < len_conversion && !ft_strchr("sSpdDioOuUxXcCbn%", conversion[new->index]))
+	while (new->index < len_conversion && !ft_strchr("sSpdDioOuUxXcCbn%",
+		conversion[new->index]))
 	{
 		if (!ft_strchr("#+-*0123456789 .hljz%", conversion[new->index]))
 		{
@@ -78,47 +75,11 @@ void		ft_manage_conversion(char *conversion, t_print	*new, va_list arg)
 			return ;
 		}
 		if (ft_strchr("#+-0 .", conversion[new->index]))
-			ft_stock_attributes(new,conversion, arg);
-		// printf("conversion1 :%c\n", conversion[new->index]);
-		ft_stock_size(new,conversion, arg);
-		// printf("conversion2 :%c\n", conversion[new->index]);
+			ft_stock_attributes(new, conversion, arg);
+		ft_stock_size(new, conversion, arg);
 		if (!new->checkprecision)
 			ft_stock_precision(new, conversion, arg);
-		// printf("conversion3 :%c\n", conversion[new->index]);
 		ft_stock_flags(new, conversion);
-		// i++;
-
-		// printf("ici, %d => %c\n", new->index, conversion[new->index] );
 	}
-	// printf("*****conversion :%c\n", conversion[new->index]);
-
-	if (new->index < len_conversion && ft_strchr("%", conversion[new->index])
-		&& new->index++)
-	{
-
-			new->conversion = ft_indexchr("sSpdDioOuUxXcCb", 'c');
-			new->percentage = 1;
-	}
-	else if (new->index < len_conversion && ft_strchr("sSpdDioOuUxXcCb", conversion[new->index]))
-	{
-			// printf("sSpdDioOuUxXcC :%d\n\n", new->index);
-			new->conversion = ft_indexchr("sSpdDioOuUxXcCb", conversion[new->index++]);
-	}
-
-	//
-	//
-	// printf("\nconversion :%i\n", new->conversion);
-	// printf("htag :%d\n", new->htag);
-	// printf("plus :%d\n", new->plus);
-	// printf("less :%d\n", new->less);
-	// printf("space :%d\n", new->space);
-	// printf("zero :%d\n", new->zero);
-	// printf("size :%d\n", new->size);
-	// printf("precision :%d\n", new->precision);
-	// printf("checkprecision :%d\n", new->checkprecision);
-	// printf("flags :%s\n", new->flags);
-	// printf("percentage :%d\n", new->percentage);
-	// printf("new->index :%d\n\n", new->index);
-
-
+	ft_stock_conversion(new, conversion, len_conversion);
 }

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/29 15:23:04 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/30 19:18:17 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,89 +91,51 @@ typedef	struct	s_print
 	int				len;
 	int				bold;
 	int				index;
-	// int				start;
-	// int				end;
 	struct		s_print *next;
 }				t_print;
 
 int				g_strlen;
 int				g_start;
 int				g_end;
-
-
 int				ft_printf(char *format, ...);
 void			ft_initialize_struct(t_print *new);
 void			ft_manage_conversion(char *conversion, t_print *new, va_list arg);
 void			ft_manage_struc(va_list arg, t_print *new);
-
 void			ft_stock_attributes(t_print *new, char *conversion, va_list arg);
 void			ft_stock_size(t_print *new, char *conversion, va_list arg);
 void			ft_stock_precision(t_print *new, char *conversion, va_list arg);
 void			ft_stock_flags(t_print *new, char *conversion);
-
+void			ft_stock_conversion(t_print *new, char *conversion, int len_conversion);
 char			*ft_modify_htag(va_list arg, t_print *new, char *base);
 intmax_t		ft_modify_length_di(va_list arg, t_print *new);
-uintmax_t		ft_modify_length_uoxX(va_list arg, t_print *new);
+uintmax_t		ft_modify_length_uoxx(va_list arg, t_print *new);
 char			ft_modify_length_c(va_list arg, t_print *new);
 char			*ft_modify_precision(char *string, t_print *new);
 char			*ft_modify_sign(char *string, t_print *new);
 char			*ft_modify_space(char *string, t_print *new);
 char			*ft_modify_width(char *string, t_print *new);
 void			ft_modify_color(va_list arg, t_print *new);
-
 void			modify_string(char **string, t_print *new, int yes, char *(*f)(char *, t_print *));
 void			modify_wstring(wchar_t **string, t_print *new, int yes, char *(*f)(char *, t_print *));
-
-
-void				(*g_f[101])(t_print*, va_list);
-void				c_conversion(t_print*, va_list);
-void				C_conversion(t_print*, va_list);
-void				d_conversion(t_print*, va_list);
-void				D_conversion(t_print*, va_list);
-void				i_conversion(t_print*, va_list);
-void				o_conversion(t_print*, va_list);
-void				O_conversion(t_print*, va_list);
-void				p_conversion(t_print*, va_list);
-void				s_conversion(t_print*, va_list);
-void				S_conversion(t_print*, va_list);
-void				u_conversion(t_print*, va_list);
-void				U_conversion(t_print*, va_list);
-void				x_conversion(t_print*, va_list);
-void				X_conversion(t_print*, va_list);
-void				b_conversion(t_print*, va_list);
-void				no_conversion(t_print*, va_list);
+int				ft_display_last_string(char *conversion);
+void			ft_display_wstring(t_print *new);
+void			ft_display_string(t_print *new);
+void			(*g_f[101])(t_print*, va_list);
+void			p_c_conversion(t_print *new, va_list arg);
+void			g_c_conversion(t_print *new, va_list arg);
+void			p_d_conversion(t_print *new, va_list arg);
+void			g_d_conversion(t_print *new, va_list arg);
+void			p_i_conversion(t_print *new, va_list arg);
+void			p_o_conversion(t_print *new, va_list arg);
+void			g_o_conversion(t_print *new, va_list arg);
+void			p_p_conversion(t_print *new, va_list arg);
+void			p_s_conversion(t_print *new, va_list arg);
+void			g_s_conversion(t_print *new, va_list arg);
+void			p_u_conversion(t_print *new, va_list arg);
+void			g_u_conversion(t_print *new, va_list arg);
+void			p_x_conversion(t_print *new, va_list arg);
+void			g_x_conversion(t_print *new, va_list arg);
+void			p_b_conversion(t_print *new, va_list arg);
+void			no_conversion(t_print *new, va_list arg);
 
 #endif
-
-
-//
-// typedef	struct	s_var
-// {
-// 	int 			i;
-// 	int 			j;
-// 	int				a;
-// 	int				b;
-// }				t_var;
-
-// int				ft_atoi(const char *str);
-// int				ft_isalpha(int c);
-// int				ft_isdigit(int c);
-// int				ft_isalnum(int c);
-// int				ft_isascii(int c);
-// void			ft_putchar(char c);
-// void			ft_putstr(char const *s);
-// void			ft_putendl(char const *s);
-// void			ft_putnbr(int n);
-// void			ft_putchar_fd(char c, int fd);
-// void			ft_putstr_fd(char const *s, int fd);
-// void			ft_putendl_fd(char const *s, int fd);
-// void			ft_putnbr_fd(int n, int fd);
-// size_t		ft_strlen(const char *s);
-// int				ft_strcmp(const char *s1, const char *s2);
-// char			*ft_strnew(size_t size);
-// char			*ft_strdup(const char *s1);
-// char			*ft_strsub(char const *s, unsigned int start, size_t len);
-// char			*ft_strjoin(char const *s1, char const *s2);
-// char			*ft_strchr(const char *s, int c);
-// char			*ft_strrchr(const char *s, int c);
-// char			*ft_itoa(intmax_t n);

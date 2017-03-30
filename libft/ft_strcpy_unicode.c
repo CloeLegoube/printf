@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   no_conversion.c                                    :+:      :+:    :+:   */
+/*   ft_strcpy_unicode.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/30 17:45:47 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 18:35:50 by clegoube         ###   ########.fr       */
+/*   Created: 2016/11/08 15:21:28 by clegoube          #+#    #+#             */
+/*   Updated: 2017/03/30 16:04:52 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-void		no_conversion(t_print *new, va_list arg)
+char 	*ft_strcpy_unicode(int is_wstring, char *dest, const char *source)
 {
-	char *string;
+	int		i;
+	int		byte_count;
 
-	new->space = (new->space) ? 0 : 0;
-	if (new->string == NULL)
-		new->string = ft_strdup("");
-	arg = NULL;
-	modify_string(&string, new, (new->checkprecision && !new->htag),
-			ft_modify_precision);
-	modify_string(&string, new, (new->size), ft_modify_width);
-	modify_string(&string, new, (new->space), ft_modify_space);
-	modify_string(&string, new, (new->plus), ft_modify_sign);
+	i = -1;
+	byte_count = 0;
+	if (is_wstring)
+	{
+		while (((wchar_t *)source)[++i])
+			byte_count += ft_wchar((wchar_t *)(dest + byte_count), ((wchar_t *)source)[i]);
+		*((wchar_t *)dest + byte_count) = 0;
+	}
+	else
+	{
+		while (source[++i])
+			dest[i] = source[i];
+		*(dest + i) = 0;
+	}
+	return (dest);
 }

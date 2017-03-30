@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:13:24 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/29 15:14:33 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/30 16:05:09 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,22 +100,24 @@ int				ft_str_is_uppercase(char *str);
 //News functions --> printf
 char			*ft_itobase(uintmax_t nbr, char *base);
 void			ft_putwchar(wchar_t C);
-wchar_t		*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len);
+wchar_t			*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len);
 char			*ft_strchrstr(const char *s, char *c);
 int				ft_indexchr(const char *s, int c);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memset(void *b, int c, size_t len);
 void			*ft_wmemset(void *b, int c, size_t len);
-wchar_t		*ft_wstrnew(size_t size);
+wchar_t			*ft_wstrnew(size_t size);
 char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
 void			ft_putwstr(wchar_t *s);
-wchar_t		*ft_wstrdup(wchar_t *s1);
+wchar_t			*ft_wstrdup(wchar_t *s1);
 int				ft_wstrcmp(wchar_t *s1, wchar_t *s2);
-size_t		ft_wstrlen(const wchar_t *s);
+size_t			ft_wstrlen(const wchar_t *s);
 void			ft_putnbr_positif(unsigned int nb);
 char			*ft_itoa_positif(uintmax_t n);
 int					ft_strcut_unicode(int is_wstring, char *string, int size);
+int				ft_wchar(wchar_t *dest, wchar_t C);
 char			*ft_straddend(char *s1, const char *s2);
+char 			*ft_strcpy_unicode(int is_wstring, char *dest, const char *source);
 // char			*ft_itoa_base(int nbr, char *base, int base_len, char *tab);
 // int				ft_atoi_base(char *str, char *base);
 

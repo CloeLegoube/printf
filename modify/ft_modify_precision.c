@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:41:27 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 11:03:03 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/30 18:47:16 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static int			ft_strcut_wunicode(char *string, int size)
 	bytes = 0;
 	while (bytes <= size && ((wchar_t *)string)[count])
 	{
-		// printf("string:hello" );
 		if (((wchar_t *)string)[count] <= 127)
 			bytes += 1;
 		else if (((wchar_t *)string)[count] <= 2047)
@@ -35,38 +34,44 @@ static int			ft_strcut_wunicode(char *string, int size)
 	}
 	((wchar_t *)string)[count] = 0;
 	return (bytes);
-	// printf("unicode string2: *%S* \n", (wchar_t *)string);
 }
 
-char		*ft_modify_precision(char *string, t_print *new)
+static int			no_htag_no_given_precision(char *string, t_print *new)
 {
-	// printf("(char *)string: %s", (char *)string );
-	// printf("(char *)string: %s", new->string );
+	int		is_wstring;
+	int		is_string;
+	int		(*cmp)(void *, void *);
+
+	is_wstring = (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'S'));
+	is_string = (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 's'));
+	cmp = is_wstring ? (int (*)(void *, void *))ft_wstrcmp :
+		(int (*)(void *, void *))ft_strcmp;
+	if (!new->htag && new->checkprecision &&
+		(-1 == new->precision || 0 == new->precision))
+	{
+		if (!cmp(string, "0") || !cmp(string, ""))
+			return (1);
+		new->precision = (!is_wstring && !is_string);
+	}
+	return (0);
+}
+
+char				*ft_modify_precision(char *string, t_print *new)
+{
 	void	*result;
 	void	*tmp;
 	int		bytes;
 	int		is_wstring;
 	int		is_string;
-	int		(*cmp)(void *, void *);
-	// printf("wstring1:*%s*\n", new->wstring);
+
 	is_wstring = (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'S'));
 	is_string = (new->conversion == ft_indexchr("sSpdDioOuUxXcC", 's'));
-	cmp = is_wstring ? (int (*)(void *, void *))ft_wstrcmp : (int (*)(void *, void *))ft_strcmp;
-	if (!new->htag && new->checkprecision && (-1 == new->precision || 0 == new->precision))
-	{
-		// printf("string: %s", string );
-		if (!cmp(string, "0") || !cmp(string, ""))
-			return ((char *)ft_wstrnew(0));
-		new->precision = (!is_wstring && !is_string);
-	}
+	if (no_htag_no_given_precision(string, new))
+		return ((char *)ft_wstrnew(0));
 	if (is_wstring)
 		ft_strcut_wunicode(string, new->precision);
-	bytes = (!is_wstring && !is_string) ? (int)ft_strlen(string) : ft_strcut_unicode(is_wstring, string, new->precision);
-	// printf("bytes: %d\n", bytes );
-	// printf("precision: %d\n", new->precision );
-	// printf("string: %s", string );
-	// printf("string: %s\n", string );
-	// printf("new->precision - bytes: %d\n", new->precision - bytes);
+	bytes = (!is_wstring && !is_string) ? (int)ft_strlen(string) :
+			ft_strcut_unicode(is_wstring, string, new->precision);
 	if (!is_wstring && !is_string && (new->precision - bytes) > 0)
 	{
 		result = ft_strnew(new->precision);
@@ -75,13 +80,5 @@ char		*ft_modify_precision(char *string, t_print *new)
 		string = result;
 		free(result);
 	}
-	// if (new->htag && new->conversion == ft_indexchr("sSpdDioOuUxXcC", 'o'))
-	// {
-	// 	result = ft_strjoin(new->htag_prefixe, string);
-	// 	// free(string);
-	// 	string = result;
-	// }
-
-	// printf("wstring2:*%s*\n", new->wstring);
 	return ((char *)string);
 }

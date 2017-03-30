@@ -8,7 +8,7 @@ int 	main (void)
 	char c = 'r';
 	char *str = "dede";
 	int 	nbr = 4444444;
-	// setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "");
 	wchar_t myChar1 = L'Ω';
 
 	printf("/*******************************************************   TEST D d i   ***************************************************/\n");

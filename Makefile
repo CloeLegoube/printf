@@ -6,7 +6,7 @@
 #    By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/04 10:22:13 by clegoube          #+#    #+#              #
-#    Updated: 2017/03/30 11:38:26 by clegoube         ###   ########.fr        #
+#    Updated: 2017/03/30 18:15:24 by clegoube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ GCCF = gcc
 FLAGS = -g
 # FLAGS = -Wall -Werror -Wextra -g
 NAME = libftprintf.a
-SRCLIB = main4.c ft_printf.c \
+SRCLIB = main5.c ft_printf.c ft_display.c\
 				ft_stock.c ft_manage_struc.c
 
 LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
@@ -26,16 +26,17 @@ LIBFT = libft/ft_atoi.c libft/ft_itobase.c libft/ft_putwstr.c \
 		libft/ft_strrchr.c libft/ft_indexchr.c libft/ft_wstrlen.c \
 		libft/ft_wstrnew.c libft/ft_wstrcmp.c libft/ft_wstrsub.c \
 		libft/ft_strcut_unicode.c libft/ft_memset.c libft/ft_memcpy.c \
-		libft/ft_wmemset.c libft/ft_straddend.c libft/ft_bzero.c
+		libft/ft_wmemset.c libft/ft_straddend.c libft/ft_bzero.c \
+		libft/ft_wchar.c libft/ft_strcpy_unicode.c
 
-CONVERSION 	= 	conversion/S_s_conversion.c conversion/G_S_conversion.c \
-				conversion/p_conversion.c conversion/S_d_conversion.c \
-				conversion/G_D_conversion.c conversion/S_i_conversion.c \
-				conversion/S_o_conversion.c conversion/G_O_conversion.c \
-				conversion/S_u_conversion.c conversion/G_U_conversion.c \
-				conversion/S_x_conversion.c conversion/G_X_conversion.c \
-				conversion/S_c_conversion.c conversion/G_C_conversion.c \
-				conversion/S_b_conversion.c conversion/no_conversion.c
+CONVERSION 	= 	conversion/p_s_conversion.c conversion/g_s_conversion.c \
+				conversion/p_p_conversion.c conversion/p_d_conversion.c \
+				conversion/g_d_conversion.c conversion/p_i_conversion.c \
+				conversion/p_o_conversion.c conversion/g_o_conversion.c \
+				conversion/p_u_conversion.c conversion/g_u_conversion.c \
+				conversion/p_x_conversion.c conversion/g_x_conversion.c \
+				conversion/p_c_conversion.c conversion/g_c_conversion.c \
+				conversion/p_b_conversion.c conversion/no_conversion.c
 
 MODIFICATION =	modify/ft_modify_length.c modify/ft_modify_htag.c \
 				modify/ft_modify_precision.c modify/ft_modify_sign_plus.c \
@@ -75,7 +76,7 @@ re: fclean all
 .PHONY: all clean re fclean
 
 exec: re
-	@gcc -o printf main4.c libftprintf.a && ./printf
+	@gcc -o printf main5.c libftprintf.a && ./printf
 
 run: exec fclean
 

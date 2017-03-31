@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:46:02 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 12:25:03 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 17:55:12 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	p_p_conversion(t_print *new, va_list arg)
 	string = NULL;
 	if (nb == 0 && !new->checkprecision)
 		new->value_zero = 1;
+	free(new->htag_prefixe);
 	if (nb == 0 && !new->checkprecision)
 		new->htag_prefixe = ft_strdup("0x0");
 	else
@@ -34,9 +35,10 @@ void	p_p_conversion(t_print *new, va_list arg)
 	else
 	{
 		string = ft_strjoin(new->htag_prefixe, new->string);
-		free(new->htag_prefixe);
+		// free(new->htag_prefixe);
 	}
 	free(new->string);
 	new->string = ft_strdup(string);
 	free(string);
+	free(new->htag_prefixe);
 }

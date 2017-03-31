@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:47:14 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 12:25:05 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 18:19:59 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void		p_s_conversion(t_print *new, va_list arg)
 		new->string = (!argument) ? ft_strdup("(null)") : ft_strdup(argument);
 		modify_string(new, (new->checkprecision), ft_modify_precision);
 		modify_string(new, (new->size), ft_modify_width);
+		free(new->htag_prefixe);
 	}
 }

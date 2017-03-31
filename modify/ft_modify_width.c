@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 11:33:57 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 18:01:31 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		if_p_conversion(t_print *new, char **string, int *i,
 		new->size -= ft_strlen(new->htag_prefixe);
 		*i = ft_strlen(new->htag_prefixe);
 		free(new->htag_prefixe);
-		new->htag_prefixe = "no";
+		new->htag_prefixe = ft_strdup("no");
 		if (new->value_zero && new->zero)
 		{
 			free(*string);
@@ -52,12 +52,13 @@ static void		add_suffixe(t_print *new, char **result, int byte_len,
 			ft_strcpy_unicode(is_wstring, (*result) + new->size - byte_len,
 				new->htag_prefixe);
 			if (!new->value_zero)
-				(*result) = (*result) + ft_strlen(new->htag_prefixe);
+			 	(*result) = (*result) + ft_strlen(new->htag_prefixe);
 		}
 		else
 			ft_strcpy_unicode(is_wstring, (*result) + (new->size - byte_len -
 					ft_strlen(new->htag_prefixe)), new->htag_prefixe);
 		free(new->htag_prefixe);
+		new->htag_prefixe = ft_strdup("no");
 	}
 }
 
@@ -126,7 +127,7 @@ char			*ft_modify_width(char *string, t_print *new)
 		if (!new->zero)
 		{
 			free(new->htag_prefixe);
-			new->htag_prefixe = "no";
+			new->htag_prefixe = ft_strdup("no");
 		}
 	}
 	len_string = is_wstring ? ft_wstrlen((wchar_t *)string) : ft_strlen(string);

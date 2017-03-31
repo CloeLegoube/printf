@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:45:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 12:11:34 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 18:25:53 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void			g_s_conversion(t_print *new, va_list arg)
 		if (new->wstring)
 			new->len = ft_strcut_unicode(1, (char *)new->wstring,
 			ft_wstrlen(new->wstring));
+		free(new->htag_prefixe);
 	}
 }

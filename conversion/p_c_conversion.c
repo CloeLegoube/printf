@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:46:30 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 12:24:52 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 18:02:56 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void			p_c_conversion(t_print *new, va_list arg)
 		free(new->string);
 		new->string = ft_strdup(string);
 		free(string);
+		free(new->htag_prefixe);
 	}
 }

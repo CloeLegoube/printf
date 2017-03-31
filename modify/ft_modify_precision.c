@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:41:27 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 11:33:34 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 17:36:13 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,10 @@ char				*ft_modify_precision(char *string, t_print *new)
 		result = ft_strnew(new->precision);
 		ft_memset(result, '0', new->precision - bytes);
 		ft_memcpy(result + new->precision - bytes, string, bytes);
-		string = result;
-		free(result);
+		// string = result;
+		return ((char *)result);
+		// free(result);
 	}
 	new->safe = 1;
-	return ((char *)string);
+	return (ft_strdup((char *)string));
 }

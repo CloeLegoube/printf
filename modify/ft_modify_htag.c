@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 11:32:57 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 18:00:08 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void		init_htag_prefixe(t_print *new, char *string)
 {
 	if (new->value_zero)
 	{
+		free(new->htag_prefixe);
 		if (new->conversion == ft_indexchr("sSpdDioOuUxXcCb", 'o')
 			&& !new->precision)
 			new->htag_prefixe = ft_strdup("");
@@ -24,7 +25,11 @@ static void		init_htag_prefixe(t_print *new, char *string)
 	}
 	else if (new->conversion == ft_indexchr("sSpdDioOuUxXcCb", 'o') &&
 			new->checkprecision && new->precision < ft_strlen(string))
-		new->htag_prefixe = ft_strdup("0");
+			{
+				free(new->htag_prefixe);
+				new->htag_prefixe = ft_strdup("0");
+			}
+
 }
 
 static void		add_zero_before_if_zero(t_print *new, char **string)
@@ -58,7 +63,7 @@ static void		add_htag_prefixe(t_print *new, char **string)
 		free(new->htag_prefixe);
 		*string = ft_strdup(tmp);
 		free(tmp);
-		new->htag_prefixe = "no";
+		new->htag_prefixe = ft_strdup("no");
 	}
 }
 

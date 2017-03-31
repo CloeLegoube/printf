@@ -35,5 +35,7 @@ int main(void)
   ft_printf("%s%s\n", "test", "test");
   ft_printf("%s%s%s\n", "test", "test", "test");
   ft_printf("%C\n", 15000);
+  ft_printf("%ls, %ls", L"暖炉", L"لحم خنزير");
+  ft_printf("%4.15S", L"我是一只猫。");
   return (0);
 }

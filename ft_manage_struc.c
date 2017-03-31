@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 11:26:40 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 17:53:28 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_initialize_struct(t_print *new)
 {
 	new->conversion = 42;
 	new->htag = 0;
-	new->htag_prefixe = "no";
+	new->htag_prefixe = ft_strdup("no");
 	new->plus = 0;
 	new->less = 0;
 	new->percentage = 0;

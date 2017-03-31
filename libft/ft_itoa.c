@@ -6,13 +6,13 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 12:53:46 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/30 18:52:02 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 09:59:51 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static int	ft_length_number(intmax_t nb)
+static int		ft_length_number(intmax_t nb)
 {
 	int			i;
 
@@ -55,6 +55,5 @@ char			*ft_itoa(intmax_t n)
 		string[i--] = (nb % 10) + '0';
 		nb = nb / 10;
 	}
-
 	return (string);
 }

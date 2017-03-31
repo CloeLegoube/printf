@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clegoube <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:20:30 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/04 10:20:33 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 09:57:03 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,11 @@ int		ft_atoi_base(char *str, char *base)
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int		nb;
-	// int		i;
 	char	*tab;
 	int		base_len;
 
 	base_len = 0;
 	tab = (char*)malloc(256 * sizeof(char));
-	// i = 0;
 	nb = ft_atoi_base(nbr, base_from);
 	return (ft_itoa_base(nb, base_to, base_len, tab));
 }

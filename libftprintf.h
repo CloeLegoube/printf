@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 19:18:17 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 10:56:00 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,20 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-
 # include <string.h>
 # include <stdlib.h>
-
-#include <stdarg.h>
-
+# include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <ctype.h>
 # include <wctype.h>
 # include <strings.h>
-
 # include <limits.h>
 # include <locale.h>
 # include <stdint.h>
 # include "libft/libft.h"
 
-enum conversion
+enum				e_conversion
 {
 	s,
 	S,
@@ -53,7 +49,7 @@ enum conversion
 	Q = 42,
 };
 
-enum couleur
+enum				e_couleur
 {
 	eoc,
 	noir = 30,
@@ -66,9 +62,9 @@ enum couleur
 	blanc,
 };
 
-typedef	struct	s_print
+typedef struct		s_print
 {
-	int 			conversion;
+	int				conversion;
 	int				htag;
 	int				wildcard;
 	char			*htag_prefixe;
@@ -91,51 +87,57 @@ typedef	struct	s_print
 	int				len;
 	int				bold;
 	int				index;
-	struct		s_print *next;
-}				t_print;
+	struct s_print	*next;
+}					t_print;
 
-int				g_strlen;
-int				g_start;
-int				g_end;
-int				ft_printf(char *format, ...);
-void			ft_initialize_struct(t_print *new);
-void			ft_manage_conversion(char *conversion, t_print *new, va_list arg);
-void			ft_manage_struc(va_list arg, t_print *new);
-void			ft_stock_attributes(t_print *new, char *conversion, va_list arg);
-void			ft_stock_size(t_print *new, char *conversion, va_list arg);
-void			ft_stock_precision(t_print *new, char *conversion, va_list arg);
-void			ft_stock_flags(t_print *new, char *conversion);
-void			ft_stock_conversion(t_print *new, char *conversion, int len_conversion);
-char			*ft_modify_htag(va_list arg, t_print *new, char *base);
-intmax_t		ft_modify_length_di(va_list arg, t_print *new);
-uintmax_t		ft_modify_length_uoxx(va_list arg, t_print *new);
-char			ft_modify_length_c(va_list arg, t_print *new);
-char			*ft_modify_precision(char *string, t_print *new);
-char			*ft_modify_sign(char *string, t_print *new);
-char			*ft_modify_space(char *string, t_print *new);
-char			*ft_modify_width(char *string, t_print *new);
-void			ft_modify_color(va_list arg, t_print *new);
-void			modify_string(char **string, t_print *new, int yes, char *(*f)(char *, t_print *));
-void			modify_wstring(wchar_t **string, t_print *new, int yes, char *(*f)(char *, t_print *));
-int				ft_display_last_string(char *conversion);
-void			ft_display_wstring(t_print *new);
-void			ft_display_string(t_print *new);
-void			(*g_f[101])(t_print*, va_list);
-void			p_c_conversion(t_print *new, va_list arg);
-void			g_c_conversion(t_print *new, va_list arg);
-void			p_d_conversion(t_print *new, va_list arg);
-void			g_d_conversion(t_print *new, va_list arg);
-void			p_i_conversion(t_print *new, va_list arg);
-void			p_o_conversion(t_print *new, va_list arg);
-void			g_o_conversion(t_print *new, va_list arg);
-void			p_p_conversion(t_print *new, va_list arg);
-void			p_s_conversion(t_print *new, va_list arg);
-void			g_s_conversion(t_print *new, va_list arg);
-void			p_u_conversion(t_print *new, va_list arg);
-void			g_u_conversion(t_print *new, va_list arg);
-void			p_x_conversion(t_print *new, va_list arg);
-void			g_x_conversion(t_print *new, va_list arg);
-void			p_b_conversion(t_print *new, va_list arg);
-void			no_conversion(t_print *new, va_list arg);
+int					g_strlen;
+int					g_start;
+int					g_end;
+int					ft_printf(char *format, ...);
+void				ft_initialize_struct(t_print *new);
+void				ft_manage_conversion(char *conversion, t_print *new,
+					va_list arg);
+void				ft_manage_struc(va_list arg, t_print *new);
+void				ft_stock_attributes(t_print *new, char *conversion,
+					va_list arg);
+void				ft_stock_size(t_print *new, char *conversion, va_list arg);
+void				ft_stock_precision(t_print *new, char *conversion,
+					va_list arg);
+void				ft_stock_flags(t_print *new, char *conversion);
+void				ft_stock_conversion(t_print *new, char *conversion,
+					int len_conversion);
+char				*ft_modify_htag(va_list arg, t_print *new, char *base);
+intmax_t			ft_modify_length_di(va_list arg, t_print *new);
+uintmax_t			ft_modify_length_uoxx(va_list arg, t_print *new);
+char				ft_modify_length_c(va_list arg, t_print *new);
+char				*ft_modify_precision(char *string, t_print *new);
+char				*ft_modify_sign(char *string, t_print *new);
+char				*ft_modify_space(char *string, t_print *new);
+char				*ft_modify_width(char *string, t_print *new);
+void				ft_modify_color(va_list arg, t_print *new);
+void				modify_string(char **string, t_print *new, int yes,
+					char *(*f)(char *, t_print *));
+void				modify_wstring(wchar_t **string, t_print *new, int yes,
+					char *(*f)(char *, t_print *));
+int					ft_display_last_string(char *conversion);
+void				ft_display_wstring(t_print *new);
+void				ft_display_string(t_print *new);
+void				(*g_f[101])(t_print*, va_list);
+void				p_c_conversion(t_print *new, va_list arg);
+void				g_c_conversion(t_print *new, va_list arg);
+void				p_d_conversion(t_print *new, va_list arg);
+void				g_d_conversion(t_print *new, va_list arg);
+void				p_i_conversion(t_print *new, va_list arg);
+void				p_o_conversion(t_print *new, va_list arg);
+void				g_o_conversion(t_print *new, va_list arg);
+void				p_p_conversion(t_print *new, va_list arg);
+void				p_s_conversion(t_print *new, va_list arg);
+void				g_s_conversion(t_print *new, va_list arg);
+void				p_u_conversion(t_print *new, va_list arg);
+void				g_u_conversion(t_print *new, va_list arg);
+void				p_x_conversion(t_print *new, va_list arg);
+void				g_x_conversion(t_print *new, va_list arg);
+void				p_b_conversion(t_print *new, va_list arg);
+void				no_conversion(t_print *new, va_list arg);
 
 #endif

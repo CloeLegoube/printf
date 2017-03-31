@@ -3,48 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_binary.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clegoube <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/06 12:11:45 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 17:51:55 by clegoube         ###   ########.fr       */
+/*   Created: 2017/03/31 09:56:05 by clegoube          #+#    #+#             */
+/*   Updated: 2017/03/31 09:56:09 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-void	ft_binary(wchar_t C)
+static void		ft_binary2(void)
 {
 	char ctest;
 
-	if (C <= 127)
+	ctest = 0xe2;
+	write(1, &ctest, 1);
+	ctest = 0x98;
+	write(1, &ctest, 1);
+	ctest = 0x82;
+	write(1, &ctest, 1);
+	ctest = 0x82;
+	write(1, &ctest, 1);
+}
+
+void			ft_binary(wchar_t c)
+{
+	char ctest;
+
+	if (c <= 127)
+		ft_putchar(c);
+	else if (c <= 2047)
 	{
-		ft_putchar(C);
-	}
-	else if (C <= 2047)
-	{
-		ctest = (C >> 6) + 0x80;
+		ctest = (c >> 6) + 0x80;
 		write(1, &ctest, 1);
 		ctest = 0x82;
 		write(1, &ctest, 1);
 	}
-	else if (C <= 65535)
+	else if (c <= 65535)
 	{
-		ctest = (C >> 6) + 0x80;
+		ctest = (c >> 6) + 0x80;
 		write(1, &ctest, 1);
 		ctest = 0x98;
 		write(1, &ctest, 1);
 		ctest = 0x82;
 		write(1, &ctest, 1);
 	}
-	else if (C <= 2097151)
+	else if (c <= 2097151)
 	{
-		ctest = 0xe2;
-		write(1, &ctest, 1);
-		ctest = 0x98;
-		write(1, &ctest, 1);
-		ctest = 0x82;
-		write(1, &ctest, 1);
-		ctest = 0x82;
-		write(1, &ctest, 1);
+		ft_binary2();
 	}
 }

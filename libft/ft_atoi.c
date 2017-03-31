@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 15:17:19 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/20 15:14:36 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 09:52:22 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ int		ft_atoi(const char *str)
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	// ft_putnbr(result * sign);
 	return (result * sign);
 }

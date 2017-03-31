@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:13:24 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 16:05:09 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 10:25:01 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
-// char			*ft_itoa(int n);
 char			*ft_itoa(intmax_t n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
@@ -96,10 +95,8 @@ char			*ft_concat_params(int argc, char **argv);
 void			ft_swap(int *a, int *b);
 int				ft_str_is_lowercase(char *str);
 int				ft_str_is_uppercase(char *str);
-
-//News functions --> printf
 char			*ft_itobase(uintmax_t nbr, char *base);
-void			ft_putwchar(wchar_t C);
+void			ft_putwchar(wchar_t c);
 wchar_t			*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len);
 char			*ft_strchrstr(const char *s, char *c);
 int				ft_indexchr(const char *s, int c);
@@ -114,11 +111,10 @@ int				ft_wstrcmp(wchar_t *s1, wchar_t *s2);
 size_t			ft_wstrlen(const wchar_t *s);
 void			ft_putnbr_positif(unsigned int nb);
 char			*ft_itoa_positif(uintmax_t n);
-int					ft_strcut_unicode(int is_wstring, char *string, int size);
-int				ft_wchar(wchar_t *dest, wchar_t C);
+int				ft_strcut_unicode(int is_wstring, char *string, int size);
+int				ft_wchar(wchar_t *dest, wchar_t c);
 char			*ft_straddend(char *s1, const char *s2);
-char 			*ft_strcpy_unicode(int is_wstring, char *dest, const char *source);
-// char			*ft_itoa_base(int nbr, char *base, int base_len, char *tab);
-// int				ft_atoi_base(char *str, char *base);
+char			*ft_strcpy_unicode(int is_wstring, char *dest,
+				const char *source);
 
 #endif

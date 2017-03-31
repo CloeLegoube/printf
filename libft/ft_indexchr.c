@@ -6,13 +6,13 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 17:34:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/01/12 12:08:16 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 09:59:02 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-int ft_indexchr(const char *s, int c)
+int		ft_indexchr(const char *s, int c)
 {
 	int		i;
 

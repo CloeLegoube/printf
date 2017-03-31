@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 10:59:20 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 19:10:13 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 11:26:40 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		ft_initialize_struct(t_print *new)
 	new->bold = 0;
 	new->wildcard = 0;
 	new->index = g_start + 1;
-	new->next = NULL;
+	new->safe = 0;
 }
 
 void		ft_manage_struc(va_list arg, t_print *new)

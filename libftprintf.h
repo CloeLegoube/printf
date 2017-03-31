@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 10:21:44 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/31 10:56:00 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 12:10:28 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct		s_print
 	int				len;
 	int				bold;
 	int				index;
-	struct s_print	*next;
+	int				safe;
 }					t_print;
 
 int					g_strlen;
@@ -115,9 +115,9 @@ char				*ft_modify_sign(char *string, t_print *new);
 char				*ft_modify_space(char *string, t_print *new);
 char				*ft_modify_width(char *string, t_print *new);
 void				ft_modify_color(va_list arg, t_print *new);
-void				modify_string(char **string, t_print *new, int yes,
+void				modify_string(t_print *new, int yes,
 					char *(*f)(char *, t_print *));
-void				modify_wstring(wchar_t **string, t_print *new, int yes,
+void				modify_wstring(t_print *new, int yes,
 					char *(*f)(char *, t_print *));
 int					ft_display_last_string(char *conversion);
 void				ft_display_wstring(t_print *new);

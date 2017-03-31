@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:44:14 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 18:34:13 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 12:24:31 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,13 @@ static void		g_c_length(t_print *new, va_list arg)
 
 void			g_c_conversion(t_print *new, va_list arg)
 {
-	wchar_t *string;
-
 	new->plus = (new->plus) ? 0 : 0;
 	new->space = (new->space) ? 0 : 0;
 	new->precision = (new->precision) ? 0 : 0;
 	g_c_length(new, arg);
 	if (new->size && new->wstring)
 	{
-		modify_wstring(&string, new, (new->size), ft_modify_width);
+		modify_wstring(new, (new->size), ft_modify_width);
 		new->string = ft_strdup((char *)new->wstring);
 		new->wstring = NULL;
 		free(new->wstring);

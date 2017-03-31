@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:41:27 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 18:47:16 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 11:33:34 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ char				*ft_modify_precision(char *string, t_print *new)
 		string = result;
 		free(result);
 	}
+	new->safe = 1;
 	return ((char *)string);
 }

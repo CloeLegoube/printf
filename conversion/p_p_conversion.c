@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:46:02 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 18:38:20 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 12:25:03 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	p_p_conversion(t_print *new, va_list arg)
 	else
 		new->htag_prefixe = ft_strdup("0x");
 	new->string = ft_itobase(nb, "0123456789abcdef");
-	modify_string(&string, new, (new->checkprecision), ft_modify_precision);
+	modify_string(new, (new->checkprecision), ft_modify_precision);
 	if (new->size)
 		string = ft_modify_width(new->string, new);
 	else

@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 19:02:17 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 11:33:57 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ char			*ft_modify_width(char *string, t_print *new)
 	if (new->less || new->zero)
 		if_p_conversion(new, &string, &i, &result);
 	ft_conditionless((char *)string, result + i, len_string, new);
+	new->safe = 1;
 	return (result);
 }

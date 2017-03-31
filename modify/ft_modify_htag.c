@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:34:43 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 18:43:27 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 11:32:57 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ char			*ft_modify_htag(va_list arg, t_print *new, char *base)
 	free(tmp);
 	if (new->htag && !new->zero)
 		add_htag_prefixe(new, &string);
+	new->safe = 1;
 	return (string);
 }

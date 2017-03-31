@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:47:24 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 18:43:34 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 12:25:07 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void		p_u_conversion(t_print *new, va_list arg)
 	new->value_zero = (new->string[0] == '0') ? 1 : new->value_zero;
 	if (new->value_zero && new->checkprecision && new->precision == 0)
 		new->precision = -1;
-	modify_string(&string, new, (new->checkprecision), ft_modify_precision);
-	modify_string(&string, new, (new->size), ft_modify_width);
+	modify_string(new, (new->checkprecision), ft_modify_precision);
+	modify_string(new, (new->size), ft_modify_width);
 }

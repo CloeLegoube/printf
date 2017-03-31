@@ -1,214 +1,39 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/04 10:23:21 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/14 19:47:32 by clegoube         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "printf.h"
+#include <stdio.h>
+#include <wchar.h>
+#include <locale.h>
 
-#include "libftprintf.h"
-
-int		main(void)
+int main(void)
 {
-
-	int i;
-	int d;
-	int d2;
-	// double dble;
-	long D;
-	int o;
-	long unsigned int O;
-	unsigned int x;
-	unsigned int X;
-	// unsigned long Long;
-	unsigned int u;
-	unsigned int u2;
-	long unsigned int U;
-	long unsigned int U2;
-	int c;
-	wchar_t C;
-	wchar_t C2;
-	wchar_t C3;
-	wchar_t C4;
-	void *p;
-	// const char *str;
-	wchar_t *wstr;
-	// char *tab;
-	// unsigned char ctest;
-
-	i = 3;
-	d = 45412;
-	d2 = -2356;
-	// dble = -2356;
-	D = -5456677;
-	o = 8;
-	O = 65535;
-	x = 13;
-	X = 65535;
-	u = -65534;
-	u2 = 65534;
-	U = -65534;
-	U2 = 65534;
-	c = 33;
-	C = L'❤';
-	C2 = L'壯';
-	C3 = 66363;
-	C4 = 514;
-	// str = "Bonjour Éloïse❤";
-	p = "Hello Éloïse";
-	wstr = L"Slt Éloïse !☂ ❤ ☯";
-	// tab = (char*)malloc(256 * sizeof(char));
-	// Long = 1265;
-
-	setlocale(LC_ALL, "");
-
-	//Cheval :
-	// ctest = 0xe2;
-	// write(1, &ctest, 1);
-	// ctest = 0x99;
-	// write(1, &ctest, 1);
-	// ctest = 0x9E;
-	// write(1, &ctest, 1);
-	// // Saut de ligne
-	// ctest = 0x0a;
-	// write(1, &ctest, 1);
-	// //Parapluie :
-	// ctest = 0xe2;
-	// write(1, &ctest, 1);
-	// ctest = 0x98;
-	// write(1, &ctest, 1);
-	// ctest = 0x82;
-	// write(1, &ctest, 1);
-
-	// printf("\nITOA: %s\n", ft_itoa_base(x, "0123456789", 0, tab));
-	// printf("TAB: %s\n", tab);
-	// printf("ATOI: %d\n\n", ft_atoi_base(tab, "0123456789abcdef"));
-	// ft_printf("FT_Prinft%    :d  \n", d);
-	ft_printf("bonjour je suis une string avec un %%erente des autres\n");
-
-	printf("\n***Test avec i, d et s - d positif ou negatif\n");
-	ft_printf("FT_Prinft    :d: %d  \n", d);
-	printf("FT_Prinft    :d: %d  \n", d);
-	// ft_printf("FT_Prinft    :%+6.3i) d-size: %-20.13d d: %-12.9d - str: %s\n\n", i, d, d, str);
-	// // ft_printf("FT_printf :%i)",  i );
-	// printf("   Prinft    :%+6.3i) d-size: %-20.13d d: %-12.9d - str: %s\n\n", i, d, d, str);
-	//
-	printf("***Test avec p - pointeur void * en hexadecimal\n");
-	ft_printf("FT_printf :p: %p\n", p);
-	printf("Prinft    :p: %p\n\n", p);
-	// // printf("Prinft    :Long: %#x\n\n", p);
-	//
-	printf("***Test avec o et O - chiffre octal non signe\n");
-	// printf("ft_itobase de o:%d == %s\n", o, ft_itobase(o, "01234567"));
-	// printf("ft_itobase de O:%d == %s\n", O, ft_itobase(O, "01234567"));
-	ft_printf("FT_printf :o: %#o - O:%O\n", o, O);
-	printf("Prinft    :o: %#o - O:%lo\n\n", o, O);
-	//
-	printf("***Test avec x et X - chiffre hexadecimal non signe abcdef et ABCDEF\n");
-	// printf("ft_itobase de x:%d == %s\n", x, ft_itobase(x, "0123456789abcdef"));
-	// printf("ft_itobase de X:%d == %s\n", X, ft_itobase(X, "0123456789ABCDEF"));
-	ft_printf("FT_printf :x: *%#-20.13x* - X:*%-#20.13X*\n", x, X);
-	printf("Prinft    :x: *%#-20.13x* - X:*%-#20.13X*\n\n", x, X);
-	ft_printf("FT_printf :x: *%#20.13x* - X:*%#X*\n", x, X);
-	printf("Prinft    :x: *%#20.13x* - X:*%#X*\n\n", x, X);
-	//
-	printf("***Test avec c et C - int en unsigned char\n");
-	ft_printf("FT_printf :c: %c - C:%C\n", c, C);
-	printf("Prinft    :c: %c - C:%C\n\n", c, C);
-	//
-	printf("***Test avec c et C2 - int en unsigned char\n");
-	ft_printf("FT_printf :c: %c - C2:%C\n", c, C2);
-	printf("Prinft    :c: %c - C2:%C\n", c, C2);
-
-	printf("***Test avec c et C3 - int en unsigned char\n");
-	ft_printf("FT_printf :c: %c - C3:%C\n", c, C3);
-	printf("Prinft    :c: %c - C3:%C\n", c, C3);
-
-	printf("***Test avec c et C4 - int en unsigned char\n");
-	ft_printf("FT_printf :c: %c - C4:%C\n", c, C4);
-	printf("Prinft    :c: %c - C4:%C\n", c, C4);
-	//
-	printf("***Test avec D \n");
-	ft_printf("FT_printf :D: %D\n", D);
-	ft_printf("FT_printf :D: %ld\n", D);
-	printf("Prinft    :D: %ld \n\n", D);
-	//
-	// // printf("recherche  : %s \n\n", ft_strchrstr("FT_printf :u: %u - U:%U\n", "sSpdDioOuUxXcC"));
-	//
-	printf("**********************************************\n");
-	printf("Comparaison sans less:\n");
-	printf("**********************************************\n\n");
-	ft_printf("\nFT - *%24S*\n", wstr);
-	printf("PF - *%24S*\n", wstr);
-	printf("**********************************************\n");
-	printf("Comparaison avec less:\n");
-		printf("**********************************************\n\n");
-	ft_printf("\nFT - *%-24S*\n", wstr);
-	printf("PF - *%-24S*\n", wstr);
-	printf("**********************************************\n");
-	printf("Comparaison sans less:\n");
-	printf("**********************************************\n\n");
-	ft_printf("\nFT - *%30S*\n", wstr);
-	printf("PF - *%30S*\n", wstr);
-	printf("**********************************************\n");
-	printf("Comparaison avec less:\n");
-		printf("**********************************************\n\n");
-	ft_printf("\nFT - *%-12S*\n", wstr);
-	printf("PF - *%-12S*\n", wstr);
-	printf("**********************************************\n");
-	printf("Comparaison sans less:\n");
-	printf("**********************************************\n\n");
-	ft_printf("\nFT - *%12S*\n", wstr);
-	printf("PF - *%12S*\n", wstr);
-	printf("**********************************************\n");
-	printf("Comparaison avec less:\n");
-		printf("**********************************************\n\n");
-	ft_printf("\nFT - *%-12S*\n", wstr);
-	printf("PF - *%-12S*\n", wstr);
-
-	printf("***Test avec S\n");
-	ft_printf("FT_printf :S: %Slalalalalal\n", wstr);
-	printf("PF_printf :S: %Slalalalalal\n", wstr);
-	ft_printf("FT_printf    :S: %ls\n", wstr);
-	printf("PF_printf    :S: %ls\n", wstr);
-	ft_printf("FT_printf    :S: %S\n", wstr);
-	printf("PF_printf    :S: %S\n\n", wstr);
-
-	printf("***Test avec u et U - chiffre decimal non signe entree et sortie postif\n");
-	ft_printf("FT_printf :u: %u - U:%U\n", u, U);
-	printf("Prinft    :u: %u - U:%lu\n", u, U);
-	ft_printf("FT_printf :u2: %u - U2:%U\n", u2, U2);
-	printf("Prinft    :u2: %u - U2:%lu\n\n", u2, U2);
-	//
-	printf("***Test avec #x et #X \n");
-	ft_printf("FT_printf #x: %#x - #X:%#X\n", x, X);
-	printf("Prinft    #x: %#x - #X:%#X\n\n", x, X);
-	//
-	printf("***Test avec # i et #-d \n");
-	ft_printf("FT_printf -i :% i - d2:%-d\n", i, d2);
-	printf("Prinft    -i :% -i - d2:%-d\n\n", i, d2);
-	// printf("Prinft    -i :%-i - d2:%-f\n\n", i, dble);
-	ft_printf("FT_printf jd :%jd\n", (intmax_t)0);
-	printf("Prinft    jd :%jd\n", (intmax_t)0);
-
-	ft_printf("FT_printf zd :%zd\n", (size_t)0);
-	printf("Prinft    zd :%zd\n", (size_t)0);
-
-	ft_printf("FT_printf precision1 i :%#-00361080.10456752hhi \n\n", i);
-	printf("FT_printf precision1 i :%#-00361080.10456752hhi \n\n", i);
-	ft_printf("FT_printf precision2 i :%- 0+14524.45lli \n\n", i);
-	printf("FT_printf precision2 i :%- 0+14524.45lli \n\n", i);
-	ft_printf("Printf precision i :%+10.2i \n", i);
-	printf("Printf precision i :%+10.2i \n", i);
-	printf("Int MAX : %d\n", INT_MAX);
-	printf("Int MIN : %d\n", INT_MIN);
-	printf("LONG MAX : %ld\n", LONG_MAX);
-	printf("LONG MIN : %ld\n\n", LONG_MIN);
-
-
-	return (0);
+  ft_printf("\n");
+  ft_printf("%%\n");
+  ft_printf("%d\n", 42);
+  ft_printf("%d%d\n", 42, 41);
+  ft_printf("%d%d%d\n", 42, 43, 44);
+  ft_printf("%ld\n", 2147483647);
+  ft_printf("%lld\n", 9223372036854775807);
+  ft_printf("%x\n", 505);
+  ft_printf("%X\n", 505);
+  ft_printf("%p\n", &ft_printf);
+  ft_printf("%20.15d\n", 54321);
+  ft_printf("%-10d\n", 3);
+  ft_printf("% d\n", 3);
+  ft_printf("%+d\n", 3);
+  ft_printf("%010d\n", 1);
+  ft_printf("%hhd\n", 0);
+  ft_printf("%jd\n", 9223372036854775807);
+  ft_printf("%zd\n", 4294967295);
+  ft_printf("%\n");
+  ft_printf("%U\n", 4294967295);
+  ft_printf("%u\n", 4294967295);
+  ft_printf("%o\n", 40);
+  ft_printf("%%#08x\n", 42);
+  ft_printf("%x\n", 1000);
+  ft_printf("%#X\n", 1000);
+  ft_printf("%s\n", NULL);
+  ft_printf("%S\n", L"ݗݜशব");
+  ft_printf("%s%s\n", "test", "test");
+  ft_printf("%s%s%s\n", "test", "test", "test");
+  ft_printf("%C\n", 15000);
+  return (0);
 }

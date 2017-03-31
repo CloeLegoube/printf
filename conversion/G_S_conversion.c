@@ -6,7 +6,7 @@
 /*   By: clegoube <clegoube@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:45:13 by clegoube          #+#    #+#             */
-/*   Updated: 2017/03/30 18:35:06 by clegoube         ###   ########.fr       */
+/*   Updated: 2017/03/31 12:11:34 by clegoube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		if_size(wchar_t *string, t_print *new)
 {
 	if (new->size)
 	{
-		modify_wstring(&string, new, (new->size), ft_modify_width);
+		modify_wstring(new, (new->size), ft_modify_width);
 		new->string = ft_strdup((char *)new->wstring);
 		new->wstring = NULL;
 		free(new->wstring);
@@ -40,7 +40,7 @@ void			g_s_conversion(t_print *new, va_list arg)
 		argument = va_arg(arg, wchar_t*);
 		new->wstring = (argument) ?
 			ft_wstrdup(argument) : ft_wstrdup(L"(null)");
-		modify_wstring(&string, new, (new->checkprecision),
+		modify_wstring(new, (new->checkprecision),
 			ft_modify_precision);
 		if_size(string, new);
 		if (new->wstring)
